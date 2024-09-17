@@ -17,9 +17,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Outlet } from 'react-router-dom';
-
+import { Outlet, NavLink } from 'react-router-dom';
+// import Footer from './Footer';
+import EventIcon from '@mui/icons-material/Event';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -64,8 +65,8 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  backgroundColor: 'white', 
-  color: theme.palette.text.primary, 
+  color: theme.palette.text.primary,
+  backgroundColor: theme.palette.background.default,
   variants: [
     {
       props: ({ open }) => open,
@@ -87,6 +88,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
+    '& .MuiDrawer-paper': {
+      width: drawerWidth,
+      backgroundColor: theme.palette.background.default,
+      boxSizing: 'border-box',
+    },
     variants: [
       {
         props: ({ open }) => open,
@@ -106,7 +112,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+const StyledNavLink = styled(NavLink)(({ theme }) => ({
+  textDecoration: 'none',
+  color: theme.palette.text.primary,
+  '&.active': {
+    color: theme.palette.secondary.dark,
+  },
+}));
+
+export default function PersistentDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -119,10 +133,10 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex',backgroundColor:"#ecedf4",height:"100vh"}}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar >
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -138,7 +152,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Event Management
           </Typography>
         </Toolbar>
       </AppBar>
@@ -150,64 +164,85 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/">
               <ListItemButton
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                  },
-                  open
-                    ? {
-                        justifyContent: 'initial',
-                      }
-                    : {
-                        justifyContent: 'center',
-                      },
-                ]}
-              >
+                sx={[{
+                  minHeight: 48,
+                  px: 2.5,
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+                ]} >
                 <ListItemIcon
-                  sx={[
-                    {
-                      minWidth: 0,
-                      justifyContent: 'center',
-                    },
-                    open
-                      ? {
-                          mr: 3,
-                        }
-                      : {
-                          mr: 'auto',
-                        },
-                  ]}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },]} >
+                  <InboxIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary={text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
+                  primary="Home"
+                  sx={[open ? {opacity: 1,}
+                      : {opacity: 0, },
+                  ]} />
               </ListItemButton>
-            </ListItem>
-          ))}
+            </StyledNavLink>
+          </ListItem>
+
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/demo">
+              <ListItemButton
+                sx={[ {  minHeight: 48,
+                    px: 2.5,},
+                  open ? {justifyContent: 'initial', }: {justifyContent: 'center',},
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                      minWidth: 0,
+                      justifyContent: 'center', },
+                    open? { mr: 3, } : { mr: 'auto', },
+                  ]}>
+                  <EventIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Events"
+                  sx={[
+                    open ? {  opacity: 1, }: { opacity: 0,},
+                  ]} />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/">
+              <ListItemButton
+                sx={[{
+                    minHeight: 48,
+                    px: 2.5,  },
+                  open ? { justifyContent: 'initial',  }  : {  justifyContent: 'center',  },
+                ]} >
+                <ListItemIcon
+                  sx={[   {
+                      minWidth: 0,
+                      justifyContent: 'center', },
+                    open  ? {   mr: 3,  }  : { mr: 'auto',  },
+                  ]}  >
+                  <PermIdentityIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="home"
+                  sx={[open ? {  opacity: 1,  }: { opacity: 0,  },
+                  ]}  />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
         </List>
         <Divider />
-       
-       
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1,  }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: theme.palette.background.default }}>
         <DrawerHeader />
-       <Outlet/>
-        
+        <Outlet />
+        {/* <Footer /> */}
       </Box>
     </Box>
   );
