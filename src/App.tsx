@@ -6,7 +6,9 @@ import MiniDrawer from './Components/Layout';
 import Demo from './Pages/Demo/Demo';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
-
+import AssetsRegistretion from './Pages/AssetsRegistretion/AssetsRegistretion';
+import AllocationForm from './Pages/AssetsAlloction/AssetsAlloction';
+import AssetsMaintenance from './Pages/AssetsMaintenace/AssetsMaintenance';
 
 function App() {
   return (
@@ -16,9 +18,13 @@ function App() {
         <Route path="/" element={<MiniDrawer />}>
           <Route index element={<Home />} />
           <Route path='/demo' element={<Demo />} />
+        <Route path='/assets-register' element={<AssetsRegistretion/>} />
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>} />
+        <Route path='/allocation' element={<AllocationForm />} />
+        <Route path='/maintenance' element={<AssetsMaintenance />} />
+
 
 
       </Routes>

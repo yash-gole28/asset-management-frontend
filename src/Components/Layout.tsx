@@ -152,7 +152,7 @@ export default function PersistentDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Event Management
+            Assets Management
           </Typography>
         </Toolbar>
       </AppBar>
@@ -214,12 +214,13 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/">
+            <StyledNavLink to="assets-register">
               <ListItemButton
                 sx={[{
                     minHeight: 48,
                     px: 2.5,  },
                   open ? { justifyContent: 'initial',  }  : {  justifyContent: 'center',  },
+
                 ]} >
                 <ListItemIcon
                   sx={[   {
