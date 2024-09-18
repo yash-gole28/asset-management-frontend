@@ -32,8 +32,8 @@ const AllocationForm = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
-        width: "100vw",
+        // height: "100vh",
+        width: "100%",
         backgroundColor: "rgb(229, 236, 243)",
         display: "flex",
         alignItems: "center",
@@ -43,7 +43,8 @@ const AllocationForm = () => {
     >
       <Box
         sx={{
-          width: { xs: '90%', sm: '80%', md: '600px' },
+          maxWidth:'600px',
+          width: { xs: '90%', sm: '80%', md: '90%' },
           borderRadius: 2,
           backgroundColor: "white",
           padding: 3,
