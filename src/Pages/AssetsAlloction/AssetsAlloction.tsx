@@ -7,7 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'; // Ensure you have 
 // Validation schema using Yup
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
-  employeeId: Yup.string().required('Employee ID is required'),
+  // employeeId: Yup.string().required('Employee ID is required'),
   approvedById: Yup.string().required('Approved By ID is required'),
   deviceName: Yup.string().required('Device Name is required'),
   specification: Yup.string().required('Specification is required'),
@@ -18,7 +18,6 @@ const validationSchema = Yup.object({
 const AllocationForm = () => {
   const handleSubmit = (values: {
     name: string;
-    employeeId: string;
     approvedById: string;
     deviceName: string;
     specification: string;
@@ -65,7 +64,6 @@ const AllocationForm = () => {
         <Formik
           initialValues={{
             name: '',
-            employeeId: '',
             approvedById: '',
             deviceName: '',
             specification: '',
@@ -89,7 +87,7 @@ const AllocationForm = () => {
                 helperText={<ErrorMessage name="name" />}
               />
 
-              <Field
+              {/* <Field
                 as={TextField}
                 name="employeeId"
                 placeholder="Employee ID"
@@ -99,7 +97,7 @@ const AllocationForm = () => {
                 sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}
                 error={touched.employeeId && Boolean(errors.employeeId)}
                 helperText={<ErrorMessage name="employeeId" />}
-              />
+              /> */}
 
               <Field
                 as={TextField}

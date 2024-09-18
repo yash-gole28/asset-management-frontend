@@ -33,13 +33,13 @@ const MyForm = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
-        width: "100vw",
+        height: "auto",
+        width: "100%",
         backgroundColor: "rgb(229, 236, 243)",
         display: "flex",
-        alignItems: "center",
+        alignItems:{xs:'top',md:'center'},
         justifyContent: 'center',
-        padding: { xs: 2, sm: 4 }, // Responsive padding
+        padding: { xs: 1, sm: 4 }, // Responsive padding
       }}
     >
       <Box
@@ -47,7 +47,7 @@ const MyForm = () => {
           width: { xs: '90%', sm: '80%', md: '600px' },
           borderRadius: 2,
           backgroundColor: "white",
-          padding: 3,
+          padding:{xs:2 , sm:2 , md:3},
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

@@ -21,10 +21,16 @@ import { Outlet, NavLink } from 'react-router-dom';
 // import Footer from './Footer';
 import EventIcon from '@mui/icons-material/Event';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import { useMediaQuery } from '@mui/material';
 const drawerWidth = 240;
 
+
+// const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
+  [theme.breakpoints.down('sm')]: {
+    width: '95%',
+  },
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -73,6 +79,9 @@ const AppBar = styled(MuiAppBar, {
       style: {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
+        [theme.breakpoints.down('sm')]: {
+          display:'none'
+        },
         transition: theme.transitions.create(['width', 'margin'], {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.enteringScreen,
@@ -240,9 +249,11 @@ export default function PersistentDrawer() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: theme.palette.background.default }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: theme.palette.background.default}}>
         <DrawerHeader />
+        <Box sx={{display:{xs:open ? 'none' : 'block',md:'block'}}}>
         <Outlet />
+        </Box>
         {/* <Footer /> */}
       </Box>
     </Box>
