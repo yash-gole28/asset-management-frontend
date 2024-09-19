@@ -1,14 +1,15 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React from 'react';
-import data from '../../Data.json';
+import data1 from '../../Data1.json';
 
 
 const AssetsRegistretionTable = () => {
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
-      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px',mt:'2rem' }}>
-        <Button variant="outlined">Register New Assets</Button>
+      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '25px',mt:'2rem' }}>
+        <Typography variant='h5' sx={{color:"#6087fb"}} >Assets Ragistretion Table....</Typography>
+        <Button variant="outlined" sx={{fontSize:'1.1rem', background:"white"}}>Register New Assets</Button>
       </Box>
   
    
@@ -35,29 +36,20 @@ const AssetsRegistretionTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((v, index) => (
+            {data1.map((v, index) => (
               <TableRow key={index}>
                 <TableCell align="left">{v.name}</TableCell>
                 <TableCell align="left">{v.assets_name}</TableCell>
                 <TableCell align="right">{v.department}</TableCell>
                 <TableCell align="right">{v.modal_number}</TableCell>
-                <TableCell align="right">{v.approved == 'pending' ? <Box> <Button>approve</Button> <Button>reject</Button> </Box> : v.approved}</TableCell>
+                <TableCell align="right">{v.status?"allocated":"not-allocated"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
 
     
-        <Button variant='contained' sx={{
-          position: "absolute",
-          top: "10px",
-          right: "20px",
-          textDecoration: "none",
-          color: "white",
-          width: "130px"
-        }}>
-          Action
-        </Button>
+        
       </TableContainer>
      
       {/* Table Container */}
