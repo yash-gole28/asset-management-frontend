@@ -1,4 +1,5 @@
-[
+{
+  "requestData":[
     {
       "name": "Asset 1",
       "assets_name": "Laptop",
@@ -35,6 +36,10 @@
       } 
 
 
-  ]
+  ],
+  "totalAssets":550,
+  "totalApprovedAssets": 200,
+  "assetsUnderMaintenance":20
+}
   
   

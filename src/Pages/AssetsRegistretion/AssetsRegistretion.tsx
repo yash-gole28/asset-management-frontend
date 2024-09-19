@@ -35,7 +35,7 @@ const MyForm = () => {
       sx={{
         height: "auto",
         width: "100%",
-        backgroundColor: "rgb(229, 236, 243)",
+        backgroundColor: "rgb(242, 244, 247)",
         display: "flex",
         alignItems:{xs:'top',md:'center'},
         justifyContent: 'center',

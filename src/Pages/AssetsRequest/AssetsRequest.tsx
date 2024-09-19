@@ -35,7 +35,7 @@ const AssetsRequest = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((v, index) => (
+            {data.requestData.map((v, index) => (
               <TableRow key={index}>
                 <TableCell align="left">{v.name}</TableCell>
                 <TableCell align="left">{v.assets_name}</TableCell>
