@@ -1,31 +1,30 @@
-
-
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React from 'react';
 import data from '../../Data.json';
 
+
 const AssetsRequest = () => {
   return (
-    <Box sx={{ width: '100%', margin: '9px',overflow:'scroll' }}>
+    <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
-      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px' }}>
+      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px',mt:'2rem' }}>
         <Button variant="outlined">Register New Assets</Button>
       </Box>
-
-      {/* Table Container */}
+  
+   
+    
+    
       <TableContainer sx={{
-        width: { xs: "100%", sm: "90%" }, // Responsive width
-        margin: "auto",
-        border: "1px solid black",
+        width: { xs: "100%", sm: "100%", }, 
         borderRadius: "10px",
         backgroundColor: "white",
-        boxShadow: 2, // Added shadow for better visibility
+        boxShadow: 2, 
         marginBottom: "20px",
         position: "relative",
       }}>
-        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>All Assets...</Typography>
+        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
 
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{width:'100%' }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="left">Name</TableCell>
@@ -42,13 +41,13 @@ const AssetsRequest = () => {
                 <TableCell align="left">{v.assets_name}</TableCell>
                 <TableCell align="right">{v.department}</TableCell>
                 <TableCell align="right">{v.modal_number}</TableCell>
-                <TableCell align="right">{v.status}</TableCell>
+                <TableCell align="right">{v.approved == 'pending' ? <Box> <Button>approve</Button> <Button>reject</Button> </Box> : v.approved}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
 
-        {/* Action Button */}
+    
         <Button variant='contained' sx={{
           position: "absolute",
           top: "10px",
@@ -60,6 +59,8 @@ const AssetsRequest = () => {
           Action
         </Button>
       </TableContainer>
+     
+      {/* Table Container */}
     </Box>
   );
 };

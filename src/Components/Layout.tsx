@@ -249,9 +249,9 @@ export default function PersistentDrawer() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: theme.palette.background.default}}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(236, 240, 245)',minHeight:'100vh'}}>
         <DrawerHeader />
-        <Box sx={{display:{xs:open ? 'none' : 'block',md:'block'}}}>
+        <Box sx={{display:{xs:open ? 'none' : 'block',sm:'block',md:'block'}}}>
         <Outlet />
         </Box>
         {/* <Footer /> */}
