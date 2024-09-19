@@ -10,6 +10,7 @@ import AssetsRegistretion from './Pages/AssetsRegistretion/AssetsRegistretion';
 import AllocationForm from './Pages/AssetsAlloction/AssetsAlloction';
 import AssetsMaintenance from './Pages/AssetsMaintenace/AssetsMaintenance';
 import AssetsRequest from './Pages/AssetsRequest/AssetsRequest';
+import AssetsRegistretionTable from './Pages/AssetsRegisterTable/AssetsRegistretionTable';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/allocation' element={<AllocationForm />} />
           <Route path='/maintenance' element={<AssetsMaintenance />} />
           <Route path='/assets-request' element={<AssetsRequest/>}/>
+          <Route path='/assets-register-table' element={<AssetsRegistretionTable/>}/>
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
