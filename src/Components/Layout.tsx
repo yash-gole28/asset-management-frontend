@@ -29,7 +29,7 @@ const drawerWidth = 240;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   [theme.breakpoints.down('sm')]: {
-    width: '95%',
+    width: 65,
   },
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -45,8 +45,8 @@ const closedMixin = (theme: Theme): CSSObject => ({
   }),
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+  [theme.breakpoints.down('md')]: {
+    width:0,
   },
 });
 
@@ -80,7 +80,7 @@ const AppBar = styled(MuiAppBar, {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
         [theme.breakpoints.down('sm')]: {
-          display:'none'
+        width:`calc(100% - ${65}px)`
         },
         transition: theme.transitions.create(['width', 'margin'], {
           easing: theme.transitions.easing.sharp,
@@ -200,7 +200,7 @@ export default function PersistentDrawer() {
           </ListItem>
 
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/demo">
+            <StyledNavLink to="/assets-request">
               <ListItemButton
                 sx={[ {  minHeight: 48,
                     px: 2.5,},
@@ -215,7 +215,7 @@ export default function PersistentDrawer() {
                   <EventIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Events"
+                  primary="Assets Requests"
                   sx={[
                     open ? {  opacity: 1, }: { opacity: 0,},
                   ]} />
@@ -223,7 +223,7 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="assets-register">
+            <StyledNavLink to="/assets">
               <ListItemButton
                 sx={[{
                     minHeight: 48,
@@ -240,7 +240,7 @@ export default function PersistentDrawer() {
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="home"
+                  primary="Assets"
                   sx={[open ? {  opacity: 1,  }: { opacity: 0,  },
                   ]}  />
               </ListItemButton>
@@ -249,9 +249,9 @@ export default function PersistentDrawer() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)',minHeight:'100vh'}}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)',minHeight:'100vw'}}>
         <DrawerHeader />
-        <Box sx={{display:{xs:open ? 'none' : 'block',sm:'block',md:'block'}}}>
+        <Box>
         <Outlet />
         </Box>
         {/* <Footer /> */}

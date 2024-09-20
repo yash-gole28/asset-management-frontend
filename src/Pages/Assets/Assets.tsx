@@ -2,13 +2,12 @@ import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, Ta
 import React from 'react';
 import data1 from '../../Data1.json';
 
-
-const AssetsRegistrationTable = () => {
+const Assets = () => {
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '25px',mt:'2rem' }}>
-        <Typography variant='h5' sx={{color:"#6087fb"}} >Assets Ragistretion Table....</Typography>
+        <Typography variant='h5' sx={{color:"#6087fb"}} >Assets</Typography>
         <Button variant="outlined" sx={{fontSize:'1.1rem', background:"white"}}>Register New Assets</Button>
       </Box>
   
@@ -54,7 +53,7 @@ const AssetsRegistrationTable = () => {
      
       {/* Table Container */}
     </Box>
-  );
-};
+  )
+}
 
-export default AssetsRegistrationTable;
+export default Assets

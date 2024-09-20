@@ -1,14 +1,18 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import React from 'react';
 import data from '../../Data.json';
+import { useNavigate } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
 
 
 const AssetsRequest = () => {
+  const router = useNavigate()
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px',mt:'2rem' }}>
-        <Button variant="outlined">Register New Assets</Button>
+        <Button onClick={()=>router('/assets-register')} variant="outlined">Register New Assets</Button>
       </Box>
   
    
@@ -25,9 +29,9 @@ const AssetsRequest = () => {
         <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
 
         <Table sx={{width:'100%' }} aria-label="simple table">
-          <TableHead>
+          <TableHead sx={{fontWeight:'500'}}>
             <TableRow>
-              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">Employee Name</TableCell>
               <TableCell align="left">Assets Name</TableCell>
               <TableCell align="right">Department</TableCell>
               <TableCell align="right">Model Number</TableCell>
@@ -41,23 +45,13 @@ const AssetsRequest = () => {
                 <TableCell align="left">{v.assets_name}</TableCell>
                 <TableCell align="right">{v.department}</TableCell>
                 <TableCell align="right">{v.modal_number}</TableCell>
-                <TableCell align="right">{v.approved == 'pending' ? <Box> <Button>approve</Button> <Button>reject</Button> </Box> : v.approved}</TableCell>
+                <TableCell align="right">{v.approved == 'pending' ? <Box> <Button><DoneIcon sx={{color:'green'}}/> </Button>  <Button><CloseIcon sx={{color:'red'}}/></Button> </Box> : v.approved}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
 
     
-        <Button variant='contained' sx={{
-          position: "absolute",
-          top: "10px",
-          right: "20px",
-          textDecoration: "none",
-          color: "white",
-          width: "130px"
-        }}>
-          Action
-        </Button>
       </TableContainer>
      
       {/* Table Container */}

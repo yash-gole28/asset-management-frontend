@@ -43,7 +43,7 @@ const KPIs = () => {
     return (
         <Box sx={{ p: { xs: 1, sm: 1, md: 3 } }}>
             <Grid container spacing={{ xs: 1, sm: 1, md: 2 }}>
-                <Grid size={{ xs: 12,sm:6, md: 3 }}>
+                <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(168, 231, 192)'}}>
                         <CustomGrid>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
@@ -59,7 +59,7 @@ const KPIs = () => {
                         </CustomGrid>
                     </Item>
                 </Grid>
-                <Grid size={{ xs: 12,sm:6, md: 3 }}>
+                <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(247, 195, 195)'}}>
                         <CustomGrid>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
@@ -74,7 +74,7 @@ const KPIs = () => {
                         </CustomGrid>
                     </Item>
                 </Grid>
-                <Grid size={{ xs: 12,sm:6, md: 3 }}>
+                <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(201, 210, 239)'}}>
                         <CustomGrid>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
@@ -89,7 +89,7 @@ const KPIs = () => {
                         </CustomGrid>
                     </Item>
                 </Grid>
-                <Grid size={{ xs: 12,sm:6, md: 3 }}>
+                <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(241, 193, 244)'}}>
                         <CustomGrid>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>

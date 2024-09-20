@@ -1,34 +1,34 @@
 {
   "requestData":[
     {
-      "name": "Asset 1",
+      "name": "Yash",
       "assets_name": "Laptop",
       "department": "IT",
       "modal_number": "LM123",
     "approved":"pending"
     },
     {
-      "name": "Asset 2",
+      "name": "Shubham",
       "assets_name": "Monitor",
       "department": "HR",
       "modal_number": "MD456",
       "approved":"rejected"
     } ,
     {
-        "name": "Asset 3",
+        "name": "Rahul",
         "assets_name": "keyboard",
         "department": "HR",
         "modal_number": "MD456",
         "approved":"approved"
       },
       {
-        "name": "Asset 4",
+        "name": "Pranav",
         "assets_name": "phone",
         "department": "HR",
         "modal_number": "MD456",
         "approved":"pending"
       } , {
-        "name": "Asset 5",
+        "name": "Rohit",
         "assets_name": "mouse",
         "department": "HR",
         "modal_number": "MD456",
