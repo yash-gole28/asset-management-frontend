@@ -25,7 +25,7 @@ const AssetsRequest = () => {
       }}>
         <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
 
-        <Table sx={{width:'100%' }} aria-label="simple table">
+        <Table sx={{width:'100%' }} size='small' aria-label="simple table">
           <TableHead sx={{fontWeight:'500'}}>
             <TableRow>
               <TableCell align="left">Employee Name</TableCell>
@@ -42,7 +42,7 @@ const AssetsRequest = () => {
                 <TableCell align="left">{v.assets_name}</TableCell>
                 <TableCell align="right">{v.department}</TableCell>
                 <TableCell align="right">{v.modal_number}</TableCell>
-                <TableCell align="right">{v.approved == 'pending' ? <Box> <Button><DoneIcon sx={{color:'green'}}/> </Button>  <Button><CloseIcon sx={{color:'red'}}/></Button> </Box> : v.approved}</TableCell>
+                <TableCell align="right">{v.approved === 'pending' ? <Box> <Button><DoneIcon sx={{color:'green',fontSize:'15px'}}/> </Button>  <Button><CloseIcon sx={{color:'red',fontSize:'15px'}}/></Button> </Box> : v.approved}</TableCell>
               </TableRow>
             ))}
           </TableBody>

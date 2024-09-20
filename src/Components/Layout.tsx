@@ -71,6 +71,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.background.default,
+  boxShadow:'0px 0px 0px #fff',
   variants: [
     {
       props: ({ open }) => open,
@@ -197,11 +198,11 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
 
-          {/* <ListItem disablePadding sx={{ display: 'block' }}>
+          <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
                 sx={[ {  minHeight: 48,
-                    px: 2.5,},
+                  px:{xs:1.5 , sm:2.5 , md:2.5},},
                   open ? {justifyContent: 'initial', }: {justifyContent: 'center',},
                 ]} >
                 <ListItemIcon
@@ -225,7 +226,7 @@ export default function PersistentDrawer() {
               <ListItemButton
                 sx={[{
                     minHeight: 48,
-                    px: 2.5,  },
+                    px:{xs:1.5 , sm:2.5 , md:2.5},},
                   open ? { justifyContent: 'initial',  }  : {  justifyContent: 'center',  },
 
                 ]} >
@@ -243,7 +244,7 @@ export default function PersistentDrawer() {
                   ]}  />
               </ListItemButton>
             </StyledNavLink>
-          </ListItem> */}
+          </ListItem>
         </List>
         <Divider />
       </Drawer>

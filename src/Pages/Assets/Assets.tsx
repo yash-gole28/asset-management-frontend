@@ -6,8 +6,8 @@ const Assets = () => {
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
-      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '25px',mt:'2rem' }}>
-        <Typography variant='h5' sx={{color:"#6087fb"}} >Assets</Typography>
+      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
+        <Typography variant='h5' >Assets</Typography>
         <Button variant="outlined" sx={{fontSize:'1.1rem', background:"white"}}>Register New Assets</Button>
       </Box>
   
@@ -19,29 +19,33 @@ const Assets = () => {
         borderRadius: "10px",
         backgroundColor: "white",
         boxShadow: 2, 
-        marginBottom: "20px",
+        marginBottom: "10px",
         position: "relative",
       }}>
-        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Assets</Typography>
+        {/* <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Assets</Typography> */}
 
-        <Table sx={{width:'100%' }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Assets Name</TableCell>
-              <TableCell align="right">Department</TableCell>
-              <TableCell align="right">Model Number</TableCell>
-              <TableCell align="right">Status</TableCell>
+        <Table sx={{width:'100%' }} size='small' aria-label="simple table">
+          <TableHead sx={{backgroundColor:'rgb(177, 191, 238)'}}>
+            <TableRow >
+              <TableCell sx={{fontWeight:'600'}} align="center">Asset Id</TableCell>
+              {/* <TableCell align="center">Asset Id</TableCell> */}
+              <TableCell sx={{fontWeight:'600'}} align="center">Assets Name</TableCell>
+              <TableCell sx={{fontWeight:'600'}} align="center">Department</TableCell>
+              <TableCell sx={{fontWeight:'600'}} align="center">Serial Number</TableCell>
+              <TableCell sx={{fontWeight:'600'}} align="center">Model Number</TableCell>
+              <TableCell sx={{fontWeight:'600'}} align="center">Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data1.map((v, index) => (
-              <TableRow key={index}>
-                <TableCell align="left">{v.name}</TableCell>
-                <TableCell align="left">{v.assets_name}</TableCell>
-                <TableCell align="right">{v.department}</TableCell>
-                <TableCell align="right">{v.modal_number}</TableCell>
-                <TableCell align="right">{v.status?"allocated":"not-allocated"}</TableCell>
+              <TableRow  key={index}>
+                <TableCell align="center">{v.name}</TableCell>
+                {/*      */}
+                <TableCell align="center">{v.assets_name}</TableCell>
+                <TableCell align="center">{v.department}</TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center">{v.modal_number}</TableCell>
+                <TableCell align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
