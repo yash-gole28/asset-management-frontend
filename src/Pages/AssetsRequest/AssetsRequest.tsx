@@ -14,9 +14,6 @@ const AssetsRequest = () => {
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px',mt:'2rem' }}>
         <Button onClick={()=>router('/assets-register')} variant="outlined">Register New Assets</Button>
       </Box>
-  
-   
-    
     
       <TableContainer sx={{
         width: { xs: "100%", sm: "100%", }, 

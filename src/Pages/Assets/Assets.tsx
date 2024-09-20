@@ -22,7 +22,7 @@ const Assets = () => {
         marginBottom: "20px",
         position: "relative",
       }}>
-        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
+        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Assets</Typography>
 
         <Table sx={{width:'100%' }} aria-label="simple table">
           <TableHead>

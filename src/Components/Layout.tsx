@@ -18,10 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Outlet, NavLink } from 'react-router-dom';
-// import Footer from './Footer';
 import EventIcon from '@mui/icons-material/Event';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { useMediaQuery } from '@mui/material';
 const drawerWidth = 240;
 
 
@@ -29,7 +27,7 @@ const drawerWidth = 240;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   [theme.breakpoints.down('sm')]: {
-    width: 65,
+    width: 50,
   },
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -80,7 +78,7 @@ const AppBar = styled(MuiAppBar, {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
         [theme.breakpoints.down('sm')]: {
-        width:`calc(100% - ${65}px)`
+        width:`calc(100% - ${50}px)`
         },
         transition: theme.transitions.create(['width', 'margin'], {
           easing: theme.transitions.easing.sharp,
@@ -178,7 +176,7 @@ export default function PersistentDrawer() {
               <ListItemButton
                 sx={[{
                   minHeight: 48,
-                  px: 2.5,
+                  px:{xs:1.5 , sm:2.5 , md:2.5},
                 },
                 open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
                 ]} >
@@ -199,7 +197,7 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
 
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          {/* <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
                 sx={[ {  minHeight: 48,
@@ -245,7 +243,7 @@ export default function PersistentDrawer() {
                   ]}  />
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>
+          </ListItem> */}
         </List>
         <Divider />
       </Drawer>
