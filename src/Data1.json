@@ -2,7 +2,7 @@
     {
       "name": "Asset 1",
       "assets_name": "Laptop",
-      "department": "IT",
+      "department": "it",
       "modal_number": "LM123",
       "status": true
     },

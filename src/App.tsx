@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<MiniDrawer />}>
             <Route index element={<Home />} />
             {/* <Route path='/demo' element={<Demo />} /> */}
-            {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
+            <Route path='/assets-register' element={<AssetsRegistretion />} />
             {/* <Route path='/allocation' element={<AllocationForm />} /> */}
             <Route path='/maintenance' element={<AssetsMaintenance />} />
             <Route path='/assets-request' element={<AssetsRequest />} />

@@ -20,7 +20,7 @@ const Assets = () => {
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
         <Typography variant='h5' >Assets....</Typography>
-        <Button variant="outlined" size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
+        <Button variant="outlined" size='small' sx={{fontSize:'1.1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
       </Box>
   
    

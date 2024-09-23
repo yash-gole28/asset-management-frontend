@@ -42,7 +42,7 @@ const AssetsRequest = () => {
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex",flexDirection:{xs:'column',sm:'row',md:'row'}, alignItems:{xs:'start',sm:'center',md:'center'}, justifyContent:'space-between', marginBottom: '10px',mt:'10px' }}>
-      <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests...</Typography>
+      <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
         <Button onClick={handleOpen} size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}} variant="outlined">Create Request</Button>
         <Modal
         open={open}
