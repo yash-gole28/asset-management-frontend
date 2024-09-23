@@ -1,5 +1,5 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import data from '../../Data.json';
 import { useNavigate } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
@@ -13,6 +13,17 @@ const AssetsRequest = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(13);
+
+  const handleChangePage = (event: any, newPage: any) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: any) => {
+    setRowsPerPage(parseInt(event.target.value,10));
+    setPage(0);
+  };
 
 
   const style = {
@@ -31,8 +42,8 @@ const AssetsRequest = () => {
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex",flexDirection:{xs:'column',sm:'row',md:'row'}, alignItems:{xs:'start',sm:'center',md:'center'}, justifyContent:'space-between', marginBottom: '10px',mt:'10px' }}>
-      <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
-        <Button onClick={handleOpen} variant="outlined">Create Request</Button>
+      <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests...</Typography>
+        <Button onClick={handleOpen} size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}} variant="outlined">Create Request</Button>
         <Modal
         open={open}
         onClose={handleClose}
@@ -60,17 +71,17 @@ const AssetsRequest = () => {
        
 
         <Table sx={{width:'100%' }} size='small' aria-label="simple table">
-          <TableHead sx={{fontWeight:'500'}}>
+          <TableHead sx={{fontWeight:'500',backgroundColor:'rgb(177, 191, 238)'}}>
             <TableRow>
-              <TableCell align="center">Employee Name</TableCell>
-              <TableCell align="center">Assets Name</TableCell>
-              <TableCell align="center">Department</TableCell>
-              <TableCell align="center">Model Number</TableCell>
-              <TableCell align="center">Status</TableCell>
+              <TableCell  sx={{ fontWeight: '600' }} align="center">Employee Name</TableCell>
+              <TableCell  sx={{ fontWeight: '600' }} align="center">Assets Name</TableCell>
+              <TableCell  sx={{ fontWeight: '600' }} align="center">Department</TableCell>
+              <TableCell  sx={{ fontWeight: '600' }} align="center">Model Number</TableCell>
+              <TableCell  sx={{ fontWeight: '600' }} align="center">Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.requestData.map((v, index) => (
+            {data.requestData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow key={index}>
                 <TableCell align="center">{v.name}</TableCell>
                 <TableCell align="center">{v.assets_name}</TableCell>
@@ -84,7 +95,16 @@ const AssetsRequest = () => {
             ))}
           </TableBody>
         </Table>
-
+        <TablePagination
+            rowsPerPageOptions={[5, 15, 20]}
+            component="div"
+            count={data.requestData.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+       
     
       </TableContainer>
      

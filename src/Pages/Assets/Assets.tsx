@@ -1,14 +1,26 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import data1 from '../../Data1.json';
 
 const Assets = () => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event:any, newPage:any) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event:any) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
-        <Typography variant='h5' >Assets</Typography>
-        <Button variant="outlined" sx={{fontSize:'1.1rem', background:"white"}}>Register New Assets</Button>
+        <Typography variant='h5' >Assets....</Typography>
+        <Button variant="outlined" size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
       </Box>
   
    
@@ -37,19 +49,28 @@ const Assets = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data1.map((v, index) => (
+            {data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow  key={index}>
                 <TableCell align="center">{v.name}</TableCell>
                 {/*      */}
                 <TableCell align="center">{v.assets_name}</TableCell>
                 <TableCell align="center">{v.department}</TableCell>
-                <TableCell align="center"></TableCell>
+                <TableCell align="center">_</TableCell>
                 <TableCell align="center">{v.modal_number}</TableCell>
                 <TableCell align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[ 10,15, 25]}
+          component="div"
+          count={data1.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        /> 
 
     
         
