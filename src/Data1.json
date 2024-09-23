@@ -34,34 +34,34 @@
         "status": false
       },
     {
-      "name": "Asset 1",
+      "name": "Asset 6",
       "assets_name": "Laptop",
       "department": "IT",
       "modal_number": "LM123",
       "status": true
     },
     {
-      "name": "Asset 2",
+      "name": "Asset 7",
       "assets_name": "Monitor",
       "department": "HR",
       "modal_number": "MD456",
       "status": false
     } ,
     {
-        "name": "Asset 3",
+        "name": "Asset 8",
         "assets_name": "keyboard",
         "department": "HR",
         "modal_number": "MD456",
         "status": false
       },
       {
-        "name": "Asset 4",
+        "name": "Asset 9",
         "assets_name": "phone",
         "department": "HR",
         "modal_number": "MD456",
         "status": false
       } , {
-        "name": "Asset 5",
+        "name": "Asset 10",
         "assets_name": "mouse",
         "department": "HR",
         "modal_number": "MD456",

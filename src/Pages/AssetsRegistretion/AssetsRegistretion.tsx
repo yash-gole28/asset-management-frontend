@@ -39,12 +39,12 @@ const MyForm = () => {
         display: "flex",
         alignItems:{xs:'top',md:'center'},
         justifyContent: 'center',
-        padding: { xs: 1, sm: 4 }, // Responsive padding
+        // Responsive padding
       }}
     >
       <Box
         sx={{
-          width: { xs: '90%', sm: '80%', md: '600px' },
+          width: '100%',
           borderRadius: 2,
           backgroundColor: "white",
           padding:{xs:2 , sm:2 , md:3},

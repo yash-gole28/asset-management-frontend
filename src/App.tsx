@@ -28,6 +28,7 @@ function App() {
             <Route path='/maintenance' element={<AssetsMaintenance />} />
             <Route path='/assets-request' element={<AssetsRequest />} />
             <Route path='/assets' element={<Assets/>} />
+            <Route path='/assets-registretion-table' element={<AssetsRegistrationTable />} />
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
