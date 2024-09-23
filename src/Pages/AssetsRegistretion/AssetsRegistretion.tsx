@@ -39,6 +39,7 @@ const MyForm = () => {
         display: "flex",
         alignItems:{xs:'top',md:'center'},
         justifyContent: 'center',
+        borderRadius:'10px'
         // Responsive padding
       }}
     >

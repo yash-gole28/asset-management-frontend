@@ -1,10 +1,11 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, TextField, InputBase } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, TextField, InputBase, InputAdornment } from '@mui/material';
 import React, { useState } from 'react';
 import data from '../../Data.json';
 import { Modal } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
 import AssetRequestForm from '../../Components/AssetRequestForm';
+import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 
 
@@ -31,13 +32,24 @@ const AssetsRequest = () => {
     <Box sx={{ width: '95%', margin: 'auto' }}>
       <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'start', sm: 'center', md: 'center' }, justifyContent: 'space-between', marginBottom: '10px', mt: '10px' }}>
         <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
+      
+        
         <TextField
           variant="standard"
           placeholder="Search Employee"
           onChange={(e) => setSearchQuery(e.target.value)}
           sx={{ marginBottom: '10px', width: '30%',minWidth:'270px', backgroundColor: '#ffff', border: '1px solid #fff',padding:'2px 10px',borderRadius:'4px',boxShadow:1 }}
+          InputProps={
+            {
+              endAdornment:(
+                <InputAdornment position='start'>
+                  <SearchIcon/>
+                </InputAdornment>
+              )
+            }
+          }
         />
-        
+       
         <Button onClick={handleOpen} size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }} variant="outlined">Create Request</Button>
         <Modal
           open={open}

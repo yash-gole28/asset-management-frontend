@@ -20,7 +20,11 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Outlet, NavLink } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import HomeIcon from '@mui/icons-material/Home';
 import l from './../assets/logo2.png'
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import InventoryIcon from '@mui/icons-material/Inventory';
+
 const drawerWidth = 240;
 
 
@@ -188,7 +192,7 @@ export default function PersistentDrawer() {
                     justifyContent: 'center',
                   },
                   open ? { mr: 3, } : { mr: 'auto', },]} >
-                  <InboxIcon />
+                  <HomeIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Home"
@@ -215,7 +219,7 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}>
-                  <EventIcon />
+                  <NoteAddIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets Requests"
@@ -242,7 +246,7 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <PermIdentityIcon />
+                  <InventoryIcon/>
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets"

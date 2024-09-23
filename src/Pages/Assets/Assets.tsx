@@ -1,10 +1,17 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { Modal } from '@mui/material';
 import data1 from '../../Data1.json';
+import MyForm from '../AssetsRegistretion/AssetsRegistretion';
 
 const Assets = () => {
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleChangePage = (event:any, newPage:any) => {
     setPage(newPage);
@@ -20,7 +27,23 @@ const Assets = () => {
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
         <Typography variant='h5' >Assets</Typography>
-        <Button variant="outlined" size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
+        <Button onClick={handleOpen} variant="outlined" size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }}> Add Asset</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={{
+            position: 'absolute' as 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: { xs: '90%', sm: '80%', md: 500 },
+          }}>
+          <MyForm/>
+          </Box>
+        </Modal>
       </Box>
   
    
@@ -34,7 +57,7 @@ const Assets = () => {
         marginBottom: "10px",
         position: "relative",
       }}>
-        {/* <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Assets</Typography> */}
+
 
         <Table sx={{width:'100%' }} size='small' aria-label="simple table">
           <TableHead sx={{backgroundColor:'rgb(177, 191, 238)'}}>

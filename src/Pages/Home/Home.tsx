@@ -17,10 +17,11 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' ,boxSizing:'border-box' ,padding:'20px'}}>
       <KPIs />
-      <Box sx={{ width: '95%', margin: 'auto' }}>
-        <Typography sx={{ margin: "10px 0px", fontWeight: 'bold', fontSize: '1.2rem' }}>Categories wise assets Data...</Typography>
+      <Box sx={{display:'flex',flexDirection:{xs:'column',sm:'column',md:'row'}}}>
+      <Box sx={{ width:{xs:'100%',sm:'100%',md:'50%'} }}>
+        <Typography sx={{ margin: "20px 0px", fontWeight: 'bold', fontSize: '1.2rem' }}>Categories wise assets Data</Typography>
         <TableContainer sx={{
           width: { xs: "100%", sm: "100%", },
           borderRadius: "10px",
@@ -65,6 +66,10 @@ const Home = () => {
           />
         </TableContainer>
 
+      </Box>
+      <Box sx={{width:'50%',height:"inherit"}}>
+
+      </Box>
       </Box>
     </Box>
   )
