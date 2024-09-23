@@ -137,7 +137,7 @@ const Login = () => {
                 Don't have an account?{' '}
                 <Typography
                   component="span"
-                  onClick={() => navigate('/regi')}
+                  onClick={() => navigate('/register')}
                   sx={{ color: "blue", cursor: "pointer", fontSize: '0.875rem' }}
                 >
                   Register

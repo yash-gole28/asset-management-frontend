@@ -22,13 +22,13 @@ function App() {
         <Routes>
           <Route path="/" element={<MiniDrawer />}>
             <Route index element={<Home />} />
-            <Route path='/demo' element={<Demo />} />
-            <Route path='/assets-register' element={<AssetsRegistretion />} />
-            <Route path='/allocation' element={<AllocationForm />} />
+            {/* <Route path='/demo' element={<Demo />} /> */}
+            {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
+            {/* <Route path='/allocation' element={<AllocationForm />} /> */}
             <Route path='/maintenance' element={<AssetsMaintenance />} />
             <Route path='/assets-request' element={<AssetsRequest />} />
             <Route path='/assets' element={<Assets/>} />
-            <Route path='/assets-registretion-table' element={<AssetsRegistrationTable />} />
+            {/* <Route path='/assets-registration-table' element={<AssetsRegistrationTable />} /> */}
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

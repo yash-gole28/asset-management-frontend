@@ -11,10 +11,10 @@ const AssetsRequest = () => {
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
-      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px',mt:'2rem' }}>
-        <Button onClick={()=>router('/assets-register')} variant="outlined">Register New Assets</Button>
+      <Box sx={{ display: "flex", alignItems: 'center', justifyContent:'space-between', marginBottom: '10px',mt:'10px' }}>
+      <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
+        <Button onClick={()=>router('/assets-register')} variant="outlined">Create Request</Button>
       </Box>
-    
       <TableContainer sx={{
         width: { xs: "100%", sm: "100%", }, 
         borderRadius: "10px",
@@ -23,7 +23,7 @@ const AssetsRequest = () => {
         marginBottom: "20px",
         position: "relative",
       }}>
-        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
+       
 
         <Table sx={{width:'100%' }} size='small' aria-label="simple table">
           <TableHead sx={{fontWeight:'500'}}>

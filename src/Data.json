@@ -342,6 +342,186 @@
       "count" : "45",
       "allocated":"12",
       "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"laptop",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"3"
+    },
+    {
+      "category":"charger",
+      "count" : "50",
+      "allocated":"20",
+      "underMaintenance":"2"
+    },
+    {
+      "category":"mouse",
+      "count" : "30",
+      "allocated":"15",
+      "underMaintenance":"0"
+    },
+    {
+      "category":"keyboard",
+      "count" : "40",
+      "allocated":"8",
+      "underMaintenance":"1"
+    },
+    {
+      "category":"cable",
+      "count" : "45",
+      "allocated":"12",
+      "underMaintenance":"0"
     }
   ]
 }
