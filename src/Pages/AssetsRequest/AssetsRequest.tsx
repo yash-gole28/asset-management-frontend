@@ -38,7 +38,7 @@ const AssetsRequest = () => {
           variant="standard"
           placeholder="Search Employee"
           onChange={(e) => setSearchQuery(e.target.value)}
-          sx={{ marginBottom: '10px', width: '30%',minWidth:'270px', backgroundColor: '#ffff', border: '1px solid #fff',padding:'2px 10px',borderRadius:'4px',boxShadow:1 }}
+          sx={{ marginBottom: '10px',marginLeft:"425px",marginTop:"8px", width: '30%',minWidth:'270px', backgroundColor: '#ffff', border: '1px solid #fff',padding:'2px 10px',borderRadius:'4px',boxShadow:1 }}
           InputProps={
             {
               endAdornment:(
@@ -50,7 +50,7 @@ const AssetsRequest = () => {
           }
         />
        
-        <Button onClick={handleOpen} size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }} variant="outlined">Create Request</Button>
+        <Button onClick={handleOpen} size='medium' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }} variant="outlined">Create Request</Button>
         <Modal
           open={open}
           onClose={handleClose}

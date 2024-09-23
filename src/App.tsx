@@ -14,6 +14,7 @@ import { Box } from '@mui/material';
 import AssetsRegistrationTable from './Pages/AssetsRegisterTable/AssetsRegistretionTable';
 import Assets from './Pages/Assets/Assets';
 
+
 function App() {
   return (
     <Box sx={{fontFamily:'-apple-system'}}>
@@ -32,6 +33,7 @@ function App() {
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+         
 
         </Routes>
 
