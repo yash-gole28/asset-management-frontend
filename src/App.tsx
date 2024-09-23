@@ -16,7 +16,7 @@ import Assets from './Pages/Assets/Assets';
 
 function App() {
   return (
-    <Box sx={{maxWidth:'100vw' ,fontFamily:'-apple-system'}}>
+    <Box sx={{fontFamily:'-apple-system'}}>
       <BrowserRouter>
 
         <Routes>
