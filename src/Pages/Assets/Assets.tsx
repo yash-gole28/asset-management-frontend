@@ -19,8 +19,8 @@ const Assets = () => {
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
-        <Typography variant='h5' >Assets....</Typography>
-        <Button variant="outlined" size='small' sx={{fontSize:'1.1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
+        <Typography variant='h5' >Assets</Typography>
+        <Button variant="outlined" size='small' sx={{fontSize:'1rem',color:'white', background:"rgb(108,117,125)"}}> Add Asset</Button>
       </Box>
   
    
@@ -42,7 +42,7 @@ const Assets = () => {
               <TableCell sx={{fontWeight:'600'}} align="center">Asset Id</TableCell>
               {/* <TableCell align="center">Asset Id</TableCell> */}
               <TableCell sx={{fontWeight:'600'}} align="center">Assets Name</TableCell>
-              <TableCell sx={{fontWeight:'600'}} align="center">Department</TableCell>
+              <TableCell sx={{fontWeight:'600'}} align="center">Description</TableCell>
               <TableCell sx={{fontWeight:'600'}} align="center">Serial Number</TableCell>
               <TableCell sx={{fontWeight:'600'}} align="center">Model Number</TableCell>
               <TableCell sx={{fontWeight:'600'}} align="center">Status</TableCell>
