@@ -15,3 +15,10 @@
   
 }
 
+.css-r5in8e-MuiInputBase-root-MuiInput-root::before{
+  border-bottom: none !important;
+}
+
+.logo{
+  width:150px
+}

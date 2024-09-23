@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Outlet, NavLink } from 'react-router-dom';
 import EventIcon from '@mui/icons-material/Event';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import l from './../assets/logo2.png'
 const drawerWidth = 240;
 
 
@@ -44,7 +45,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.down('md')]: {
-    width:0,
+    width: 0,
   },
 });
 
@@ -71,7 +72,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   color: theme.palette.text.primary,
   backgroundColor: theme.palette.background.default,
-  boxShadow:'0px 0px 0px #fff',
+  boxShadow: '0px 0px 0px #fff',
   variants: [
     {
       props: ({ open }) => open,
@@ -79,7 +80,7 @@ const AppBar = styled(MuiAppBar, {
         marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
         [theme.breakpoints.down('sm')]: {
-        width:`calc(100% - ${50}px)`
+          width: `calc(100% - ${50}px)`
         },
         transition: theme.transitions.create(['width', 'margin'], {
           easing: theme.transitions.easing.sharp,
@@ -160,7 +161,7 @@ export default function PersistentDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Assets Management
+            <img className='logo' src={l} alt="" />
           </Typography>
         </Toolbar>
       </AppBar>
@@ -177,7 +178,7 @@ export default function PersistentDrawer() {
               <ListItemButton
                 sx={[{
                   minHeight: 48,
-                  px:{xs:1.5 , sm:2.5 , md:2.5},
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
                 },
                 open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
                 ]} >
@@ -191,8 +192,8 @@ export default function PersistentDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary="Home"
-                  sx={[open ? {opacity: 1,}
-                      : {opacity: 0, },
+                  sx={[open ? { opacity: 1, }
+                    : { opacity: 0, },
                   ]} />
               </ListItemButton>
             </StyledNavLink>
@@ -201,22 +202,25 @@ export default function PersistentDrawer() {
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
-                sx={[ {  minHeight: 48,
-                  px:{xs:1.5 , sm:2.5 , md:2.5},},
-                  open ? {justifyContent: 'initial', }: {justifyContent: 'center',},
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
                 ]} >
                 <ListItemIcon
                   sx={[{
-                      minWidth: 0,
-                      justifyContent: 'center', },
-                    open? { mr: 3, } : { mr: 'auto', },
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
                   ]}>
                   <EventIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets Requests"
                   sx={[
-                    open ? {  opacity: 1, }: { opacity: 0,},
+                    open ? { opacity: 1, } : { opacity: 0, },
                   ]} />
               </ListItemButton>
             </StyledNavLink>
@@ -225,33 +229,35 @@ export default function PersistentDrawer() {
             <StyledNavLink to="/assets">
               <ListItemButton
                 sx={[{
-                    minHeight: 48,
-                    px:{xs:1.5 , sm:2.5 , md:2.5},},
-                  open ? { justifyContent: 'initial',  }  : {  justifyContent: 'center',  },
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
 
                 ]} >
                 <ListItemIcon
-                  sx={[   {
-                      minWidth: 0,
-                      justifyContent: 'center', },
-                    open  ? {   mr: 3,  }  : { mr: 'auto',  },
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
                   <PermIdentityIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets"
-                  sx={[open ? {  opacity: 1,  }: { opacity: 0,  },
-                  ]}  />
+                  sx={[open ? { opacity: 1, } : { opacity: 0, },
+                  ]} />
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)',minHeight:'100vw'}}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw' }}>
         <DrawerHeader />
         <Box>
-        <Outlet />
+          <Outlet />
         </Box>
         {/* <Footer /> */}
       </Box>
