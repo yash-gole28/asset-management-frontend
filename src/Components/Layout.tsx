@@ -284,11 +284,9 @@ export default function PersistentDrawer() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw' }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw',overflow:'hidden' }}>
         <DrawerHeader />
-        <Box>
           <Outlet />
-        </Box>
         {/* <Footer /> */}
       </Box>
     </Box>
