@@ -50,7 +50,7 @@ const AssetRequestForm: React.FC = () => {
                 padding: 3,
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
+                // alignItems: 'center',
                 boxShadow: 1,
             }}
         >
@@ -80,7 +80,7 @@ const AssetRequestForm: React.FC = () => {
                                     sx={{
                                         backgroundColor: "white",
                                         borderRadius: 1,
-                                        width: '250px'
+                                        width: {md:"350"}
                                     }}
                                 >
                                     <MenuItem value="">
@@ -106,7 +106,7 @@ const AssetRequestForm: React.FC = () => {
                                 sx={{
                                     backgroundColor: "white",
                                     borderRadius: 1,
-                                    width: '250px'
+                                    width: {md:"350"}
                                 }}
                             >
                                 <MenuItem value="">
@@ -132,7 +132,7 @@ const AssetRequestForm: React.FC = () => {
                                 sx={{
                                     backgroundColor: "white",
                                     borderRadius: 1,
-                                    width: '250px'
+                                    width: {md:"350"}
                                 }}
                             >
                                 <MenuItem value="">
