@@ -7,6 +7,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import AssetRequestForm from '../../Components/AssetRequestForm';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
+import Grid from '@mui/material/Grid2';
 
 
 const AssetsRequest = () => {
@@ -29,28 +30,38 @@ const AssetsRequest = () => {
   );
 
   return (
-    <Box sx={{ width: '95%', margin: 'auto' }}>
+    <Box sx={{ margin: '15px' }}>
       <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'start', sm: 'center', md: 'center' }, justifyContent: 'space-between', marginBottom: '10px', mt: '10px' }}>
-        <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' }}>Asset Requests</Typography>
-      
-        
-        <TextField
-          variant="standard"
-          placeholder="Search Employee"
-          onChange={(e) => setSearchQuery(e.target.value)}
-          sx={{ marginBottom: '10px',marginLeft:"425px",marginTop:"8px", width: '30%',minWidth:'270px', backgroundColor: '#ffff', border: '1px solid #fff',padding:'2px 10px',borderRadius:'4px',boxShadow:1 }}
-          InputProps={
-            {
-              endAdornment:(
-                <InputAdornment position='start'>
-                  <SearchIcon/>
-                </InputAdornment>
-              )
-            }
-          }
-        />
-       
-        <Button onClick={handleOpen} size='medium' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }} variant="outlined">Create Request</Button>
+        <Box sx={{ flexGrow: 1, }}>
+          <Grid container spacing={{xs:'0px',sm:'0px', md:'15px'}}>
+            <Grid size={{ xs: 12, sm: 3, md: 3 }} >
+              <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem' ,textWrap:'nowrap'}}>Asset Requests</Typography>
+
+            </Grid>
+            <Grid  sx={{display:'flex',justifyContent:{xs:'start',sm:'end',md:'end'}}} size={{ xs: 12, sm: 6, md: 6 }}>
+              <TextField
+                variant="standard"
+                placeholder="Search Employee"
+                onChange={(e) => setSearchQuery(e.target.value)}
+                sx={{ marginBottom: '10px', marginTop: "8px", width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px', boxShadow: 1 }}
+                InputProps={
+                  {
+                    endAdornment: (
+                      <InputAdornment position='start'>
+                        <SearchIcon />
+                      </InputAdornment>
+                    )
+                  }
+                }
+              />
+            </Grid>
+            <Grid sx={{display:'flex',justifyContent:{xs:'start',sm:'end',md:'end'},alignItems:'center'}} size={{ xs: 12, sm: 3, md: 3 }}>
+              <Button onClick={handleOpen} size='small' sx={{height:'40px', fontSize: { xs: '12px', sm: '12px', md: '14px' },color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Create Request</Button>
+
+            </Grid>
+          </Grid>
+        </Box>
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -110,7 +121,7 @@ const AssetsRequest = () => {
           </TableBody>
         </Table>
         <TablePagination
-          rowsPerPageOptions={[5, 15, 20]}
+          rowsPerPageOptions={[5,10, 15, 20]}
           component="div"
           count={filteredData.length} // Updated to reflect filtered count
           rowsPerPage={rowsPerPage}

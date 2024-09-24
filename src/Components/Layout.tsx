@@ -49,7 +49,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   }),
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down('sm')]: {
     width: 0,
   },
 });
@@ -179,7 +179,7 @@ export default function PersistentDrawer() {
         <Divider />
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/">
+            <StyledNavLink className='active-tab' to="/">
               <ListItemButton
                 sx={[{
                   minHeight: 48,

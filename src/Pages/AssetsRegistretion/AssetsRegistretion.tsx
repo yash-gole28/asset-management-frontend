@@ -26,7 +26,6 @@ const MyForm = () => {
     allocation: string;
     registeredBy: string;
   }) => {
-    // Handle form submission, e.g., call an API
     console.log(values);
   };
 

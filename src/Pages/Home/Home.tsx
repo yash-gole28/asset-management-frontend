@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid2';
 
 const Home = () => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(13);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -60,7 +60,7 @@ const Home = () => {
                   </TableBody>
                 </Table>
                 <TablePagination
-                  rowsPerPageOptions={[5, 15, 20]}
+                  rowsPerPageOptions={[5, 10,15, 20]}
                   component="div"
                   count={data.requestData.length}
                   rowsPerPage={rowsPerPage}

@@ -62,25 +62,23 @@ const Assets = () => {
         <Table sx={{width:'100%' }} size='small' aria-label="simple table">
           <TableHead sx={{backgroundColor:'rgb(177, 191, 238)'}}>
             <TableRow >
-              <TableCell sx={{fontWeight:'600'}} align="center">Asset Id</TableCell>
-              {/* <TableCell align="center">Asset Id</TableCell> */}
-              <TableCell sx={{fontWeight:'600'}} align="center">Assets Name</TableCell>
-              <TableCell sx={{fontWeight:'600'}} align="center">Description</TableCell>
-              <TableCell sx={{fontWeight:'600'}} align="center">Serial Number</TableCell>
-              <TableCell sx={{fontWeight:'600'}} align="center">Model Number</TableCell>
-              <TableCell sx={{fontWeight:'600'}} align="center">Status</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Asset Id</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Assets Name</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Description</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Serial Number</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Model Number</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow  key={index}>
-                <TableCell align="center">{v.name}</TableCell>
-                {/*      */}
-                <TableCell align="center">{v.assets_name}</TableCell>
-                <TableCell align="center">{v.description}</TableCell>
-                <TableCell align="center">_</TableCell>
-                <TableCell align="center">{v.modal_number}</TableCell>
-                <TableCell align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.name}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.assets_name}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.description}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">_</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.modal_number}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
               </TableRow>
             ))}
           </TableBody>

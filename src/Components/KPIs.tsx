@@ -47,11 +47,11 @@ const KPIs = () => {
 
     return (
         <Box>
-            <Grid container spacing={{ xs: 1, sm: 1, md:'15px' }}>
+            <Grid container spacing={{ xs: '10px', sm:"15px", md:'15px' }}>
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(168, 231, 192)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
-                            <Box sx={{pl:'1rem', display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
+                            <Box sx={{pl:{xs:'0px',sm:'1rem',md:'1rem'}, display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
                                 <Typography variant='h6' sx={{fontSize:"15px"}}>
                                     Total assets
                                 </Typography>
@@ -67,7 +67,7 @@ const KPIs = () => {
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(247, 195, 195)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
-                            <Box sx={{pl:'1rem', display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
+                            <Box sx={{pl:{xs:'0px',sm:'1rem',md:'1rem'}, display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
                                 <Typography variant='h6' sx={{fontSize:"15px"}}>
                                     Allocated Assets
                                 </Typography>
@@ -82,7 +82,7 @@ const KPIs = () => {
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(201, 210, 239)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
-                            <Box sx={{pl:'1rem', display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
+                            <Box sx={{pl:{xs:'0px',sm:'1rem',md:'1rem'}, display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
                                 <Typography variant='h6' sx={{fontSize:"15px",textAlign:'start'}}>
                                     Assets under Maintenance
                                 </Typography>
@@ -97,7 +97,7 @@ const KPIs = () => {
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(241, 193, 244)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
-                            <Box sx={{pl:'1rem', display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
+                            <Box sx={{pl:{xs:'0px',sm:'1rem',md:'1rem'}, display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
                                 <Typography variant='h6' sx={{fontSize:"15px"}}>
                                     Available Assets
                                 </Typography>
