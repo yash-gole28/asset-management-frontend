@@ -271,7 +271,7 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <InventoryIcon/>
+                  <InventoryIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets"
@@ -297,7 +297,7 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <SettingsIcon/>
+                  <SettingsIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Settings"
@@ -323,7 +323,7 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <LogoutIcon/>
+                  <LogoutIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Logout"
@@ -335,9 +335,9 @@ export default function PersistentDrawer() {
         </List>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw',overflow:'hidden' }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw', overflow: 'hidden' }}>
         <DrawerHeader />
-          <Outlet />
+        <Outlet />
         {/* <Footer /> */}
       </Box>
     </Box>
