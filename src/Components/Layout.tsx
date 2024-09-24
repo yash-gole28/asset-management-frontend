@@ -16,15 +16,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { Outlet, NavLink } from 'react-router-dom';
-import EventIcon from '@mui/icons-material/Event';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import HomeIcon from '@mui/icons-material/Home';
 import l from './../assets/logo2.png'
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const drawerWidth = 240;
 
@@ -276,6 +275,58 @@ export default function PersistentDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets"
+                  sx={[open ? { opacity: 1, } : { opacity: 0, },
+                  ]} />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
+                  ]}  >
+                  <SettingsIcon/>
+                </ListItemIcon>
+                <ListItemText
+                  primary="Settings"
+                  sx={[open ? { opacity: 1, } : { opacity: 0, },
+                  ]} />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/login">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
+                  ]}  >
+                  <LogoutIcon/>
+                </ListItemIcon>
+                <ListItemText
+                  primary="Logout"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} />
               </ListItemButton>
