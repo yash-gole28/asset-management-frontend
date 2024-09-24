@@ -77,7 +77,7 @@ const Assets = () => {
                 <TableCell align="center">{v.name}</TableCell>
                 {/*      */}
                 <TableCell align="center">{v.assets_name}</TableCell>
-                <TableCell align="center">{v.department}</TableCell>
+                <TableCell align="center">{v.description}</TableCell>
                 <TableCell align="center">_</TableCell>
                 <TableCell align="center">{v.modal_number}</TableCell>
                 <TableCell align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>

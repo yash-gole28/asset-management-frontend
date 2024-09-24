@@ -47,7 +47,7 @@ const KPIs = () => {
 
     return (
         <Box>
-            <Grid container spacing={{ xs: 1, sm: 1, md:'20px' }}>
+            <Grid container spacing={{ xs: 1, sm: 1, md:'15px' }}>
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
                     <Item sx={{backgroundColor:'rgb(168, 231, 192)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
@@ -83,7 +83,7 @@ const KPIs = () => {
                     <Item sx={{backgroundColor:'rgb(201, 210, 239)',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
                             <Box sx={{pl:'1rem', display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
-                                <Typography variant='h6' sx={{fontSize:"15px"}}>
+                                <Typography variant='h6' sx={{fontSize:"15px",textAlign:'start'}}>
                                     Assets under Maintenance
                                 </Typography>
                                 <Typography variant='h3' sx={{fontSize:{xs:'22px',sm:'25px',md:'35px'}}}>

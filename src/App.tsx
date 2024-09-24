@@ -13,6 +13,7 @@ import AssetsRequest from './Pages/AssetsRequest/AssetsRequest';
 import { Box } from '@mui/material';
 import AssetsRegistrationTable from './Pages/AssetsRegisterTable/AssetsRegistretionTable';
 import Assets from './Pages/Assets/Assets';
+import Profile from './Pages/Profile/Profile';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path='/maintenance' element={<AssetsMaintenance />} />
             <Route path='/assets-request' element={<AssetsRequest />} />
             <Route path='/assets' element={<Assets/>} />
+            <Route path='/profile' element={<Profile/>} />
             {/* <Route path='/assets-registration-table' element={<AssetsRegistrationTable />} /> */}
           </Route>
           <Route path='/login' element={<Login />} />

@@ -24,6 +24,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import l from './../assets/logo2.png'
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import PersonIcon from '@mui/icons-material/Person';
 
 const drawerWidth = 240;
 
@@ -196,6 +197,31 @@ export default function PersistentDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary="Home"
+                  sx={[open ? { opacity: 1, }
+                    : { opacity: 0, },
+                  ]} />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/profile">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },]} >
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Profile"
                   sx={[open ? { opacity: 1, }
                     : { opacity: 0, },
                   ]} />
