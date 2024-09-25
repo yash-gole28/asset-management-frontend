@@ -3,15 +3,12 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import MiniDrawer from './Components/Layout';
-import Demo from './Pages/Demo/Demo';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AssetsRegistretion from './Pages/AssetsRegistretion/AssetsRegistretion';
-import AllocationForm from './Pages/AssetsAlloction/AssetsAlloction';
 import AssetsMaintenance from './Pages/AssetsMaintenace/AssetsMaintenance';
 import AssetsRequest from './Pages/AssetsRequest/AssetsRequest';
 import { Box } from '@mui/material';
-import AssetsRegistrationTable from './Pages/AssetsRegisterTable/AssetsRegistretionTable';
 import Assets from './Pages/Assets/Assets';
 import Profile from './Pages/Profile/Profile';
 

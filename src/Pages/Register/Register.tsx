@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { TextField, MenuItem, Button, Typography, Container, Grid, Select, InputLabel, Box } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { apiList } from '../../apiList';
+import { API } from '../../network';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object({
@@ -22,31 +24,32 @@ const initialValues = {
   middleName: '',
   lastName: '',
   role: '',
-  department: '', // Single department
+  department: '',
 };
 
 const departments = ['HR', 'IT', 'Finance', 'Marketing', 'Sales'];
 
 const Register: React.FC = () => {
-  // State to store form values
   const [formValues, setFormValues] = useState(initialValues);
 
-  const handleSubmit = (values: typeof initialValues) => {
-    // Add additional fields to the form values
-    const userId = localStorage.getItem('token')
-    const user = userId ? JSON.parse(userId) : null;
+  const handleSubmit = async(values: typeof initialValues) => {
+   try{
+    const user = 'jhgjhgjhyuyu'
     const extendedValues = {
       ...values,
-      additionalField1: user,
-      additionalField2: 'value2',
+      createdBy: user,
+      updatedBy:user,
     };
-
-    // Update state with form values
     setFormValues(extendedValues);
-
-    // Simulate sending data to the backend
+    const url = apiList.register
+    const response = await API.post(url ,{data:formValues})
+    if(response){
+      console.log(response)
+    }
     console.log('Form Data to be sent to the backend:', extendedValues);
-    // Here you would typically send `extendedValues` to your backend API
+   }catch(err){
+    console.log(err);
+   }
   };
 
   useEffect(()=>{

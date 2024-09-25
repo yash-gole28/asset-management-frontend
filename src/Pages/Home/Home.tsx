@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import KPIs from '../../Components/KPIs'
 import data from './../../Data.json'
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const Home = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const router = useNavigate()
+  
+
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -17,6 +22,16 @@ const Home = () => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(token){
+      console.log(token)
+    }else{
+      toast('session expired')
+      router('/login')
+    }
+  },[])
 
   return (
     <Box>

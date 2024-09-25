@@ -1,6 +1,5 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead,TableRow, Typography } from '@mui/material';
 import React from 'react'
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 import PersonIcon from '@mui/icons-material/Person';
@@ -10,7 +9,7 @@ const Profile = () => {
     const newArr = []
 
     for(let i=0 ;i<data.requestData.length ; i++){
-        if(data.requestData[i].name.toLowerCase() == "yash"){
+        if(data.requestData[i].name.toLowerCase() === "yash"){
             newArr.push(data.requestData[i])
         }
     }

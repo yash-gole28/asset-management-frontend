@@ -5,6 +5,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { apiList } from '../../apiList';
+import { API } from '../../network';
+import toast from 'react-hot-toast';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -24,9 +27,20 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (values: { email: string; password: string }) => {
-    // Handle form submission, e.g., call an API
-    console.log(values);
+  const handleSubmit = async(values: { email: string; password: string }) => {
+   try{
+    const url = apiList.login
+    const response = await API.post(url ,{data:values})
+    console.log(response)
+    if(response){
+      console.log(response)
+      localStorage.setItem('token',JSON.stringify(response.token))
+    }else{
+      toast.error('Invalid credentials')
+    }
+   }catch(err){
+    console.error(err);
+   }
   };
 
   return (

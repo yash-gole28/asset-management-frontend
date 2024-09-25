@@ -1,4 +1,4 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, TextField, InputBase, InputAdornment } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, TextField, InputAdornment } from '@mui/material';
 import React, { useState } from 'react';
 import data from '../../Data.json';
 import { Modal } from '@mui/material';
@@ -6,7 +6,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
 import AssetRequestForm from '../../Components/AssetRequestForm';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 
 
