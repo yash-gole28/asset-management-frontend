@@ -56,7 +56,9 @@ const Register: React.FC = () => {
   };
 
   useEffect(()=>{
+
     localStorage.getItem('token')
+
   },[])
   return (
     <Box sx={{ backgroundColor: 'rgb(242, 244, 247)', pt: '2rem' }}>

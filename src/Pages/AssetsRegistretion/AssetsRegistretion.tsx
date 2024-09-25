@@ -4,6 +4,8 @@ import { Box, TextField, Typography, Button, MenuItem } from '@mui/material';
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { apiList } from '../../apiList';
+import { API } from '../../network';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -17,7 +19,7 @@ const validationSchema = Yup.object({
 });
 
 const MyForm = () => {
-  const handleSubmit = (values: {
+  const handleSubmit = async(values: {
     name: string;
     type: string;
     companyName: string;
@@ -27,6 +29,16 @@ const MyForm = () => {
     registeredBy: string;
   }) => {
     console.log(values);
+    try {
+      const url = apiList.assetRegister
+      console.log(url)
+      const response = await API.post(url, {values} )
+
+    } catch (error) {
+      console.error('Error:', error);
+      console.log("not save in data");
+
+    }
   };
 
   return (
