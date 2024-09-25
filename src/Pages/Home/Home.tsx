@@ -5,11 +5,14 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TablePagin
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { API } from '../../network';
+import { apiList } from '../../apiList';
 
 
 const Home = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [user , setUser] = useState('')
   const router = useNavigate()
   
 
@@ -23,10 +26,24 @@ const Home = () => {
     setPage(0);
   };
 
+  const getCurrentUser = async () => {
+    try{
+      const url = apiList.getCurrentUser
+      const response = await API.get(url)
+      if(response){
+        toast(response.data.user.firstName)
+        // setUser(response.user.firstName)
+      }else{
+        toast.error('user not found')
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
   useEffect(()=>{
     const token = localStorage.getItem('token')
     if(token){
-      console.log(token)
+      getCurrentUser()
     }else{
       toast('session expired')
       router('/login')

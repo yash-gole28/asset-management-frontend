@@ -17,12 +17,12 @@ const post = async (url: string, params?: {}, headers?:{}): Promise<any> => {
       headers: { ...headers, Authorization: `${token}` }
     };
     const response = await axios.post(BASE_URL + url, params, _headers);
-    // console.log(response)
+   
     toast.success(response.data.message)
     return response.data;
   } catch (error: any) {
     console.error('Post request failed:', error.response ? error.response.data : error.message);
-    // toast({ icon: "error", title: "Something went wrong" });
+  
     toast.error(error.response.data.message)
   }
 };

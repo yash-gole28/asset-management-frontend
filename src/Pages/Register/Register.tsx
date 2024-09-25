@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
+import { useNavigate } from 'react-router-dom';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object({
@@ -31,29 +32,31 @@ const departments = ['HR', 'IT', 'Finance', 'Marketing', 'Sales'];
 
 const Register: React.FC = () => {
   const [formValues, setFormValues] = useState(initialValues);
+  const router = useNavigate()
 
   const handleSubmit = async(values: typeof initialValues) => {
    try{
-    const user = 'jhgjhgjhyuyu'
+    const user = '66e817a74d92c09dd3213f7f'
     const extendedValues = {
       ...values,
       createdBy: user,
       updatedBy:user,
     };
-    setFormValues(extendedValues);
+    // console.log(extendedValues)
     const url = apiList.register
-    const response = await API.post(url ,{data:formValues})
+    const response = await API.post(url ,{data:extendedValues})
     if(response){
-      console.log(response)
+      // console.log(response)
+      router('/')
     }
-    console.log('Form Data to be sent to the backend:', extendedValues);
+    
    }catch(err){
     console.log(err);
    }
   };
 
   useEffect(()=>{
-    localStorage.setItem('token',JSON.stringify("66e81825007b2dd5546e023f"))
+    localStorage.getItem('token')
   },[])
   return (
     <Box sx={{ backgroundColor: 'rgb(242, 244, 247)', pt: '2rem' }}>
