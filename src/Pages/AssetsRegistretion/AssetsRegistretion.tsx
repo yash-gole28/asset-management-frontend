@@ -1,11 +1,13 @@
 
 
 import { Box, TextField, Typography, Button, MenuItem } from '@mui/material';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
+import { MyContext } from '../../Context/AuthContext';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -14,33 +16,93 @@ const validationSchema = Yup.object({
   companyName: Yup.string().required('Company Name is required'),
   modelNumber: Yup.string().required('Model Number is required'),
   serviceTag: Yup.string().required('Service Tag is required'),
-  allocation: Yup.string().required('Allocation is required'),
-  registeredBy: Yup.string().required('Registered By is required'),
+  description:Yup.string()
+
 });
 
-const MyForm = () => {
+interface Category {
+  _id: number;
+  category: string;
+}
+interface ModalProps {
+  popValue:React.Dispatch<React.SetStateAction<boolean>>;
+  pop:boolean
+}
+const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
+  const [categories , setCategories] = useState<Category[]>([])
+  const context = useContext(MyContext)
+
+  if (!context) {
+    throw new Error('UserComponent must be used within a MyProvider');
+}
+
+  const {value , setValue} = context
+
   const handleSubmit = async(values: {
     name: string;
     type: string;
     companyName: string;
     modelNumber: string;
     serviceTag: string;
-    allocation: string;
-    registeredBy: string;
   }) => {
-    console.log(values);
-    try {
-      const url = apiList.assetRegister
-      console.log(url)
-      const response = await API.post(url, {values} )
+    try{
+      const extendedValues = {
+        ...values,
+       registeredBy:value
+      };
+      console.log(extendedValues)
+      const url = apiList.registerAsset
+      const response = await API.post(url , {data:extendedValues})
+      if(response.success){
+        popValue(()=>!pop)
+      }
+    }catch(error){
+      console.error(error);
+    } 
 
-    } catch (error) {
-      console.error('Error:', error);
-      console.log("not save in data");
-
-    }
   };
 
+  const getAssetCategories = async () => {
+    try{
+      const url = apiList.getCategories
+      const response = await API.get(url)
+      if(response.data.success){
+          setCategories(response.data.categories)
+      }
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+
+  const getCurrentUser = async () => {
+    try{
+      const url = apiList.getCurrentUser
+      const response = await API.get(url)
+      if(response.data.success){
+        setValue(response.data.user._id)
+        toast(response.data.user.firstName)
+        // setUser(response.user.firstName)
+      }else{
+        toast.error(response.data.message)
+      }
+    }catch(err:any){
+      toast('session expired')
+
+    }
+  }
+
+  
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(token){
+      getCurrentUser()
+      getAssetCategories()
+    }else{
+      toast('session expired')
+    }
+  },[])
   return (
     <Box
       sx={{
@@ -81,8 +143,7 @@ const MyForm = () => {
             companyName: '',
             modelNumber: '',
             serviceTag: '',
-            allocation: '',
-            registeredBy: '',
+            description:''
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
@@ -113,9 +174,11 @@ const MyForm = () => {
                 error={touched.type && Boolean(errors.type)}
                 helperText={<ErrorMessage name="type" />}
               >
-                <MenuItem value="Type1">Laptop</MenuItem>
-                <MenuItem value="Type2">Type2</MenuItem>
-                <MenuItem value="Type3">Type3</MenuItem>
+                {categories.map((data)=>(
+                  <MenuItem value={data._id}>{data.category}</MenuItem>
+                ))}
+                
+               
               </Field>
 
               <Field
@@ -153,8 +216,19 @@ const MyForm = () => {
                 error={touched.serviceTag && Boolean(errors.serviceTag)}
                 helperText={<ErrorMessage name="serviceTag" />}
               />
-
               <Field
+                as={TextField}
+                name="description"
+                placeholder="Description"
+                fullWidth
+                variant="outlined"
+                size="small"
+                sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}
+                error={touched.description && Boolean(errors.description)}
+                helperText={<ErrorMessage name="description" />}
+              />
+
+              {/* <Field
                 as={TextField}
                 name="allocation"
                 placeholder="Allocation"
@@ -164,9 +238,9 @@ const MyForm = () => {
                 sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}
                 error={touched.allocation && Boolean(errors.allocation)}
                 helperText={<ErrorMessage name="allocation" />}
-              />
+              /> */}
 
-              <Field
+              {/* <Field
                 as={TextField}
                 name="registeredBy"
                 placeholder="Registered By"
@@ -176,7 +250,7 @@ const MyForm = () => {
                 sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}
                 error={touched.registeredBy && Boolean(errors.registeredBy)}
                 helperText={<ErrorMessage name="registeredBy" />}
-              />
+              /> */}
 
               <Button
                 type="submit"

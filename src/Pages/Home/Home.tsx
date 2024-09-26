@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import KPIs from '../../Components/KPIs'
 import data from './../../Data.json'
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
@@ -7,16 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { API } from '../../network';
 import { apiList } from '../../apiList';
+import { MyContext } from '../../Context/AuthContext';
+
 
 
 const Home = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [user , setUser] = useState('')
+  // const [user , setUser] = useState('')
   const router = useNavigate()
-  
+  const context = useContext(MyContext)
 
-
+  if (!context) {
+    throw new Error('UserComponent must be used within a MyProvider');
+}
+  const {value , setValue} = context
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
   };
@@ -30,14 +35,18 @@ const Home = () => {
     try{
       const url = apiList.getCurrentUser
       const response = await API.get(url)
-      if(response){
+      if(response.data.success){
+        setValue(response.data.user._id)
         toast(response.data.user.firstName)
         // setUser(response.user.firstName)
       }else{
-        toast.error('user not found')
+        toast.error(response.data.message)
       }
-    }catch(err){
-      console.log(err)
+    }catch(err:any){
+      toast('session expired')
+      // console.log(err)
+      router('/login')
+
     }
   }
   useEffect(()=>{
@@ -52,6 +61,9 @@ const Home = () => {
 
   return (
     <Box>
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        {value?.length ? value : null}
+      </Typography>
       <Box sx={{margin:{xs:'10px',sm:'15px',md:'15px'}}}>
       <KPIs />
       </Box>
@@ -104,10 +116,8 @@ const Home = () => {
             </Grid>
           </Grid>
 
-
         </Box>
-        
-    
+            
     </Box>
   )
 }

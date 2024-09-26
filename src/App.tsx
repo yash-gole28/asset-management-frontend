@@ -13,33 +13,29 @@ import Assets from './Pages/Assets/Assets';
 import Profile from './Pages/Profile/Profile';
 
 
+
 function App() {
   return (
-    <Box sx={{fontFamily:'-apple-system'}}>
+    <Box sx={{ fontFamily: '-apple-system' }}>
       <BrowserRouter>
+      
+          <Routes>
+            <Route path="/" element={<MiniDrawer />}>
+              <Route index element={<Home />} />
+              {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
+              <Route path='/maintenance' element={<AssetsMaintenance />} />
+              <Route path='/assets-request' element={<AssetsRequest />} />
+              <Route path='/assets' element={<Assets />} />
+              <Route path='/profile' element={<Profile />} />
+            </Route>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
 
-        <Routes>
-          <Route path="/" element={<MiniDrawer />}>
-            <Route index element={<Home />} />
-            {/* <Route path='/demo' element={<Demo />} /> */}
-            <Route path='/assets-register' element={<AssetsRegistretion />} />
-            {/* <Route path='/allocation' element={<AllocationForm />} /> */}
-            <Route path='/maintenance' element={<AssetsMaintenance />} />
-            <Route path='/assets-request' element={<AssetsRequest />} />
-            <Route path='/assets' element={<Assets/>} />
-            <Route path='/profile' element={<Profile/>} />
-            {/* <Route path='/assets-registration-table' element={<AssetsRegistrationTable />} /> */}
-          </Route>
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-         
 
-        </Routes>
-
+          </Routes>
+    
       </BrowserRouter>
     </Box>
-
-    // <div>app</div>
   );
 }
 

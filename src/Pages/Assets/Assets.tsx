@@ -1,8 +1,11 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from '@mui/material';
 import data1 from '../../Data1.json';
 import MyForm from '../AssetsRegistretion/AssetsRegistretion';
+import { apiList } from '../../apiList';
+import { API } from '../../network';
+import toast from 'react-hot-toast';
 
 const Assets = () => {
   const [open, setOpen] = useState(false);
@@ -22,6 +25,26 @@ const Assets = () => {
     setPage(0);
   };
 
+  const getAssets = async () => {
+    try{
+      const url = apiList.getAssets
+      const response = await API.get(url)
+      if(response){
+        // setAssets(response.data.assets)
+        console.log(response.data)
+      }
+    }catch(error){
+      console.log(error)
+    }
+  }
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(token){
+     getAssets()
+    }else{
+      toast('session expired')
+    }
+  },[])
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
@@ -41,7 +64,7 @@ const Assets = () => {
             transform: 'translate(-50%, -50%)',
             width: { xs: '90%', sm: '80%', md: 500 },
           }}>
-          <MyForm/>
+          <MyForm popValue={setOpen} pop={open}/>
           </Box>
         </Modal>
       </Box>
