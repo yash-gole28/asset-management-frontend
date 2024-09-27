@@ -9,8 +9,8 @@ const getToken = ()=>{
   return token
 }
 const post = async (url: string, params?: {}, headers?:{}): Promise<any> => {
-  console.log("url" , url)
-  console.log(BASE_URL + url)
+  // console.log("url" , url)
+  // console.log(BASE_URL + url)
   try {
     const token = getToken()
     const _headers = {

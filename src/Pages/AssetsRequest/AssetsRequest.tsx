@@ -74,7 +74,7 @@ const AssetsRequest = () => {
             transform: 'translate(-50%, -50%)',
             width: { xs: '90%', sm: '80%', md: 400 },
           }}>
-            <AssetRequestForm />
+            <AssetRequestForm popValue={setOpen} pop={open}/>
           </Box>
         </Modal>
       </Box>

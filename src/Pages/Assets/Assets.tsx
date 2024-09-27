@@ -1,16 +1,25 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Modal } from '@mui/material';
 import data1 from '../../Data1.json';
 import MyForm from '../AssetsRegistretion/AssetsRegistretion';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
 import toast from 'react-hot-toast';
+import { MyContext } from '../../Context/AuthContext';
 
 const Assets = () => {
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [assets , setAssets] = useState<any[]>([])
+  const context = useContext(MyContext)
+
+  
+  if (!context) {
+    throw new Error('Assets component must be used within a MyProvider');
+  }
+  const {getCurrentUser} = context
 
 
   const handleOpen = () => setOpen(true);
@@ -29,8 +38,8 @@ const Assets = () => {
     try{
       const url = apiList.getAssets
       const response = await API.get(url)
-      if(response){
-        // setAssets(response.data.assets)
+      if(response.data.success){
+        setAssets(response.data.assets)
         console.log(response.data)
       }
     }catch(error){
@@ -40,11 +49,12 @@ const Assets = () => {
   useEffect(()=>{
     const token = localStorage.getItem('token')
     if(token){
+      getCurrentUser()
      getAssets()
     }else{
       toast('session expired')
     }
-  },[])
+  },[open])
   return (
     <Box sx={{ width: '95%',margin:'auto'}}>
       {/* Button to register new assets */}
@@ -94,13 +104,13 @@ const Assets = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data1.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
+            {assets.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow  key={index}>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v._id}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.name}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.assets_name}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.description}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">_</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.modal_number}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.service_tag}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.model_number}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
               </TableRow>
             ))}

@@ -36,7 +36,7 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
     throw new Error('UserComponent must be used within a MyProvider');
 }
 
-  const {value , setValue} = context
+  const {value , getCurrentUser} = context
 
   const handleSubmit = async(values: {
     name: string;
@@ -74,25 +74,6 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
     }
   }
 
-
-  const getCurrentUser = async () => {
-    try{
-      const url = apiList.getCurrentUser
-      const response = await API.get(url)
-      if(response.data.success){
-        setValue(response.data.user._id)
-        toast(response.data.user.firstName)
-        // setUser(response.user.firstName)
-      }else{
-        toast.error(response.data.message)
-      }
-    }catch(err:any){
-      toast('session expired')
-
-    }
-  }
-
-  
 
   useEffect(()=>{
     const token = localStorage.getItem('token')
@@ -175,7 +156,7 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
                 helperText={<ErrorMessage name="type" />}
               >
                 {categories.map((data)=>(
-                  <MenuItem value={data._id}>{data.category}</MenuItem>
+                  <MenuItem key={data._id} value={data._id}>{data.category}</MenuItem>
                 ))}
                 
                

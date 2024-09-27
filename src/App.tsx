@@ -17,14 +17,12 @@ import Profile from './Pages/Profile/Profile';
 function App() {
   return (
     <Box sx={{ fontFamily: '-apple-system' }}>
-      <BrowserRouter>
-      
           <Routes>
             <Route path="/" element={<MiniDrawer />}>
               <Route index element={<Home />} />
               {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
               <Route path='/maintenance' element={<AssetsMaintenance />} />
-              <Route path='/assets-request' element={<AssetsRequest />} />
+              <Route path='/assets-request' element={<AssetsRequest/>} />
               <Route path='/assets' element={<Assets />} />
               <Route path='/profile' element={<Profile />} />
             </Route>
@@ -33,8 +31,6 @@ function App() {
 
 
           </Routes>
-    
-      </BrowserRouter>
     </Box>
   );
 }

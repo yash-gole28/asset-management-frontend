@@ -1,44 +1,80 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { Box, Select, MenuItem, Typography, Button, FormHelperText } from '@mui/material';
+import { apiList } from '../apiList';
+import { API } from '../network';
+import { MyContext } from '../Context/AuthContext';
 
-// Define a type for assets
-type AssetType = {
-    [key: string]: string[];
-};
-
-// Define assets and their categories
-const assets: AssetType = {
-    Laptop: ['Dell Laptop', 'HP Laptop'],
-    Charger: ['Dell Charger', 'HP Charger'],
-    Keyboard: ['Mechanical Keyboard', 'Wireless Keyboard'],
-};
-
-// Define a list of employees
-const employees = ['Yash Gole', 'Pranav Patil', 'Amruta Gharat', 'Rehana Parveen'];
-
+// Define validation schema
 const validationSchema = Yup.object({
     employee: Yup.string().required('Employee name is required'),
     assetCategory: Yup.string().required('Asset category is required'),
     asset: Yup.string().required('Asset name is required'),
 });
+interface ModalProps {
+    popValue:React.Dispatch<React.SetStateAction<boolean>>;
+    pop:boolean
+  }
+const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
+    const [availableAssets, setAvailableAssets] = useState<any[]>([]);
+    const [employees, setEmployees] = useState<any[]>([]);
+    const [categories, setCategories] = useState<any[]>([]);
+    const context = useContext(MyContext);
 
-const AssetRequestForm: React.FC = () => {
-    const [selectedAssetCategory, setSelectedAssetCategory] = useState<string>('');
-    const [availableAssets, setAvailableAssets] = useState<string[]>([]);
+    if (!context) {
+        throw new Error('AssetRequestForm must be used within a MyProvider');
+    }
 
-    const handleAssetCategoryChange = (event: React.ChangeEvent<{ value: unknown }>, setFieldValue: (field: string, value: any) => void) => {
-        const category = event.target.value as string; // Cast to string
-        setSelectedAssetCategory(category);
-        const categoryAssets = assets[category] || [];
-        setAvailableAssets(categoryAssets);
-        setFieldValue('assetCategory', category); // Update Formik field value
+    const { getCurrentUser } = context;
+
+    // Fetch employees and asset categories after getting the current user
+    const fetchData = async () => {
+        try {
+            await getCurrentUser(); // Call the current user API
+            const userResponse = await API.get(apiList.getAllUsers);
+            if (userResponse.data.success) {
+                setEmployees(userResponse.data.users);
+            }
+
+            const categoryResponse = await API.get(apiList.getCategories);
+            if (categoryResponse.data.success) {
+                setCategories(categoryResponse.data.categories);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    const handleSubmit = (values: { employee: string; assetCategory: string; asset: string }) => {
-        console.log(values);
+    // Fetch available assets based on selected category
+    const fetchAssetsByCategory = async (categoryId: string) => {
+        try {
+            const url = `${apiList.getAssetsByCategoryName}/${categoryId}`; // Adjust as needed
+            const response = await API.get(url);
+            if (response.data.success) {
+                setAvailableAssets(response.data.assets); // Assuming assets are returned in the response
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
+
+    const handleSubmit = async (values: { employee: string; assetCategory: string; asset: string }) => {
+        try {
+            const response = await API.post(apiList.createRequest, values); 
+            if (response.success) {
+                console.log('Request submitted successfully:', response.data);
+                popValue(()=>!pop)
+            }
+            console.log(values);
+        } catch (error) {
+            console.error('Error submitting request:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <Box
@@ -50,7 +86,6 @@ const AssetRequestForm: React.FC = () => {
                 padding: 3,
                 display: 'flex',
                 flexDirection: 'column',
-                // alignItems: 'center',
                 boxShadow: 1,
             }}
         >
@@ -75,20 +110,18 @@ const AssetRequestForm: React.FC = () => {
                                 <Select
                                     name="employee"
                                     fullWidth
-                                    value={values.employee} // Use Formik value here
-                                    onChange={(e) => setFieldValue('employee', e.target.value)}
-                                    sx={{
-                                        backgroundColor: "white",
-                                        borderRadius: 1,
-                                        width: {md:"350"}
+                                    value={values.employee}
+                                    onChange={(e) => {
+                                        setFieldValue('employee', e.target.value);
                                     }}
+                                    sx={{ backgroundColor: "white", borderRadius: 1 }}
                                 >
                                     <MenuItem value="">
                                         <em>Select Employee</em>
                                     </MenuItem>
                                     {employees.map((employee) => (
-                                        <MenuItem key={employee} value={employee}>
-                                            {employee}
+                                        <MenuItem key={employee._id} value={employee._id}>
+                                            {employee.firstName}
                                         </MenuItem>
                                     ))}
                                 </Select>
@@ -101,20 +134,20 @@ const AssetRequestForm: React.FC = () => {
                             <Select
                                 name="assetCategory"
                                 fullWidth
-                                value={values.assetCategory} // Use Formik value here
-                                onChange={(e:any) => handleAssetCategoryChange(e, setFieldValue)}
-                                sx={{
-                                    backgroundColor: "white",
-                                    borderRadius: 1,
-                                    width: {md:"350"}
+                                value={values.assetCategory}
+                                onChange={async (e) => {
+                                    const categoryId = e.target.value as string;
+                                    setFieldValue('assetCategory', categoryId);
+                                    await fetchAssetsByCategory(categoryId); // Fetch assets for the selected category
                                 }}
+                                sx={{ backgroundColor: "white", borderRadius: 1 }}
                             >
                                 <MenuItem value="">
                                     <em>Select Asset Category</em>
                                 </MenuItem>
-                                {Object.keys(assets).map((category) => (
-                                    <MenuItem key={category} value={category}>
-                                        {category}
+                                {categories.map((category) => (
+                                    <MenuItem key={category._id} value={category._id}>
+                                        {category.category} {/* Assuming the category has a name property */}
                                     </MenuItem>
                                 ))}
                             </Select>
@@ -126,21 +159,17 @@ const AssetRequestForm: React.FC = () => {
                             <Select
                                 name="asset"
                                 fullWidth
-                                value={values.asset} // Use Formik value here
+                                value={values.asset}
                                 onChange={(e) => setFieldValue('asset', e.target.value)}
-                                disabled={!selectedAssetCategory} // Disable if no category is selected
-                                sx={{
-                                    backgroundColor: "white",
-                                    borderRadius: 1,
-                                    width: {md:"350"}
-                                }}
+                                disabled={!values.assetCategory} // Disable if no category is selected
+                                sx={{ backgroundColor: "white", borderRadius: 1 }}
                             >
                                 <MenuItem value="">
                                     <em>Select Asset</em>
                                 </MenuItem>
                                 {availableAssets.map((asset) => (
-                                    <MenuItem key={asset} value={asset}>
-                                        {asset}
+                                    <MenuItem key={asset._id} value={asset._id}>
+                                        {asset.name}
                                     </MenuItem>
                                 ))}
                             </Select>
