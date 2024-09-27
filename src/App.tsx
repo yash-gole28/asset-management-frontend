@@ -11,6 +11,8 @@ import AssetsRequest from './Pages/AssetsRequest/AssetsRequest';
 import { Box } from '@mui/material';
 import Assets from './Pages/Assets/Assets';
 import Profile from './Pages/Profile/Profile';
+import PageNotFound from './Pages/pageNotFound/PageNotFound';
+import AddCategory from './Components/AddCategory';
 
 
 
@@ -25,9 +27,12 @@ function App() {
               <Route path='/assets-request' element={<AssetsRequest/>} />
               <Route path='/assets' element={<Assets />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path="/category" element={<AddCategory/>}/>
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path="*" element={<PageNotFound/>}/>
+
 
 
           </Routes>

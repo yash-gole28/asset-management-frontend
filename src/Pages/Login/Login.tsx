@@ -32,9 +32,10 @@ const Login = () => {
     const url = apiList.login
     const response = await API.post(url ,{data:values})
     console.log(response)
-    if(response){
+    if(response.success){
       console.log(response)
       localStorage.setItem('token',JSON.stringify(response.token))
+      navigate('/')
     }else{
       toast.error('Invalid credentials')
     }

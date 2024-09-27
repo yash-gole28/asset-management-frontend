@@ -306,9 +306,10 @@ export default function PersistentDrawer() {
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          <ListItem onClick={()=>{localStorage.removeItem('token')}} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
               <ListItemButton
+               
                 sx={[{
                   minHeight: 48,
                   px: { xs: 1.5, sm: 2.5, md: 2.5 },
