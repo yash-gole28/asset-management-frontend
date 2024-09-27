@@ -28,7 +28,6 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
 
     const { getCurrentUser } = context;
 
-    // Fetch employees and asset categories after getting the current user
     const fetchData = async () => {
         try {
             await getCurrentUser(); // Call the current user API
@@ -46,7 +45,6 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
         }
     };
 
-    // Fetch available assets based on selected category
     const fetchAssetsByCategory = async (categoryId: string) => {
         try {
             const url = `${apiList.getAssetsByCategoryName}/${categoryId}`; // Adjust as needed
@@ -129,6 +127,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
                                     <FormHelperText error>{errors.employee}</FormHelperText>
                                 )}
                             </Box>
+                            
 
                             <Typography sx={{ marginTop: 2 }}>Asset Category</Typography>
                             <Select

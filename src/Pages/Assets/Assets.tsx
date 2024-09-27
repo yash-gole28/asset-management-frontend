@@ -40,7 +40,6 @@ const Assets = () => {
       const response = await API.get(url)
       if(response.data.success){
         setAssets(response.data.assets)
-        console.log(response.data)
       }
     }catch(error){
       console.log(error)

@@ -61,9 +61,7 @@ const Home = () => {
 
   return (
     <Box>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        {value?.length ? value : null}
-      </Typography>
+     
       <Box sx={{margin:{xs:'10px',sm:'15px',md:'15px'}}}>
       <KPIs />
       </Box>
