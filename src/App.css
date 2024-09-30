@@ -33,3 +33,8 @@
 .css-1gcpdrz-MuiPaper-root-MuiDialog-paper {
   width: 500px !important;
 }
+
+.active .active-class{
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

@@ -49,7 +49,7 @@ const KPIs = () => {
         <Box>
             <Grid container spacing={{ xs: '10px', sm:"15px", md:'15px' }}>
                 <Grid size={{ xs: 6,sm:6, md: 3 }}>
-                    <Item sx={{backgroundColor:'rgb(168, 231, 192)',position:'relative',overflow:'hidden',boxShadow:1}}>
+                    <Item sx={{backgroundColor:'',position:'relative',overflow:'hidden',boxShadow:1}}>
                         <CustomGrid>
                             <Box sx={{pl:{xs:'0px',sm:'1rem',md:'1rem'}, display: 'flex', flexDirection: 'column', alignItems: 'start',justifyContent:'center',height:'100%' }}>
                                 <Typography variant='h6' sx={{fontSize:"15px"}}>
@@ -58,7 +58,7 @@ const KPIs = () => {
                                 <Typography variant='h3' sx={{fontSize:{xs:'22px',sm:'25px',md:'35px'}}}>
                                     {totalCounts}
                                 </Typography>
-                                <InventoryIcon sx={{fontSize:{xs:'80px',sm:'90px',md:'100px'},opacity:'0.3',position:'absolute',right:'0px'}}/>
+                                <InventoryIcon sx={{fontSize:{xs:'50px',sm:'50px',md:'60px'},borderRadius:'50%',position:'absolute',right:'20px',backgroundColor:'rgb(168, 231, 192)',padding:'1rem'}}/>
                             </Box>
 
                         </CustomGrid>
