@@ -11,6 +11,8 @@ const apiList = {
     category:"/asset/add-category",
      assetRequests:"/asset/get-asset-requests",
      updateRequest:"/asset/update-request",
+     
+ getAllCategory:'/asset/get-allcategory'
   };
   
   export { apiList };

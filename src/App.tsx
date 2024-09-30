@@ -13,6 +13,7 @@ import Assets from './Pages/Assets/Assets';
 import Profile from './Pages/Profile/Profile';
 import PageNotFound from './Pages/pageNotFound/PageNotFound';
 import AddCategory from './Components/AddCategory';
+import CategoryTable from './Pages/Category/CategoryTable';
 
 
 
@@ -32,7 +33,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
-
+        <Route path="category-table" element={<CategoryTable/>}/>
 
 
       </Routes>
