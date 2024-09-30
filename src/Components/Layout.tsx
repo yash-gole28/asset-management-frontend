@@ -24,6 +24,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { MyContext } from '../Context/AuthContext';
 
 const drawerWidth = 240;
 
@@ -136,7 +137,13 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 export default function PersistentDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+ 
+  const context = React.useContext(MyContext);
+  if (!context) {
+    throw new Error('Assets component must be used within a MyProvider');
+  }
+  const {type} = context;
+  const isNotEmployee = type !== 'employee' || type == undefined
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -145,6 +152,9 @@ export default function PersistentDrawer() {
     setOpen(false);
   };
 
+  // React.useEffect(()=>{
+  //   getCurrentUser()
+  // },[])
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -228,7 +238,7 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
 
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
                 sx={[{
@@ -253,8 +263,8 @@ export default function PersistentDrawer() {
                   ]} />
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          </ListItem>}
+         {isNotEmployee &&  <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets">
               <ListItemButton
                 sx={[{
@@ -279,7 +289,7 @@ export default function PersistentDrawer() {
                   ]} />
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>
+          </ListItem>}
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/">
               <ListItemButton

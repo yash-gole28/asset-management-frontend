@@ -47,6 +47,7 @@ const get = async (
 
     return response;
   } catch (error: any) {
+    toast.error(error.response.data.message)
     // toast({ icon: "error", title: "Something went wrong" });
   }
 };

@@ -22,6 +22,7 @@ import Grid from '@mui/material/Grid2';
 import { MyContext } from '../../Context/AuthContext';
 import { API } from '../../network';
 import { apiList } from '../../apiList';
+import toast from 'react-hot-toast';
 
 interface AssetRequest {
   _id: string; // Add this line
@@ -44,7 +45,7 @@ const AssetsRequest = () => {
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
   }
-  const { getCurrentUser } = context;
+  const { getitRole, type } = context;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -58,7 +59,7 @@ const AssetsRequest = () => {
     request.employee_Id.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     request.employee_Id.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     request.asset_id.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    request.employee_Id.department.toLowerCase().includes(searchQuery.toLowerCase())||
+    request.employee_Id.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
     request.status.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -71,7 +72,7 @@ const AssetsRequest = () => {
         setData(response.data.requests);
       } else {
       }
-    } catch (error) { 
+    } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
@@ -79,22 +80,28 @@ const AssetsRequest = () => {
   };
 
   const handleRequestAction = async (requestId: string, action: 'approved' | 'rejected', assetId?: string) => {
-    try{  
-      console.log(requestId ,action ,assetId)
+    try {
+      console.log(requestId, action, assetId)
       const url = apiList.updateRequest
-      const response = await API.post(url , {requestId , action , assetId})
-      if(response.success){
+      const response = await API.post(url, { requestId, action, assetId })
+      if (response.success) {
+        toast.success(response.message)
         console.log('updated successfully')
         getRequestData()
       }
-    }catch(error){
+    } catch (error) {
+      getRequestData()
       console.error(error)
     }
   }
 
   useEffect(() => {
-    getCurrentUser();
+    if (type == 'employee') {
+      toast.error('not allowed')
+    }
+    getitRole()
     getRequestData();
+
   }, [open]);
 
   return (
@@ -160,7 +167,7 @@ const AssetsRequest = () => {
               <TableCell sx={{ fontWeight: '600' }} align="center">Department</TableCell>
               <TableCell sx={{ fontWeight: '600' }} align="center">Model Number</TableCell>
               <TableCell sx={{ fontWeight: '600' }} align="center">Status</TableCell>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Action</TableCell>
+              {type === 'admin' && <TableCell sx={{ fontWeight: '600' }} align="center">Action</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -173,16 +180,17 @@ const AssetsRequest = () => {
                 <TableCell sx={{ textWrap: 'nowrap' }} align="center">
                   <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography>
                 </TableCell>
-                <TableCell align="center">
+                {type === 'admin' &&   <TableCell align="center">
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button onClick={()=>handleRequestAction(v._id , 'approved' ,v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                    <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
                       <DoneIcon sx={{ color: 'green', fontSize: '15px', minWidth: '0px' }} />
                     </Button>
-                    <Button  onClick={()=>handleRequestAction(v._id , 'rejected',v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                    <Button onClick={() => handleRequestAction(v._id, 'rejected', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
                       <CloseIcon sx={{ color: 'red', fontSize: '15px', minWidth: '0px' }} />
                     </Button>
                   </Box>
-                </TableCell>
+                </TableCell>}
+              
               </TableRow>
             ))}
           </TableBody>

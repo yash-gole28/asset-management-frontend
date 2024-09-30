@@ -19,23 +19,23 @@ import AddCategory from './Components/AddCategory';
 function App() {
   return (
     <Box sx={{ fontFamily: '-apple-system' }}>
-          <Routes>
-            <Route path="/" element={<MiniDrawer />}>
-              <Route index element={<Home />} />
-              {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
-              <Route path='/maintenance' element={<AssetsMaintenance />} />
-              <Route path='/assets-request' element={<AssetsRequest/>} />
-              <Route path='/assets' element={<Assets />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path="/category" element={<AddCategory/>}/>
-            </Route>
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path="*" element={<PageNotFound/>}/>
+      <Routes>
+        <Route path="/" element={<MiniDrawer />}>
+          <Route index element={<Home />} />
+          {/* <Route path='/assets-register' element={<AssetsRegistretion />} /> */}
+          <Route path='/maintenance' element={<AssetsMaintenance />} />
+          <Route path='/assets-request' element={<AssetsRequest />} />
+          <Route path='/assets' element={<Assets />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path="/category" element={<AddCategory />} />
+          <Route path='/register' element={<Register />} />
+        </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path="*" element={<PageNotFound />} />
 
 
 
-          </Routes>
+      </Routes>
     </Box>
   );
 }

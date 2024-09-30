@@ -119,7 +119,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
                                     </MenuItem>
                                     {employees.map((employee) => (
                                         <MenuItem key={employee._id} value={employee._id}>
-                                            {employee.firstName}
+                                            {employee.firstName} {employee.lastName}
                                         </MenuItem>
                                     ))}
                                 </Select>

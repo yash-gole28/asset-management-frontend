@@ -21,7 +21,7 @@ const Home = () => {
   if (!context) {
     throw new Error('UserComponent must be used within a MyProvider');
 }
-  const {value , setValue} = context
+  const {getCurrentUser , getAdmin} = context
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
   };
@@ -31,28 +31,11 @@ const Home = () => {
     setPage(0);
   };
 
-  const getCurrentUser = async () => {
-    try{
-      const url = apiList.getCurrentUser
-      const response = await API.get(url)
-      if(response.data.success){
-        setValue(response.data.user._id)
-        toast(response.data.user.firstName)
-        // setUser(response.user.firstName)
-      }else{
-        toast.error(response.data.message)
-      }
-    }catch(err:any){
-      toast('session expired')
-      // console.log(err)
-      router('/login')
-
-    }
-  }
   useEffect(()=>{
     const token = localStorage.getItem('token')
     if(token){
       getCurrentUser()
+      // getAdmin()
     }else{
       toast('session expired')
       router('/login')
