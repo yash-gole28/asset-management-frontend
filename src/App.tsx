@@ -33,7 +33,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="category-table" element={<CategoryTable/>}/>
+        <Route path="/category-table" element={<CategoryTable/>}/>
 
 
       </Routes>

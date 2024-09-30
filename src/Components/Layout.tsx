@@ -25,6 +25,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { MyContext } from '../Context/AuthContext';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const drawerWidth = 240;
 
@@ -144,6 +145,7 @@ export default function PersistentDrawer() {
   }
   const {type} = context;
   const isNotEmployee = type !== 'employee' || type == undefined
+  const isAdmin = type === 'admin'
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -285,6 +287,32 @@ export default function PersistentDrawer() {
                 </ListItemIcon>
                 <ListItemText
                   primary="Assets"
+                  sx={[open ? { opacity: 1, } : { opacity: 0, },
+                  ]} />
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>}
+          {isAdmin &&  <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/register">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
+                  ]}  >
+                  <PersonAddIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Create User"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} />
               </ListItemButton>
