@@ -28,7 +28,7 @@ function App() {
           <Route path='/assets-request' element={<AssetsRequest />} />
           <Route path='/assets' element={<Assets />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path="/category" element={<AddCategory />} />
+          {/* <Route path="/category" element={<AddCategory />} /> */}
           <Route path='/register' element={<Register />} />
         </Route>
         <Route path='/login' element={<Login />} />

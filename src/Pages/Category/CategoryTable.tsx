@@ -1,6 +1,8 @@
 
 
 
+
+
 import React, { useEffect, useState } from 'react';
 import {
   Table,
@@ -17,27 +19,30 @@ import {
 } from '@mui/material';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
+import AddCategory from '../../Components/AddCategory';
 
 const CategoryTable = () => {
   const [categories, setCategories] = useState([]); // Initialize as an array
   const [page, setPage] = useState(0); // Current page
   const [rowsPerPage, setRowsPerPage] = useState(5); // Rows per page
+  const [totalCount, setTotalCount] = useState(0); // Total number of categories
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const url = apiList.getAllCategory;
+        const url = `${apiList.getAllCategory}?page=${page + 1}&limit=${rowsPerPage}`; // Adjust for API
         const response = await API.get(url);
         console.log(response);
 
-        setCategories(response.data.category); // Assuming the data is in response.data
+        setCategories(response.data.categories); // Assuming the data is in response.data
+        setTotalCount(response.data.total); // Get total categories count
       } catch (error) {
         console.log("Data not fetched", error);
       }
     };
 
     fetchCategories(); // Call the async function
-  }, []); // Empty dependency array to run once on mount
+  }, [page, rowsPerPage]); // Add dependencies
 
   const handleAddCategory = () => {
     // Logic to add a new category
@@ -53,9 +58,6 @@ const CategoryTable = () => {
     setPage(0); // Reset to the first page
   };
 
-  // Calculate the displayed categories based on current page and rows per page
-  const displayedCategories = categories.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-
   return (
     <TableContainer component={Paper}>
       <Typography variant="h6" component="div" style={{ padding: '16px' }}>
@@ -63,9 +65,7 @@ const CategoryTable = () => {
       </Typography>
       <Grid container spacing={2} style={{ padding: '16px' }}>
         <Grid item xs={12} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button variant="contained" color="primary" onClick={handleAddCategory}>
-            Add Category
-          </Button>
+          <AddCategory/>
         </Grid>
       </Grid>
       <Table>
@@ -73,11 +73,10 @@ const CategoryTable = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>Name</TableCell>
-            {/* <TableCell>Description</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {displayedCategories.map((category:any) => (
+          {categories?.map((category:any) => (
             <TableRow key={category._id}>
               <TableCell>{category._id}</TableCell>
               <TableCell>{category.category}</TableCell>
@@ -88,7 +87,7 @@ const CategoryTable = () => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={categories.length}
+        count={totalCount} // Total count from response
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -99,3 +98,4 @@ const CategoryTable = () => {
 };
 
 export default CategoryTable;
+
