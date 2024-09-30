@@ -81,7 +81,7 @@ const AssetsRequest = () => {
   useEffect(() => {
     getCurrentUser();
     getRequestData();
-  }, []);
+  }, [open]);
 
   if (loading) return <Typography>Loading...</Typography>;
   if (error) return <Typography color="error">{error}</Typography>;
