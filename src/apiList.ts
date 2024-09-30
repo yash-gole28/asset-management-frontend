@@ -9,7 +9,8 @@ const apiList = {
     getAssetsByCategoryName:"/asset/get-assets-by-category",
     createRequest:"/asset/add-request",
     category:"/asset/add-category",
-     assetRequests:"/asset/get-asset-requests"
+     assetRequests:"/asset/get-asset-requests",
+     updateRequest:"/asset/update-request",
   };
   
   export { apiList };

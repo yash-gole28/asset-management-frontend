@@ -21,7 +21,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const response = await API.get(url)
         if(response.data.success){
           setValue(response.data.user._id)
-          toast(response.data.user.firstName)
+          // toast(response.data.user.firstName)
           // setUser(response.user.firstName)
         }else{
           toast.error(response.data.message)

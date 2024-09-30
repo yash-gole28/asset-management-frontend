@@ -24,9 +24,12 @@ import { API } from '../../network';
 import { apiList } from '../../apiList';
 
 interface AssetRequest {
+  _id: string; // Add this line
   employee_Id: { firstName: string; lastName: string; department: string };
-  asset_id: { name: string; model_number: string };
+  asset_id: { name: string; model_number: string; service_tag: string; _id: string }; // Include _id for asset_id if needed
   status: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 const AssetsRequest = () => {
@@ -36,7 +39,6 @@ const AssetsRequest = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState<AssetRequest[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const context = useContext(MyContext);
   if (!context) {
@@ -68,23 +70,32 @@ const AssetsRequest = () => {
       if (response.data.success) {
         setData(response.data.requests);
       } else {
-        setError('Failed to fetch requests');
       }
-    } catch (error) {
-      setError('Failed to fetch data');
+    } catch (error) { 
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleRequestAction = async (requestId: string, action: 'approved' | 'rejected', assetId?: string) => {
+    try{  
+      console.log(requestId ,action ,assetId)
+      const url = apiList.updateRequest
+      const response = await API.post(url , {requestId , action , assetId})
+      if(response.success){
+        console.log('updated successfully')
+        getRequestData()
+      }
+    }catch(error){
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
     getCurrentUser();
     getRequestData();
   }, [open]);
-
-  if (loading) return <Typography>Loading...</Typography>;
-  if (error) return <Typography color="error">{error}</Typography>;
 
   return (
     <Box sx={{ margin: '15px' }}>
@@ -164,10 +175,10 @@ const AssetsRequest = () => {
                 </TableCell>
                 <TableCell align="center">
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                    <Button onClick={()=>handleRequestAction(v._id , 'approved' ,v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
                       <DoneIcon sx={{ color: 'green', fontSize: '15px', minWidth: '0px' }} />
                     </Button>
-                    <Button disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                    <Button  onClick={()=>handleRequestAction(v._id , 'rejected',v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
                       <CloseIcon sx={{ color: 'red', fontSize: '15px', minWidth: '0px' }} />
                     </Button>
                   </Box>
