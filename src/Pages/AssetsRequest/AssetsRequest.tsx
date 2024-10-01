@@ -97,7 +97,7 @@ const AssetsRequest = () => {
   }
 
   useEffect(() => {
-    if (type == 'employee') {
+    if (type === 'employee') {
       toast.error('not allowed')
     }
     getitRole()

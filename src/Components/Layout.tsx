@@ -144,7 +144,7 @@ export default function PersistentDrawer() {
     throw new Error('Assets component must be used within a MyProvider');
   }
   const {type} = context;
-  const isNotEmployee = type !== 'employee' || type == undefined
+  const isNotEmployee = type !== 'employee' || type === undefined
   const isAdmin = type === 'admin'
   const handleDrawerOpen = () => {
     setOpen(true);

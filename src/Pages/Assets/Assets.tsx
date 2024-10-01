@@ -1,7 +1,6 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { Modal } from '@mui/material';
-import data1 from '../../Data1.json';
 import MyForm from '../AssetsRegistretion/AssetsRegistretion';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
@@ -19,7 +18,7 @@ const Assets = () => {
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
   }
-  const {getCurrentUser ,getitRole} = context
+  const {getitRole} = context
 
 
   const handleOpen = () => setOpen(true);

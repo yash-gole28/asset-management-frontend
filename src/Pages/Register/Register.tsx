@@ -18,7 +18,7 @@ const Register: React.FC = () => {
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
   }
-  const {getCurrentUser , getAdmin} = context
+  const { getAdmin} = context
 
   useEffect(()=>{
     // getCurrentUser()

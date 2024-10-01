@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { TextField, MenuItem, Button, Typography, Box, Select, InputLabel } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -40,7 +40,6 @@ const initialValues = {
 const departments = ['HR', 'IT', 'Finance', 'Marketing', 'Sales'];
 
 const UserRegistrationForm: React.FC = () => {
-  const [formValues, setFormValues] = useState(initialValues);
   const router = useNavigate();
 
   const handleSubmit = async (values: typeof initialValues) => {
