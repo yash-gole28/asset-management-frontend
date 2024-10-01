@@ -1,6 +1,6 @@
 
 
-import { Box, TextField, Typography, Button, MenuItem } from '@mui/material';
+import { Box, TextField, Typography, Button, MenuItem, InputLabel } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -144,10 +144,13 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
               />
 
               <Field
+              
+               
                 as={TextField}
                 name="type"
                 select
-                placeholder="Type1"
+              
+                 placeholder={value}
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -155,11 +158,13 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
                 error={touched.type && Boolean(errors.type)}
                 helperText={<ErrorMessage name="type" />}
               >
+              
+                  <MenuItem value="">
+                  Categorie
+              </MenuItem>
                 {categories.map((data)=>(
                   <MenuItem key={data._id} value={data._id}>{data.category}</MenuItem>
                 ))}
-                
-               
               </Field>
 
               <Field
@@ -255,3 +260,8 @@ const MyForm: React.FC<ModalProps> = ({popValue ,pop}) => {
 };
 
 export default MyForm;
+
+
+
+
+
