@@ -136,7 +136,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 
 export default function PersistentDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
  
   const context = React.useContext(MyContext);
   if (!context) {

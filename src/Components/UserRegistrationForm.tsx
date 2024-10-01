@@ -62,7 +62,7 @@ const UserRegistrationForm: React.FC = () => {
 
   },[])
   return (
-    <Box sx={{ backgroundColor: '#fff' }}>
+    <Box sx={{ backgroundColor: '#fff' ,borderRadius:'4px'}}>
         <Typography variant="h6" textAlign='center' gutterBottom>
           Register New User
         </Typography>
@@ -176,7 +176,7 @@ const UserRegistrationForm: React.FC = () => {
                   )}
                 </Grid>
                 <Grid sx={{margin:'auto',backgroundColor:'white'}}  size={{ xs: 6,sm:6, md: 10 }}>
-                  <Button type="submit" variant="contained" color="primary" fullWidth>
+                  <Button type="submit" variant="contained" color="primary" sx={{mb:'1rem'}} fullWidth>
                     Register
                   </Button>
                 </Grid>

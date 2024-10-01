@@ -19,7 +19,7 @@ const Assets = () => {
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
   }
-  const {getCurrentUser} = context
+  const {getCurrentUser ,getitRole} = context
 
 
   const handleOpen = () => setOpen(true);
@@ -48,7 +48,7 @@ const Assets = () => {
   useEffect(()=>{
     const token = localStorage.getItem('token')
     if(token){
-      getCurrentUser()
+     getitRole()
      getAssets()
     }else{
       toast('session expired')
@@ -118,7 +118,7 @@ const Assets = () => {
         <TablePagination
           rowsPerPageOptions={[ 10,15, 25]}
           component="div"
-          count={data1.length}
+          count={assets.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

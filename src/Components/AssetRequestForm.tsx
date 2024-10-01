@@ -31,7 +31,8 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
     const fetchData = async () => {
         try {
             await getCurrentUser(); // Call the current user API
-            const userResponse = await API.get(apiList.getAllUsers);
+            const url =apiList.getAllActiveUsers
+            const userResponse = await API.get(url);
             if (userResponse.data.success) {
                 setEmployees(userResponse.data.users);
             }
