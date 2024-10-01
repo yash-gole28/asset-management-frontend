@@ -14,6 +14,7 @@ const apiList = {
     updateRequest: "/asset/update-request",
     getAllCategory: '/asset/get-allcategory',
     changeActiveUser:'/auth/change-active-user'
+   
 };
 
 export { apiList };

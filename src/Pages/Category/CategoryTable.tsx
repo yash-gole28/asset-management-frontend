@@ -73,6 +73,7 @@ const CategoryTable = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>Name</TableCell>
+            <TableCell>jj</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -80,6 +81,7 @@ const CategoryTable = () => {
             <TableRow key={category._id}>
               <TableCell>{category._id}</TableCell>
               <TableCell>{category.category}</TableCell>
+                <TableCell>{category.createdBy.firstName} {category.createdBy.lastName}</TableCell>
             </TableRow>
           ))}
         </TableBody>
