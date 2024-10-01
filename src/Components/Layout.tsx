@@ -25,6 +25,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { MyContext } from '../Context/AuthContext';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import CategoryIcon from '@mui/icons-material/Category';
 
 const drawerWidth = 240;
 
@@ -329,6 +330,35 @@ export default function PersistentDrawer() {
                    <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
                     : { opacity: 0,display:'none' },
                   ]}>Create User</Typography>
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>}
+          {isAdmin &&  <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/category">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },
+                  ]}  >
+                  <CategoryIcon sx={{fontSize:'18px'}}/>
+                </ListItemIcon>
+                {/* <ListItemText
+                  primary="Create User"
+                  sx={[open ? { opacity: 1, } : { opacity: 0, },
+                  ]} /> */}
+                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
+                    : { opacity: 0,display:'none' },
+                  ]}>Categories</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}

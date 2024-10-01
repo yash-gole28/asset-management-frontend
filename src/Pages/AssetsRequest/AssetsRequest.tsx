@@ -12,6 +12,7 @@ import {
   TextField,
   InputAdornment,
   Modal,
+  CircularProgress
 } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
@@ -105,14 +106,28 @@ const AssetsRequest = () => {
   }, [open]);
 
   return (
-    <Box sx={{ margin: '15px' }}>
+    <Box sx={{ margin: '15px'}}>
+      
       <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'start', sm: 'center', md: 'center' }, justifyContent: 'space-between', marginBottom: '10px', mt: '10px' }}>
+      {loading && ( // Show loading spinner
+          <CircularProgress
+            size={24}
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+              zIndex:'200'
+            }}
+          />
+        )}
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={{ xs: '0px', sm: '0px', md: '15px' }}>
             <Grid size={{ xs: 12, sm: 3, md: 3 }}>
               <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.2rem', textWrap: 'nowrap' }}>Asset Requests</Typography>
             </Grid>
-            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' } }} size={{ xs: 12, sm: 6, md: 6 }}>
+            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' } }} size={{ xs: 12, sm: 6, md: 7 }}>
               <TextField
                 variant="standard"
                 placeholder="Search Employee"
@@ -127,7 +142,7 @@ const AssetsRequest = () => {
                 }}
               />
             </Grid>
-            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' }, alignItems: 'center' }} size={{ xs: 12, sm: 3, md: 3 }}>
+            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' }, alignItems: 'center' }} size={{ xs: 12, sm: 3, md: 2 }}>
               <Button onClick={handleOpen} size='small' sx={{ height: '40px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Create Request</Button>
             </Grid>
           </Grid>
@@ -159,6 +174,7 @@ const AssetsRequest = () => {
         marginBottom: "20px",
         position: "relative",
       }}>
+        
         <Table sx={{ width: '100%' }} size='small' aria-label="simple table">
           <TableHead sx={{ fontWeight: '500', backgroundColor: 'rgb(177, 191, 238)' }}>
             <TableRow>
