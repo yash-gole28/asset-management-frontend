@@ -3,8 +3,9 @@
   margin: 0px;
   box-sizing: border-box;
   /* color: ; */
-
+  font-family: Poppins !important;
 }
+
 html{
   background-color: rgb(242, 244, 247);
 }
@@ -43,4 +44,8 @@ html{
 }
 .css-1ahxkcz-MuiPaper-root-MuiTableContainer-root{
   max-width: 96% !important;
+}
+
+.css-1gzegn9-MuiTableCell-root {
+  padding: 0px !important;
 }
