@@ -106,10 +106,10 @@ const AssetsRequest = () => {
   }, [open]);
 
   return (
-    <Box sx={{ margin: '15px'}}>
+    <Box sx={{ margin: '15px' ,backgroundColor:'#fff',padding:'15px' ,boxShadow:'0 0 3px rgb(198, 200, 205)',borderRadius:'4px'}}>
       
-      <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'start', sm: 'center', md: 'center' }, justifyContent: 'space-between', marginBottom: '10px', mt: '10px' }}>
-      {loading && ( // Show loading spinner
+      <Box sx={{ display: "flex", flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'start', sm: 'center', md: 'center' }, justifyContent: 'space-between', marginBottom: '10px'}}>
+      {loading && (
           <CircularProgress
             size={24}
             sx={{
@@ -143,7 +143,7 @@ const AssetsRequest = () => {
               />
             </Grid>
             <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' }, alignItems: 'center' }} size={{ xs: 12, sm: 3, md: 2 }}>
-              <Button onClick={handleOpen} size='small' sx={{ height: '40px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Create Request</Button>
+              <Button onClick={handleOpen} size='small' sx={{ height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Create Request</Button>
             </Grid>
           </Grid>
         </Box>
@@ -168,33 +168,37 @@ const AssetsRequest = () => {
 
       <TableContainer sx={{
         width: { xs: "100%", sm: "100%" },
-        borderRadius: "10px",
+        borderRadius: "4px",
         backgroundColor: "white",
-        boxShadow: 2,
+        boxShadow:' 0 0 3px rgb(198, 200, 205)',
         marginBottom: "20px",
         position: "relative",
+        padding:'10px'
       }}>
         
         <Table sx={{ width: '100%' }} size='small' aria-label="simple table">
-          <TableHead sx={{ fontWeight: '500', backgroundColor: 'rgb(177, 191, 238)' }}>
+          <TableHead sx={{ fontWeight: '500', backgroundColor: '' }}>
             <TableRow>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Employee Name</TableCell>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Assets Name</TableCell>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Department</TableCell>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Model Number</TableCell>
-              <TableCell sx={{ fontWeight: '600' }} align="center">Status</TableCell>
+              <TableCell sx={{ fontWeight: '600' ,color:'#495057'}} align="center">Employee Name</TableCell>
+              <TableCell sx={{ fontWeight: '600' ,color:'' }} align="center">Assets Name</TableCell>
+              <TableCell sx={{ fontWeight: '600' ,color:'' }} align="center">Department</TableCell>
+              <TableCell sx={{ fontWeight: '600' ,color:'' }} align="center">Model Number</TableCell>
+              <TableCell sx={{ fontWeight: '600' ,color:'' }} align="center">Status</TableCell>
               {type === 'admin' && <TableCell sx={{ fontWeight: '600' }} align="center">Action</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v: AssetRequest, index: number) => (
               <TableRow key={index}>
-                <TableCell sx={{ textWrap: 'nowrap' }} align="center">{v.employee_Id.firstName} {v.employee_Id.lastName}</TableCell>
-                <TableCell sx={{ textWrap: 'nowrap' }} align="center">{v.asset_id.name}</TableCell>
-                <TableCell sx={{ textWrap: 'nowrap' }} align="center">{v.employee_Id.department}</TableCell>
-                <TableCell sx={{ textWrap: 'nowrap' }} align="center">{v.asset_id.model_number}</TableCell>
+                <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.employee_Id.firstName} {v.employee_Id.lastName}</TableCell>
+                <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.asset_id.name}</TableCell>
+                <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.employee_Id.department}</TableCell>
+                <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.asset_id.model_number}</TableCell>
                 <TableCell sx={{ textWrap: 'nowrap' }} align="center">
-                  <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography>
+                  {v.status === 'approved' && <Typography sx={{backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
+                  {v.status === 'pending' && <Typography sx={{backgroundColor:'rgb(252, 241, 223)',color:'rgb(247, 173, 54)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
+                  {v.status === 'rejected' && <Typography sx={{backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
+                  {/* <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography> */}
                 </TableCell>
                 {type === 'admin' &&   <TableCell align="center">
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -3,7 +3,7 @@ const apiList = {
     register: "/auth/register",
     getCurrentUser: "/auth/current-user",
     getAllUsers: "/auth//all-users",
-    getAllActiveUsers:"/auth/all-active-users",
+    getAllActiveUsers: "/auth/all-active-users",
     registerAsset: "/asset/register-asset",
     getCategories: "/asset/get-categories",
     getAssets: "/asset/get-assets",
@@ -13,9 +13,9 @@ const apiList = {
     assetRequests: "/asset/get-asset-requests",
     updateRequest: "/asset/update-request",
     getAllCategory: '/asset/get-allcategory',
-    changeActiveUser:'/auth/change-active-user',
-   changeActiveCategory:'/asset/change-active-category'
-       getProfileData:'/auth/get-profile-details',
+    changeActiveUser: '/auth/change-active-user',
+    changeActiveCategory: '/asset/change-active-category',
+    getProfileData: '/auth/get-profile-details',
     userAssets: '/asset/get-user-assets'
 };
 

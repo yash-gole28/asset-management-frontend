@@ -38,6 +38,7 @@ const Assets = () => {
       const url = apiList.getAssets
       const response = await API.get(url)
       if(response.data.success){
+        console.log(response.data)
         setAssets(response.data.assets)
       }
     }catch(error){
@@ -54,9 +55,9 @@ const Assets = () => {
     }
   },[open])
   return (
-    <Box sx={{ width: '95%',margin:'calc((100% - 95%) / 2) auto',padding:'20px',backgroundColor:'#fff',p:'15px',borderRadius:'4px',boxShadow:'0 0 3px rgb(198, 200, 205)'}}>
+    <Box sx={{margin:{xs:'10px',sm:'15px',md:'15px'},backgroundColor:'#fff',p:'15px',borderRadius:'4px',boxShadow:'0 0 3px rgb(198, 200, 205)'}}>
      
-      <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
+      <Box sx={{ display: "flex", alignItems: 'end', justifyContent: 'space-between', marginBottom: '10px' }}>
         <Typography variant='h5' >Assets</Typography>
         <Button onClick={handleOpen} variant="outlined" size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }}> Add Asset</Button>
         <Modal
@@ -82,7 +83,7 @@ const Assets = () => {
     
       <TableContainer sx={{
         width: { xs: "100%", sm: "100%", }, 
-        borderRadius: "10px",
+        borderRadius: "4px",
         backgroundColor: "white",
         boxShadow:'0 0 3px rgb(198, 200, 205)', 
         marginBottom: "10px",
@@ -94,7 +95,7 @@ const Assets = () => {
         <Table size='small' aria-label="simple table">
           <TableHead sx={{backgroundColor:''}}>
             <TableRow >
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Asset Id</TableCell>
+              {/* <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Asset Id</TableCell> */}
               <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Assets Name</TableCell>
               <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Description</TableCell>
               <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Serial Number</TableCell>
@@ -105,12 +106,12 @@ const Assets = () => {
           <TableBody>
             {assets.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow  key={index}>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v._id}</TableCell>
+                {/* <TableCell sx={{textWrap:'nowrap'}} align="center">{v._id}</TableCell> */}
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.name}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.description}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.service_tag}</TableCell>
                 <TableCell sx={{textWrap:'nowrap'}} align="center">{v.model_number}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.status?"Allocated":"Not-Allocated"}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.allocation ? <Typography sx={{fontSize:'13px',color:'#1ed897',backgroundColor:'rgb(218, 244, 235)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px'}}>Allocated</Typography>:<Typography sx={{fontSize:'13px',color:'rgb(255, 187, 79)',backgroundColor:'rgb(255, 241, 218)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px'}}>Not-Allocated</Typography>}</TableCell>
               </TableRow>
             ))}
           </TableBody>

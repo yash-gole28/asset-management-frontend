@@ -25,10 +25,10 @@ const Register: React.FC = () => {
     getAdmin()
   },[])
   return (
-    <Box sx={{ width: '95%', margin: 'auto' }}>
+    <Box sx={{margin:'15px',backgroundColor:'#fff',padding:'15px',borderRadius:'4px',boxShadow:'0 0 3px rgb(198, 200, 205)' }}>
       <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'end',mb:'15px'}}>
         <Typography sx={{fontWeight:'600'}}>Users</Typography>
-        <Button onClick={handleOpen} size='small' sx={{ height: '40px', mt: '15px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Add User</Button>
+        <Button onClick={handleOpen} size='small' sx={{ height: '40px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Add User</Button>
       </Box>
       <Modal
         open={open}

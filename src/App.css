@@ -5,14 +5,17 @@
   /* color: ; */
 
 }
-
+html{
+  background-color: rgb(242, 244, 247);
+}
 /* .css-1tyr36a{
   height:450px !important;
   overflow:'scroll',
 } */
 
 .css-1apkmlw-MuiButtonBase-root-MuiButton-root{
-  min-width: 20px !important
+  min-width: 20px !important;
+  background-color: #1ed897;
   
 }
 
