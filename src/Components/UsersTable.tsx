@@ -70,7 +70,7 @@ const UsersTable = () => {
             boxShadow: '0 0 3px rgb(198, 200, 205)',
             marginBottom: "10px",
             position: "relative",
-            padding:'10px',
+            padding:{xs:'0px',sm:'0px 10px',md:'0px 15px'},
             
         }}>
             {loading && (
@@ -89,25 +89,25 @@ const UsersTable = () => {
             <Table sx={{ width: '100%'}} size='small' aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Serial No</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Employee Name</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Email</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Role</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Active</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap' }} align="center">Change Active</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Serial No</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Employee Name</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Email</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Role</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Active</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Change Active</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {userData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
                         <TableRow key={v._id}>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{index + 1 + page * rowsPerPage}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.firstName} {v.lastName}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.email}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.role}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="center">{v.active ? 
-                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',margin:'auto',padding:'1px 10px',borderRadius:'5px'}}>Yes</Typography> : 
-                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',margin:'auto',padding:'1px 10px',borderRadius:'5px'}}>No</Typography>}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap' }} align="center">
+                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{index + 1 + page * rowsPerPage}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.email}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.role}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.active ? 
+                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',padding:'1px 10px',borderRadius:'5px'}}>Yes</Typography> : 
+                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',padding:'1px 10px',borderRadius:'5px'}}>No</Typography>}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap' }} align="left">
                                 <Button size='small'sx={{textTransform:'capitalize'}} onClick={() => changeActive(v._id)} disabled={loading}>
                                     Change
                                 </Button>

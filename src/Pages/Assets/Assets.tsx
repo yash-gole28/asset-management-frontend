@@ -88,30 +88,31 @@ const Assets = () => {
         boxShadow:'0 0 3px rgb(198, 200, 205)', 
         marginBottom: "10px",
         position: "relative",
-        p:'15px'
+        p:{xs:'0px',sm:'0px 10px',md:'0px 15px'}
       }}>
 
 
         <Table size='small' aria-label="simple table">
-          <TableHead sx={{backgroundColor:''}}>
+          <TableHead>
             <TableRow >
               {/* <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Asset Id</TableCell> */}
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Assets Name</TableCell>
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Description</TableCell>
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Serial Number</TableCell>
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Model Number</TableCell>
-              <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Status</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap', color:'#495057'}} align="left">Assets Name</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap', color:'#495057'}} align="left">Description</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap', color:'#495057'}} align="left">Serial Number</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap', color:'#495057'}} align="left">Model Number</TableCell>
+              <TableCell sx={{fontWeight:'600',textWrap:'nowrap', color:'#495057'}} align="left">Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {assets.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
               <TableRow  key={index}>
                 {/* <TableCell sx={{textWrap:'nowrap'}} align="center">{v._id}</TableCell> */}
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.name}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.description}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.service_tag}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.model_number}</TableCell>
-                <TableCell sx={{textWrap:'nowrap'}} align="center">{v.allocation ? <Typography sx={{fontSize:'13px',color:'#1ed897',backgroundColor:'rgb(218, 244, 235)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px'}}>Allocated</Typography>:<Typography sx={{fontSize:'13px',color:'rgb(255, 187, 79)',backgroundColor:'rgb(255, 241, 218)',width:'fit-content',margin:'auto',padding:'1px 8px',borderRadius:'5px'}}>Not-Allocated</Typography>}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="left">{v.name}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="left">{v.description}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="left">{v.service_tag}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="left">{v.model_number}</TableCell>
+                <TableCell sx={{textWrap:'nowrap'}} align="left">{v.allocation ? <Typography sx={{fontSize:'13px',color:'#1ed897',backgroundColor:'rgb(218, 244, 235)',width:'fit-content',padding:'1px 8px',borderRadius:'5px'}}>Allocated</Typography>
+                :<Typography sx={{fontSize:'13px',color:'rgb(255, 187, 79)',backgroundColor:'rgb(255, 241, 218)',width:'fit-content',padding:'1px 8px',borderRadius:'5px'}}>Not-Allocated</Typography>}</TableCell>
               </TableRow>
             ))}
           </TableBody>
