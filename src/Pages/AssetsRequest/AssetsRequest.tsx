@@ -138,7 +138,12 @@ const AssetsRequest = () => {
                     <InputAdornment position='start'>
                       <SearchIcon />
                     </InputAdornment>
-                  )
+                  ),
+                  sx: {
+                    '&::placeholder': {
+                      fontSize: '5px', // Adjust font size for placeholder
+                    }
+                  }
                 }}
               />
             </Grid>
