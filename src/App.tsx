@@ -17,7 +17,7 @@ import CategoryTable from './Pages/Category/CategoryTable';
 
 function App() {
   return (
-    <Box sx={{ fontFamily: '-apple-system' }}>
+    <Box sx={{ fontFamily: '-apple-system' ,backgroundColor:'rgb(242, 244, 247)'}}>
       <Routes>
         <Route path="/" element={<MiniDrawer />}>
           <Route index element={<Home />} />

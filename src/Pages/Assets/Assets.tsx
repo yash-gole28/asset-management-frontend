@@ -54,8 +54,8 @@ const Assets = () => {
     }
   },[open])
   return (
-    <Box sx={{ width: '95%',margin:'auto'}}>
-      {/* Button to register new assets */}
+    <Box sx={{ width: '95%',margin:'calc((100% - 95%) / 2) auto',padding:'20px',backgroundColor:'#fff',p:'15px',borderRadius:'4px',boxShadow:'0 0 3px rgb(198, 200, 205)'}}>
+     
       <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px',marginTop:'10px' }}>
         <Typography variant='h5' >Assets</Typography>
         <Button onClick={handleOpen} variant="outlined" size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }}> Add Asset</Button>
@@ -84,14 +84,15 @@ const Assets = () => {
         width: { xs: "100%", sm: "100%", }, 
         borderRadius: "10px",
         backgroundColor: "white",
-        boxShadow: 2, 
+        boxShadow:'0 0 3px rgb(198, 200, 205)', 
         marginBottom: "10px",
         position: "relative",
+        p:'15px'
       }}>
 
 
-        <Table sx={{width:'100%' }} size='small' aria-label="simple table">
-          <TableHead sx={{backgroundColor:'rgb(177, 191, 238)'}}>
+        <Table size='small' aria-label="simple table">
+          <TableHead sx={{backgroundColor:''}}>
             <TableRow >
               <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Asset Id</TableCell>
               <TableCell sx={{fontWeight:'600',textWrap:'nowrap'}} align="center">Assets Name</TableCell>
@@ -114,6 +115,7 @@ const Assets = () => {
             ))}
           </TableBody>
         </Table>
+       
         <TablePagination
           rowsPerPageOptions={[ 10,15, 25]}
           component="div"
@@ -123,10 +125,9 @@ const Assets = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         /> 
-
-    
         
       </TableContainer>
+      
      
       {/* Table Container */}
     </Box>

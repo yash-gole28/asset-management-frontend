@@ -1,18 +1,65 @@
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead,TableRow, Typography } from '@mui/material';
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 import PersonIcon from '@mui/icons-material/Person';
-import data from './../../Data.json'
+import { MyContext } from '../../Context/AuthContext';
+import { API } from '../../network';
+import { apiList } from '../../apiList';
+import dayjs from 'dayjs';
+
+interface profileData {
+    firstName : string;
+    middleName:string;
+    lastName : string;
+    email : string;
+    department: string;
+    role : string;
+}
 
 const Profile = () => {
-    const newArr = []
+    const [userProfile , setUserProfile] = useState<profileData | null>(null)
+    const [assets , setAssets] = useState<any[] | null>(null)
+    const context = useContext(MyContext)
 
-    for(let i=0 ;i<data.requestData.length ; i++){
-        if(data.requestData[i].name.toLowerCase() === "yash"){
-            newArr.push(data.requestData[i])
+  
+  if (!context) {
+    throw new Error('Assets component must be used within a MyProvider');
+  }
+  const {getCurrentUser , value} = context
+
+  const getUserAssets = async () => {
+    try{
+        const url = apiList.userAssets
+        const response = await API.get(url)
+        if(response.data.success){
+            console.log(response.data.assets)
+            setAssets(response.data.assets)
         }
+    }catch(error){
+        console.log(error)
     }
+  }
+
+  const getUserData = async () => {
+    try{
+        const url = apiList.getProfileData
+        const response = await API.get(url)
+        if(response.data.success){
+            setUserProfile(response.data.user)
+            getUserAssets()
+        }
+    }catch(error){
+        console.log(error)
+    }
+  }
+   
+  useEffect(()=>{
+    getCurrentUser()
+            getUserData()
+   
+   
+  },[])
     return (
         <Box>
             <Typography sx={{ padding:{xs:'10px',sm:'10px',md:'15px'}, fontWeight: '600' }} variant='h6'>Profile</Typography>
@@ -24,10 +71,10 @@ const Profile = () => {
                             <Box sx={{ backgroundColor: 'rgb(201, 210, 239)', width: 'fit-content', borderRadius: '50%', margin: 'auto' }}>
                                 <PersonIcon sx={{ fontSize: '100px', color: '#fff' }} />
                             </Box>
-                            <Typography>Yash Gole</Typography>
-                            <Typography>Designation</Typography>
-                            <Typography>Mobile Number</Typography>
-                            <Typography>email</Typography>
+                            <Typography>{userProfile?.firstName} {userProfile?.lastName}</Typography>
+                            <Typography>department - {userProfile?.department}</Typography>
+                            <Typography>role - {userProfile?.role}</Typography>
+                            <Typography>{userProfile?.email}</Typography>
 
                         </Box>
                     </Grid>
@@ -48,22 +95,26 @@ const Profile = () => {
                                     <TableHead sx={{backgroundColor:'rgb(177, 191, 238)'}}>
                                         <TableRow>
                                             <TableCell sx={{fontWeight:'600'}} align='center'>Asset</TableCell>
+                                            <TableCell sx={{fontWeight:'600'}} align='center'>Category</TableCell>
                                             <TableCell sx={{fontWeight:'600'}} align="center">Modal Number</TableCell>
-                                            <TableCell sx={{fontWeight:'600'}} align="center">Serial Number</TableCell>
+                                            <TableCell sx={{fontWeight:'600'}} align="center">Service tag</TableCell>
+                                            <TableCell sx={{fontWeight:'600'}} align="center">Assigned Date</TableCell>
                                         
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {newArr.map((d , index) => (
+                                        {assets?.map((asset , index) => (
                                             
                                             <TableRow
                                                 key={index}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
                                             
-                                                <TableCell align="center">{d.assets_name}</TableCell>
-                                                <TableCell align="center">{d.modal_number}</TableCell>
-                                                <TableCell align="center">---</TableCell>
+                                                <TableCell align="center">{asset.asset_id.name}</TableCell>
+                                                <TableCell align="center">{asset.asset_id.type.category}</TableCell>
+                                                <TableCell align="center">{asset.asset_id.model_number}</TableCell>
+                                                <TableCell align="center">{asset.asset_id.service_tag}</TableCell>
+                                                <TableCell align="center">{dayjs(asset.updatedAt).format('MMMM D, YYYY')}</TableCell>
                                             
                                               
                                             </TableRow>

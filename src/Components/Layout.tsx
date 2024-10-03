@@ -187,7 +187,7 @@ export default function PersistentDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        {/* <Divider /> */}
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink className='active-tab' to="/">
@@ -217,35 +217,7 @@ export default function PersistentDrawer() {
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
-          <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/profile">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-                ]} >
-                <ListItemIcon
-                  sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
-                  },
-                  open ? { mr: 3, } : { mr: 'auto', },]} >
-                  <PersonIcon sx={{fontSize:'18px'}}/>
-                </ListItemIcon>
-                {/* <ListItemText
-                  primary="Profile"
-                  sx={[open ? { opacity: 1, }
-                    : { opacity: 0, },
-                  ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Profile</Typography>
-              </ListItemButton>
-            </StyledNavLink>
-          </ListItem>
-
+         
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
@@ -329,7 +301,7 @@ export default function PersistentDrawer() {
                   ]} /> */}
                    <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
                     : { opacity: 0,display:'none' },
-                  ]}>Create User</Typography>
+                  ]}>Users</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}
@@ -391,6 +363,35 @@ export default function PersistentDrawer() {
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
+          <ListItem disablePadding sx={{ display: 'block' }}>
+            <StyledNavLink to="/profile">
+              <ListItemButton
+                sx={[{
+                  minHeight: 48,
+                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
+                },
+                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+                ]} >
+                <ListItemIcon
+                  sx={[{
+                    minWidth: 0,
+                    justifyContent: 'center',
+                  },
+                  open ? { mr: 3, } : { mr: 'auto', },]} >
+                  <PersonIcon sx={{fontSize:'18px'}}/>
+                </ListItemIcon>
+                {/* <ListItemText
+                  primary="Profile"
+                  sx={[open ? { opacity: 1, }
+                    : { opacity: 0, },
+                  ]} /> */}
+                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
+                    : { opacity: 0,display:'none' },
+                  ]}>Profile</Typography>
+              </ListItemButton>
+            </StyledNavLink>
+          </ListItem>
+
           <ListItem onClick={()=>{localStorage.removeItem('token')}} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
               <ListItemButton
@@ -422,9 +423,9 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           </ListItem>
         </List>
-        <Divider />
+
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', minHeight: '100vw', overflow: 'hidden' }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: 'rgb(242, 244, 247)', overflow: 'hidden' }}>
         <DrawerHeader />
         <Outlet />
         {/* <Footer /> */}
