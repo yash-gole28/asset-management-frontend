@@ -339,34 +339,33 @@ const CategoryTable = () => {
           <Table size='small' aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">S.No</TableCell>
-                {/* <TableCell sx={{ fontWeight: 'bold' }} align="center">ID</TableCell> */}
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">Name</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">Created At</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">Active</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">Created By</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="center">Action</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Sr. No</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Name</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Created At</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Active</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Created By</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }} align="left">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {categories.map((category, index) => (
                 <TableRow key={category._id}>
-                  <TableCell align="center">{index + 1 + page * rowsPerPage}</TableCell>
-                  {/* <TableCell align="center">{category._id}</TableCell> */}
-                  <TableCell align="center">{category.category}</TableCell>
-                  <TableCell align="center">{new Date(category.createdAt).toLocaleDateString()}</TableCell>
-                  <TableCell align="center">
+                  <TableCell align="left">{index + 1 + page * rowsPerPage}</TableCell>
+                  <TableCell align="left">{category.category}</TableCell>
+                  <TableCell align="left">{new Date(category.createdAt).toLocaleDateString()}</TableCell>
+                  <TableCell align="left">
                     {category.active ? (
-                      <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', margin: 'auto', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography>
+                      <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography>
                     ) : (
-                      <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', margin: 'auto', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>
+                      <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>
                     )}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="left">
                     {category.createdBy.firstName} {category.createdBy.lastName}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="left">
                     <Switch
+                    size='small'
                       checked={category.active}
                       onChange={() => changeActive(category._id, category.active)}
                       inputProps={{ 'aria-label': 'controlled' }}

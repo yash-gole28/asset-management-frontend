@@ -2,6 +2,7 @@ import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePa
 import React, { useEffect, useState } from 'react';
 import { apiList } from '../apiList';
 import { API } from '../network';
+import Switch from '@mui/material/Switch';
 
 interface User {
     _id: string;
@@ -70,8 +71,8 @@ const UsersTable = () => {
             boxShadow: '0 0 3px rgb(198, 200, 205)',
             marginBottom: "10px",
             position: "relative",
-            padding:{xs:'0px',sm:'0px 10px',md:'0px 15px'},
-            
+            padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' },
+
         }}>
             {loading && (
                 <CircularProgress
@@ -86,31 +87,35 @@ const UsersTable = () => {
                 />
             )}
 
-            <Table sx={{ width: '100%'}} size='small' aria-label="simple table">
+            <Table sx={{ width: '100%' }} size='small' aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Serial No</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Employee Name</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Email</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Role</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Active</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color:'#495057' }} align="left">Change Active</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Sr. No</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Employee Name</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Email</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Role</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Active</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Change Active</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {userData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
                         <TableRow key={v._id}>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{index + 1 + page * rowsPerPage}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.email}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.role}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.active ? 
-                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',padding:'1px 10px',borderRadius:'5px'}}>Yes</Typography> : 
-                            <Typography sx={{fontSize:'13px',backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',padding:'1px 10px',borderRadius:'5px'}}>No</Typography>}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{index + 1 + page * rowsPerPage}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.email}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.role}</TableCell>
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.active ?
+                                <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography> :
+                                <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap' }} align="left">
-                                <Button size='small'sx={{textTransform:'capitalize'}} onClick={() => changeActive(v._id)} disabled={loading}>
-                                    Change
-                                </Button>
+
+                                <Switch
+                                    size='small'
+                                    checked={v.active}
+                                    onChange={() => changeActive(v._id)}
+                                    inputProps={{ 'aria-label': 'controlled' }}
+                                />
                             </TableCell>
                         </TableRow>
                     ))}
