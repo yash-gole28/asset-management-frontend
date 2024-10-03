@@ -13,8 +13,10 @@ const apiList = {
     assetRequests: "/asset/get-asset-requests",
     updateRequest: "/asset/update-request",
     getAllCategory: '/asset/get-allcategory',
-    changeActiveUser:'/auth/change-active-user'
-   
+    changeActiveUser:'/auth/change-active-user',
+   changeActiveCategory:'/asset/change-active-category'
+       getProfileData:'/auth/get-profile-details',
+    userAssets: '/asset/get-user-assets'
 };
 
 export { apiList };

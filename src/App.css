@@ -38,3 +38,6 @@
   font-weight: bold;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.css-1ahxkcz-MuiPaper-root-MuiTableContainer-root{
+  max-width: 96% !important;
+}

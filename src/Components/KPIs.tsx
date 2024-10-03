@@ -67,7 +67,7 @@ const KPIs = () => {
                     <Item sx={{ position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
-                                <Typography variant='h6' sx={{ fontSize: "15px" }}>
+                                <Typography variant='h6' sx={{ fontSize: "15px" ,zIndex:"100"}}>
                                     Allocated Assets
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '22px', sm: '25px', md: '35px' } }}>
@@ -83,7 +83,7 @@ const KPIs = () => {
                     <Item sx={{  position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
-                                <Typography variant='h6' sx={{ fontSize: "15px", textAlign: 'start' }}>
+                                <Typography variant='h6' sx={{ fontSize: "15px", textAlign: 'start',zIndex:"100" }}>
                                     Assets under Maintenance
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '22px', sm: '25px', md: '35px' } }}>
@@ -98,7 +98,7 @@ const KPIs = () => {
                     <Item sx={{  position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
-                                <Typography variant='h6' sx={{ fontSize: "15px" }}>
+                                <Typography variant='h6' sx={{ fontSize: "15px",zIndex:"100" }}>
                                     Available Assets
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '22px', sm: '25px', md: '35px' } }}>

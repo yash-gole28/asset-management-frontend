@@ -34,7 +34,7 @@ const AddCategory = () => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add Category
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
