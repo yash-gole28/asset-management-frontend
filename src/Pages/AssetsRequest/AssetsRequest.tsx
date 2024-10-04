@@ -125,7 +125,7 @@ const AssetsRequest = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={{ xs: '0px', sm: '0px', md: '15px' }}>
             <Grid size={{ xs: 12, sm: 3, md: 3 }}>
-              <Typography sx={{ margin: "10px", fontWeight: 'bold', fontSize: '1.1rem', textWrap: 'nowrap',color:'#495057' }}>Asset Requests</Typography>
+              <Typography sx={{fontWeight:'600'}}>Asset Requests</Typography>
             </Grid>
             <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' } }} size={{ xs: 12, sm: 6, md: 7 }}>
               <TextField

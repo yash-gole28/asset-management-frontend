@@ -87,7 +87,7 @@ const Profile = () => {
                     </Grid>
                     <Grid sx={{ backgroundColor: '#fff', padding: '15px' }} size={{ xs: 12, sm: 12, md: 12 }}>
                         <Box>
-                            <Typography sx={{ fontWeight: '600', mb: '15px' }} variant='h6'>My Assets</Typography>
+                            <Typography sx={{fontWeight:'600'}}>My Assets</Typography>
 
                         </Box>
                         <TableContainer sx={{
@@ -101,11 +101,11 @@ const Profile = () => {
                             <Table size='small' aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell sx={{ fontWeight: '600' }} align='center'>Asset</TableCell>
-                                        <TableCell sx={{ fontWeight: '600' }} align='center'>Category</TableCell>
-                                        <TableCell sx={{ fontWeight: '600' }} align="center">Modal Number</TableCell>
-                                        <TableCell sx={{ fontWeight: '600' }} align="center">Service tag</TableCell>
-                                        <TableCell sx={{ fontWeight: '600' }} align="center">Assigned Date</TableCell>
+                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align='center'>Asset</TableCell>
+                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align='center'>Category</TableCell>
+                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Modal Number</TableCell>
+                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Service tag</TableCell>
+                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Assigned Date</TableCell>
 
                                     </TableRow>
                                 </TableHead>

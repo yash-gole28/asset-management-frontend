@@ -280,11 +280,11 @@ const CategoryTable = () => {
     setPage(0);
   };
 
-  const changeActive = async (id: string, currentStatus: boolean) => {
+  const changeActive = async (id: string) => {
     setLoading(true);
     try {
       const url = apiList.changeActiveCategory;
-      const response = await API.put(url, { id, active: !currentStatus });
+      const response = await API.put(url, { id});
       if (response?.data.success) {
         fetchCategories();
       }
@@ -321,7 +321,7 @@ const CategoryTable = () => {
 
         <Grid container spacing={2} sx={{ padding: '15px' }}>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant="h6">Category List</Typography>
+            <Typography sx={{fontWeight:'600'}}>Category List</Typography>
             <AddCategory />
           </Grid>
         </Grid>
@@ -334,17 +334,17 @@ const CategoryTable = () => {
 
         <Box sx={{
           border: '1px solid #dfe0e2', borderRadius: '5px', boxShadow: '0 0 3px rgb(198, 200, 205)',
-          margin: '0px 15px', padding: '15px', overflow: 'auto'
+          margin: '0px 15px', padding: '0px 15px', overflow: 'auto'
         }}>
           <Table size='small' aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Sr. No</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Name</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Created At</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Active</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Created By</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }} align="left">Action</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Sr. No</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Name</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created At</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Active</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created By</TableCell>
+                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -367,7 +367,7 @@ const CategoryTable = () => {
                     <Switch
                     size='small'
                       checked={category.active}
-                      onChange={() => changeActive(category._id, category.active)}
+                      onChange={() => changeActive(category._id)}
                       inputProps={{ 'aria-label': 'controlled' }}
                     />
                   </TableCell>

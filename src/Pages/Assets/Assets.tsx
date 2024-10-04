@@ -58,7 +58,7 @@ const Assets = () => {
     <Box sx={{margin:{xs:'10px',sm:'15px',md:'15px'},backgroundColor:'#fff',p:'15px',borderRadius:'4px',boxShadow:'0 0 3px rgb(198, 200, 205)'}}>
      
       <Box sx={{ display: "flex", alignItems: 'end', justifyContent: 'space-between', marginBottom: '10px' }}>
-        <Typography variant='h5' >Assets</Typography>
+        <Typography sx={{fontWeight:'600'}} >Assets</Typography>
         <Button onClick={handleOpen} variant="outlined" size='small' sx={{ fontSize:{xs:'12px',sm:'12px',md:'14px'}, color: 'white', background: "rgb(108,117,125)",textTransform:'capitalize' }}> Add Asset</Button>
         <Modal
           open={open}
