@@ -50,6 +50,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             console.log(response.data.user.role)
             setValue(response.data.user._id)
             setType(response.data.user.role)
+            setUserName(`${response.data.user.firstName} ${response.data.user.lastName}`)
           }else{
             toast.error('You are not an admin')
             router('/')
@@ -75,6 +76,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             console.log(response.data.user.role)
             setValue(response.data.user._id)
             setType(response.data.user.role)
+            setUserName(`${response.data.user.firstName} ${response.data.user.lastName}`)
           }else{
             toast.error('You are not allowed')
             router('/')

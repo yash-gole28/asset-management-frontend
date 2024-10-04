@@ -132,7 +132,7 @@ const AssetsRequest = () => {
                 variant="standard"
                 placeholder="Search Employee"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                sx={{ marginBottom: '10px', marginTop: "8px", width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px' }}
+                sx={{ width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px' }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='start'>
@@ -182,7 +182,7 @@ const AssetsRequest = () => {
       }}>
         
         <Table size='small' aria-label="simple table">
-          <TableHead sx={{ fontWeight: '500', backgroundColor: '' }}>
+          <TableHead sx={{ fontWeight: '500' }}>
             <TableRow>
               <TableCell sx={{ fontWeight: '600' ,color:'#495057'}} align="left">Employee Name</TableCell>
               <TableCell sx={{ fontWeight: '600' ,color:'#495057' }} align="left">Assets Name</TableCell>
@@ -207,11 +207,11 @@ const AssetsRequest = () => {
                 </TableCell>
                 {type === 'admin' &&   <TableCell align="center">
                   <Box sx={{ display: 'flex', justifyContent: 'start' }}>
-                    <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 , backgroundColor:'' }}>
-                      <DoneIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px',backgroundColor:'#7EBF7E',borderRadius:'20%'}} />
+                    <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                      <DoneIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px',backgroundColor:'#7EBF7E',borderRadius:'20%',width:'fit-content'}} />
                     </Button>
                     <Button onClick={() => handleRequestAction(v._id, 'rejected', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
-                      <CloseIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px' ,backgroundColor:'#FF7E7E',borderRadius:'20%'}} />
+                      <CloseIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px' ,backgroundColor:'#FF7E7E',borderRadius:'20%',width:'fit-content'}} />
                     </Button>
                   </Box>
                 </TableCell>}
