@@ -6,6 +6,7 @@ const apiList = {
     getAllActiveUsers: "/auth/all-active-users",
     registerAsset: "/asset/register-asset",
     getCategories: "/asset/get-categories",
+    getActiveCategories:"/asset/all-active-category",
     getAssets: "/asset/get-assets",
     getAssetsByCategoryName: "/asset/get-assets-by-category",
     createRequest: "/asset/add-request",

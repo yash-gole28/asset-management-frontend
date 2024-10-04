@@ -119,10 +119,11 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
         >
           {({ touched, errors }) => (
             <Form>
-              <Typography>Name</Typography>
+              {/* <Typography>Name</Typography> */}
               <Field
                 as={TextField}
                 name="name"
+                label="Name"
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -131,15 +132,15 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 helperText={<ErrorMessage name="name" />}
               />
 
-              <Typography>
+              {/* <Typography>
                 Category
-              </Typography>
+              </Typography> */}
               <Field
                 as={TextField}
                 name="type"
                 select
 
-                placeholder={value}
+                label="category"
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -156,11 +157,11 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 ))}
               </Field>
 
-              <Typography>Company name</Typography>
+              {/* <Typography>Company name</Typography> */}
               <Field
                 as={TextField}
                 name="companyName"
-
+                label="Company Name"
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -169,12 +170,13 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 helperText={<ErrorMessage name="companyName" />}
               />
 
-              <Typography>
+              {/* <Typography>
                 Model number
-              </Typography>
+              </Typography> */}
               <Field
                 as={TextField}
                 name="modelNumber"
+                label="ModelNumber"
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -182,27 +184,41 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 error={touched.modelNumber && Boolean(errors.modelNumber)}
                 helperText={<ErrorMessage name="modelNumber" />}
               />
+              {/* <Field
+                  as={TextField}
+                  size='small'
+                  name="modelNumber"
+                  label="Model Number"
+                  variant="outlined"
+                  fullWidth
+                  error={touched.modelNumber && Boolean(errors.modelNumber)}
+                  helperText={touched.modelNumber && errors.modelNumber}
+                /> */}
 
-              <Typography>
+
+
+              {/* <Typography>
                 Service tag
-              </Typography>
+              </Typography> */}
               <Field
                 as={TextField}
                 name="serviceTag"
                 fullWidth
+                label="Service Tag"
                 variant="outlined"
                 size="small"
                 sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}
                 error={touched.serviceTag && Boolean(errors.serviceTag)}
                 helperText={<ErrorMessage name="serviceTag" />}
               />
-              <Typography>
+              {/* <Typography>
                 Description
-              </Typography>
+              </Typography> */}
               <Field
                 as={TextField}
                 name="description"
                 fullWidth
+                label="Description"
                 variant="outlined"
                 size="small"
                 sx={{ marginBottom: 2, backgroundColor: "white", borderRadius: 1 }}

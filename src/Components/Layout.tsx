@@ -206,7 +206,7 @@ export default function PersistentDrawer() {
           </IconButton>
         </DrawerHeader>
         {/* <Divider /> */}
-        <List sx={[open ? {padding:'1rem'} :{ padding:'0rem'} ]}>
+        <List sx={[open ? {padding:{xs:'0rem',sm:'0rem',md:'1rem'}} :{ padding:'0rem'} ]}>
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink className='active-tab' to="/">
               <ListItemButton
@@ -230,8 +230,8 @@ export default function PersistentDrawer() {
                 ]}>Home</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>
                 <Divider/>
+          </ListItem>
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
@@ -256,8 +256,8 @@ export default function PersistentDrawer() {
                 ]}>Asset Requests</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>}
           <Divider/>
+          </ListItem>}
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets">
               <ListItemButton
@@ -283,8 +283,8 @@ export default function PersistentDrawer() {
                 ]}>Assets</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>}
           <Divider/>
+          </ListItem>}
           {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/register">
               <ListItemButton
@@ -310,8 +310,8 @@ export default function PersistentDrawer() {
                 ]}>Users</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>}
           <Divider/>
+          </ListItem>}
           {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/category">
               <ListItemButton
@@ -337,8 +337,8 @@ export default function PersistentDrawer() {
                 ]}>Categories</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>}
           <Divider/>
+          </ListItem>}
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/setting">
               <ListItemButton
@@ -358,17 +358,14 @@ export default function PersistentDrawer() {
                   ]}  >
                   <SettingsIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
-                {/* <ListItemText
-                  primary="Settings"
-                  sx={[open ? { opacity: 1, } : { opacity: 0, },
-                  ]} /> */}
+             
                 <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
                   : { opacity: 0, display: 'none' },
                 ]}>Settings</Typography>
               </ListItemButton>
             </StyledNavLink>
-          </ListItem>
         <Divider/>
+          </ListItem>
           <ListItem onClick={() => { localStorage.removeItem('token') }} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
               <ListItemButton
@@ -389,10 +386,7 @@ export default function PersistentDrawer() {
                   ]}  >
                   <LogoutIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
-                {/* <ListItemText
-                  primary="Logout"
-                  sx={[open ? { opacity: 1, } : { opacity: 0, },
-                  ]} /> */}
+             
                 <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
                   : { opacity: 0, display: 'none' },
                 ]}>Logout</Typography>

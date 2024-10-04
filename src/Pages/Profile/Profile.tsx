@@ -121,7 +121,7 @@ const Profile = () => {
                                             <TableCell align="center">{asset.asset_id.type.category}</TableCell>
                                             <TableCell align="center">{asset.asset_id.model_number}</TableCell>
                                             <TableCell align="center">{asset.asset_id.service_tag}</TableCell>
-                                            <TableCell align="center">{dayjs(asset.updatedAt).format('MMMM D, YYYY')}</TableCell>
+                                            <TableCell align="center">{dayjs(asset.updatedAt).format('MM/D/YYYY')}</TableCell>
 
 
                                         </TableRow>

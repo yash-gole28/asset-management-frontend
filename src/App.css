@@ -89,3 +89,7 @@ html{
   width: fit-content;
   height: 2rem;
 }
+
+.css-15stavw-MuiInputBase-input-MuiInput-input{
+  font-size: 12px !important;
+}

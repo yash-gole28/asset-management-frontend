@@ -130,23 +130,19 @@ const AssetsRequest = () => {
             <Box sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'start', md: 'end' },flexDirection:{xs:'column',sm:'column',md:'row'} }}>
               <TextField
                 variant="standard"
+                size='small'
                 placeholder="Search Employee"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                sx={{mr:'1rem', width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px' }}
+                sx={{mr:'1rem', width: '30%', minWidth: '200px', backgroundColor: '#ffff', border: '1px solid #cfcece', padding: '2px 10px',pt:'5px', borderRadius: '4px'}}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='start'>
                       <SearchIcon />
                     </InputAdornment>
                   ),
-                  sx: {
-                    '&::placeholder': {
-                      fontSize: '5px', // Adjust font size for placeholder
-                    }
-                  }
                 }}
               />
-              <Button onClick={handleOpen} size='small' sx={{ height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize',width:'fit-content' }} variant="outlined">Add</Button>
+              <Button onClick={handleOpen} size='small' sx={{ height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize',width:'fit-content' }} variant="outlined">Add Request</Button>
             </Box>
            
           </Box>
