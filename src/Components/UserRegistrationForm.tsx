@@ -171,8 +171,25 @@ const UserRegistrationForm: React.FC = () => {
                 </Field>
               </Grid>
               <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
-                <InputLabel id="department-label">Department</InputLabel>
-                <Select
+                {/* <InputLabel id="department-label">Department</InputLabel> */}
+                <Field
+                  as={TextField}
+                  size='small'
+                  name="department"
+                  label="department"
+                  select
+                  variant="outlined"
+                  fullWidth
+                  error={touched.department && Boolean(errors.department)}
+                  helperText={touched.department && errors.department}
+                >
+                   {departments.map((dept) => (
+                    <MenuItem key={dept} value={dept}>
+                      {dept}
+                    </MenuItem>
+                  ))}
+                </Field>
+                {/* <Select
                   labelId="department-label"
                   size='small'
                   name="department"
@@ -188,10 +205,7 @@ const UserRegistrationForm: React.FC = () => {
                       {dept}
                     </MenuItem>
                   ))}
-                </Select>
-                {touched.department && errors.department && (
-                  <Typography color="error" variant="caption">{errors.department}</Typography>
-                )}
+                </Select> */}
               </Grid>
               <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{ xs: 6, sm: 6, md: 10 }}>
                 <Button type="submit" variant="contained" color="primary" sx={{ mb: '1rem' }} fullWidth>

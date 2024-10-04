@@ -95,7 +95,7 @@ const UsersTable = () => {
                         <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Email</TableCell>
                         <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Role</TableCell>
                         <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Active</TableCell>
-                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Change Active</TableCell>
+                        <TableCell sx={{ fontWeight: '600', textWrap: 'nowrap', color: '#495057' }} align="left">Action</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -105,44 +105,39 @@ const UsersTable = () => {
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.email}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.role}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="center">{v.active ?
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.active ?
                                 <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography> :
                                 <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap' }} align="left">
 
-                                {/* <Switch
+
+                                <Switch
                                     size='small'
                                     checked={v.active}
                                     onChange={() => changeActive(v._id)}
-                                    inputProps={{ 'aria-label': 'controlled' }}
-                                /> */}
-                                 <Switch
-                      size='small'
-                      checked={v.active}
-                      onChange={() => changeActive(v._id)}
-                      inputProps={{ 'aria-label': 'ant design' }}
-                      sx={{
-                        '&.MuiSwitch-root': {
-                          // Custom styles for iOS switch
-                          width:'35px',
-                          height:'20px',
-                          padding: 0,
-                          borderRadius: 26 / 2,
-                          
-                        },
-                        '& .MuiSwitch-thumb': {
-                          width: "11px",
-                          height: "11px",
-                          backgroundColor: v.active ? '#4caf50' : '#f44336',
-                        },
-                        '& .MuiSwitch-track': {
-                          backgroundColor: v.active ? '#a5d6a7' : '#ef9a9a', 
-                        },
-                        '&.Mui-checked': {
-                          transform: 'translateX(18px)', 
-                        },
-                      }}
-                    />
+                                    inputProps={{ 'aria-label': 'ant design' }}
+                                    sx={{
+                                        '&.MuiSwitch-root': {
+                                            // Custom styles for iOS switch
+                                            width: '35px',
+                                            height: '20px',
+                                            padding: 0,
+                                            borderRadius: 26 / 2,
+
+                                        },
+                                        '& .MuiSwitch-thumb': {
+                                            width: "11px",
+                                            height: "11px",
+                                            backgroundColor: v.active ? '#4caf50' : '#f44336',
+                                        },
+                                        '& .MuiSwitch-track': {
+                                            backgroundColor: v.active ? '#a5d6a7' : '#ef9a9a',
+                                        },
+                                        '&.Mui-checked': {
+                                            transform: 'translateX(18px)',
+                                        },
+                                    }}
+                                />
                             </TableCell>
                         </TableRow>
                     ))}

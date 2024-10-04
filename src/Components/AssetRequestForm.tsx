@@ -37,9 +37,10 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
                 setEmployees(userResponse.data.users);
             }
 
-            const categoryResponse = await API.get(apiList.getCategories);
+            const categoryResponse = await API.get(apiList.getActiveCategories);
             if (categoryResponse.data.success) {
-                setCategories(categoryResponse.data.categories);
+                console.log(categoryResponse.data)
+                setCategories(categoryResponse.data.category);
             }
         } catch (error) {
             console.error(error);
@@ -147,7 +148,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
                                 <MenuItem value="">
                                     <em>Select Asset Category</em>
                                 </MenuItem>
-                                {categories.map((category) => (
+                                {categories?.map((category) => (
                                     <MenuItem key={category._id} value={category._id}>
                                         {category.category} {/* Assuming the category has a name property */}
                                     </MenuItem>
