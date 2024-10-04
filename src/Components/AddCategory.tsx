@@ -34,8 +34,8 @@ const AddCategory = () => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" sx={{backgroundColor:'rgb(108,117,125)'}} onClick={handleClickOpen}>
-        Add Category
+      <Button variant="contained" color="primary" sx={{backgroundColor:'rgb(108,117,125)',fontSize:'12px'}} onClick={handleClickOpen}>
+        Add
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>Add Category</DialogTitle>

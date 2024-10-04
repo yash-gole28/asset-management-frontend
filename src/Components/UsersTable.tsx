@@ -110,12 +110,39 @@ const UsersTable = () => {
                                 <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap' }} align="left">
 
-                                <Switch
+                                {/* <Switch
                                     size='small'
                                     checked={v.active}
                                     onChange={() => changeActive(v._id)}
                                     inputProps={{ 'aria-label': 'controlled' }}
-                                />
+                                /> */}
+                                 <Switch
+                      size='small'
+                      checked={v.active}
+                      onChange={() => changeActive(v._id)}
+                      inputProps={{ 'aria-label': 'ant design' }}
+                      sx={{
+                        '&.MuiSwitch-root': {
+                          // Custom styles for iOS switch
+                          width:'35px',
+                          height:'20px',
+                          padding: 0,
+                          borderRadius: 26 / 2,
+                          
+                        },
+                        '& .MuiSwitch-thumb': {
+                          width: "11px",
+                          height: "11px",
+                          backgroundColor: v.active ? '#4caf50' : '#f44336',
+                        },
+                        '& .MuiSwitch-track': {
+                          backgroundColor: v.active ? '#a5d6a7' : '#ef9a9a', 
+                        },
+                        '&.Mui-checked': {
+                          transform: 'translateX(18px)', 
+                        },
+                      }}
+                    />
                             </TableCell>
                         </TableRow>
                     ))}

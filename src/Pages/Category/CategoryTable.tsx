@@ -295,13 +295,14 @@ const CategoryTable = () => {
             }}
           />
         )}
+          
+          <Grid container spacing={2} sx={{ padding: '15px' }}>
+          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'end'}}>
+             <Typography sx={{fontWeight:'600'}}>Category List</Typography>
+             <AddCategory />
+           </Grid>
+         </Grid>
 
-        <Grid container spacing={2} sx={{ padding: '15px' }}>
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography sx={{ fontWeight: '600' }}>Category List</Typography>
-            <AddCategory />
-          </Grid>
-        </Grid>
 
         {error && (
           <Typography variant="body1" color="error" sx={{ padding: '16px', textAlign: 'center' }}>
