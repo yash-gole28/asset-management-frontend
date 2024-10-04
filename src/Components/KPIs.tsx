@@ -48,7 +48,7 @@ const KPIs = () => {
         <Box>
             <Grid container spacing={{ xs: '10px', sm: "15px", md: '15px' }}>
                 <Grid size={{ xs: 6, sm: 6, md: 3 }}>
-                    <Item sx={{ backgroundColor: '', position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
+                    <Item sx={{ backgroundColor: '', position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
                                 <Typography variant='h6' sx={{ fontSize: "15px" }}>
@@ -64,7 +64,7 @@ const KPIs = () => {
                     </Item>
                 </Grid>
                 <Grid size={{ xs: 6, sm: 6, md: 3 }}>
-                    <Item sx={{ position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
+                    <Item sx={{ position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
                                 <Typography variant='h6' sx={{ fontSize: "15px" ,zIndex:"100"}}>
@@ -80,7 +80,7 @@ const KPIs = () => {
                     </Item>
                 </Grid>
                 <Grid size={{ xs: 6, sm: 6, md: 3 }}>
-                    <Item sx={{  position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
+                    <Item sx={{  position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
                                 <Typography variant='h6' sx={{ fontSize: "15px", textAlign: 'start',zIndex:"100" }}>
@@ -95,7 +95,7 @@ const KPIs = () => {
                     </Item>
                 </Grid>
                 <Grid size={{ xs: 6, sm: 6, md: 3 }}>
-                    <Item sx={{  position: 'relative', overflow: 'hidden', boxShadow: 1 }}>
+                    <Item sx={{  position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
                                 <Typography variant='h6' sx={{ fontSize: "15px",zIndex:"100" }}>

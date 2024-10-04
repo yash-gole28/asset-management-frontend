@@ -187,9 +187,12 @@ export default function PersistentDrawer() {
             <NavLink to="/profile" className='profile-link'>
               <PersonIcon sx={{ backgroundColor: 'rgb(242, 244, 247)', padding: '.4rem', mr: '.5rem', borderRadius: '50%', fontSize: '35px', color: 'rgb(160, 158, 158)' }} />
             </NavLink>
-            <Typography sx={{ fontWeight: '600', color: '#495057' }}>
+           <Box sx={{display:"flex", flexDirection:"column",justifyContent:"center",height:"100%"}}>
+           <Typography sx={{ fontWeight: '600', color: '#495057' }}>
                 {username}
               </Typography>
+                <Typography sx={{fontSize:'10px'}}>{type}</Typography>
+           </Box>
           </Box>
         </Toolbar>
       </AppBar>

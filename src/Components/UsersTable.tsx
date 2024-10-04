@@ -105,7 +105,7 @@ const UsersTable = () => {
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.email}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.role}</TableCell>
-                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.active ?
+                            <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="center">{v.active ?
                                 <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography> :
                                 <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>}</TableCell>
                             <TableCell sx={{ textWrap: 'nowrap' }} align="left">
