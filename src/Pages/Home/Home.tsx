@@ -51,7 +51,7 @@ const Home = () => {
 
         <Box sx={{ flexGrow: 1 ,margin:{xs:'10px',sm:'15px',md:'15px'}}}>
           <Grid container spacing={{xs:'10px',sm:'15px',md:'15px'}}>
-            <Grid size={12}>
+            {/* <Grid size={12}>
               <Typography sx={{ margin: "20px 0px", fontWeight: 'bold', fontSize: '1.2rem' }}>Categories wise assets Data</Typography>
               <TableContainer sx={{
                 borderRadius: "5px",
@@ -94,7 +94,7 @@ const Home = () => {
                   onRowsPerPageChange={handleChangeRowsPerPage}
                 />
               </TableContainer>
-            </Grid>
+            </Grid> */}
           </Grid>
 
         </Box>

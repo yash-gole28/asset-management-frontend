@@ -138,12 +138,12 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 export default function PersistentDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
- 
+
   const context = React.useContext(MyContext);
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
   }
-  const {type} = context;
+  const { type, username } = context;
   const isNotEmployee = type !== 'employee' || type === undefined
   const isAdmin = type === 'admin'
   const handleDrawerOpen = () => {
@@ -161,28 +161,43 @@ export default function PersistentDrawer() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={[
-              {
-                marginRight: 5,
-              },
-              open && { display: 'none' },
-            ]}
-          >
-            <MenuIcon sx={{fontSize:'18px'}}/>
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            <img className='logo' src={l} alt="" />
-          </Typography>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={[
+                {
+                  marginRight: 5,
+                },
+                open && { display: 'none' },
+              ]}
+            >
+              <MenuIcon sx={{ fontSize: '18px' }} />
+            </IconButton>
+            <Box>
+              <Typography sx={{ ...(open ? { display: 'none' } : { diaplay: 'block' }) }} noWrap component="div">
+                <img className='logo' src={l} alt="" />
+              </Typography>
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <NavLink to="/profile" className='profile-link'>
+              <PersonIcon sx={{ backgroundColor: 'rgb(242, 244, 247)', padding: '.4rem', mr: '.5rem', borderRadius: '50%', fontSize: '35px', color: 'rgb(160, 158, 158)' }} />
+            </NavLink>
+            <Typography sx={{ fontWeight: '600', color: '#495057' }}>
+                {username}
+              </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        <DrawerHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography sx={{ ...(open ? { display: 'block' } : { diaplay: 'none' }) }} noWrap component="div">
+            <img className='logo' src={l} alt="" />
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
@@ -204,20 +219,20 @@ export default function PersistentDrawer() {
                     justifyContent: 'center',
                   },
                   open ? { mr: 3, } : { mr: 'auto', },]} >
-                  <HomeIcon sx={{fontSize:'18px'}}/>
+                  <HomeIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Home"
                   sx={[open ? { opacity: 1 }
                     : { opacity: 0, },
                   ]} /> */}
-                  <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Home</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Home</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
-         
+
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets-request">
               <ListItemButton
@@ -234,20 +249,20 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}>
-                  <NoteAddIcon sx={{fontSize:'18px'}}/>
+                  <NoteAddIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Assets Requests"
                   sx={[
                     open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Asset Requests</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Asset Requests</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}
-         {isNotEmployee &&  <ListItem disablePadding sx={{ display: 'block' }}>
+          {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets">
               <ListItemButton
                 sx={[{
@@ -264,19 +279,19 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <InventoryIcon sx={{fontSize:'18px'}}/>
+                  <InventoryIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Assets"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Assets</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Assets</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}
-          {isAdmin &&  <ListItem disablePadding sx={{ display: 'block' }}>
+          {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/register">
               <ListItemButton
                 sx={[{
@@ -293,19 +308,19 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <PersonAddIcon sx={{fontSize:'18px'}}/>
+                  <PersonAddIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Create User"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Users</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Users</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}
-          {isAdmin &&  <ListItem disablePadding sx={{ display: 'block' }}>
+          {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/category">
               <ListItemButton
                 sx={[{
@@ -322,15 +337,15 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <CategoryIcon sx={{fontSize:'18px'}}/>
+                  <CategoryIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Create User"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Categories</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Categories</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>}
@@ -351,51 +366,24 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <SettingsIcon sx={{fontSize:'18px'}}/>
+                  <SettingsIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Settings"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Settings</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Settings</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>
-          <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/profile">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-                ]} >
-                <ListItemIcon
-                  sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
-                  },
-                  open ? { mr: 3, } : { mr: 'auto', },]} >
-                  <PersonIcon sx={{fontSize:'18px'}}/>
-                </ListItemIcon>
-                {/* <ListItemText
-                  primary="Profile"
-                  sx={[open ? { opacity: 1, }
-                    : { opacity: 0, },
-                  ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Profile</Typography>
-              </ListItemButton>
-            </StyledNavLink>
-          </ListItem>
+        
 
-          <ListItem onClick={()=>{localStorage.removeItem('token')}} disablePadding sx={{ display: 'block' }}>
+          <ListItem onClick={() => { localStorage.removeItem('token') }} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
               <ListItemButton
-               
+
                 sx={[{
                   minHeight: 48,
                   px: { xs: 1.5, sm: 2.5, md: 2.5 },
@@ -410,15 +398,15 @@ export default function PersistentDrawer() {
                   },
                   open ? { mr: 3, } : { mr: 'auto', },
                   ]}  >
-                  <LogoutIcon sx={{fontSize:'18px'}}/>
+                  <LogoutIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
                 {/* <ListItemText
                   primary="Logout"
                   sx={[open ? { opacity: 1, } : { opacity: 0, },
                   ]} /> */}
-                   <Typography sx={[open ? { opacity: 1 ,fontWeight:'600' , fontSize:'14px' }
-                    : { opacity: 0,display:'none' },
-                  ]}>Logout</Typography>
+                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                  : { opacity: 0, display: 'none' },
+                ]}>Logout</Typography>
               </ListItemButton>
             </StyledNavLink>
           </ListItem>

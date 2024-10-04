@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 interface MyContextType {
     value: string;
     type: string;
+    username:string;
     setValue: (newValue: string) => void;
     setType: (newValue: string) => void;
     getCurrentUser: () => Promise<void>;
     getAdmin: () => Promise<void>;
     getitRole:() => Promise<void>;
+    setUserName:(newValue: string) => void;
 }
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
@@ -19,6 +21,7 @@ const MyContext = createContext<MyContextType | undefined>(undefined);
 const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [value, setValue] = useState<string>('');
     const [type , setType] = useState<string>('')
+    const [username , setUserName] = useState<string>('')
     const router = useNavigate()
     const getCurrentUser =async()=>{
       try{
@@ -27,6 +30,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         if(response.data.success){
           setValue(response.data.user._id)
           setType(response.data.user.role)
+          setUserName(`${response.data.user.firstName} ${response.data.user.lastName}`)
         }else{
           toast.error(response.data.message)
         }
@@ -89,7 +93,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
 
     return (
-        <MyContext.Provider value={{ value, setValue ,getCurrentUser,setType,getAdmin , type, getitRole}}>
+        <MyContext.Provider value={{ value, setValue ,getCurrentUser,setType,getAdmin , type, getitRole , username , setUserName}}>
             {children}
         </MyContext.Provider>
     );

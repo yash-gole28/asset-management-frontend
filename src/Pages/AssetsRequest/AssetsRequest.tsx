@@ -123,7 +123,7 @@ const AssetsRequest = () => {
           />
         )}
         <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={{ xs: '0px', sm: '0px', md: '15px' }}>
+          <Grid container sx={{display:'flex',alignItems:'end'}} spacing={{ xs: '0px', sm: '0px', md: '15px' }}>
             <Grid size={{ xs: 12, sm: 3, md: 3 }}>
               <Typography sx={{fontWeight:'600'}}>Asset Requests</Typography>
             </Grid>
@@ -200,18 +200,18 @@ const AssetsRequest = () => {
                 <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.employee_Id.department}</TableCell>
                 <TableCell sx={{ textWrap: 'nowrap', color:'#495057' }} align="left">{v.asset_id.model_number}</TableCell>
                 <TableCell sx={{ textWrap: 'nowrap' }} align="left">
-                  {v.status === 'approved' && <Typography sx={{backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
-                  {v.status === 'pending' && <Typography sx={{backgroundColor:'rgb(252, 241, 223)',color:'rgb(247, 173, 54)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
-                  {v.status === 'rejected' && <Typography sx={{backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px'}}>{v.status}</Typography>}
+                  {v.status === 'approved' && <Typography sx={{backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px',textTransform:'capitalize'}}>{v.status}</Typography>}
+                  {v.status === 'pending' && <Typography sx={{backgroundColor:'rgb(252, 241, 223)',color:'rgb(247, 173, 54)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px',textTransform:'capitalize'}}>{v.status}</Typography>}
+                  {v.status === 'rejected' && <Typography sx={{backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',padding:'1px 8px',borderRadius:'5px',fontSize:'13px',textTransform:'capitalize'}}>{v.status}</Typography>}
                   {/* <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography> */}
                 </TableCell>
                 {type === 'admin' &&   <TableCell align="center">
                   <Box sx={{ display: 'flex', justifyContent: 'start' }}>
                     <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 , backgroundColor:'' }}>
-                      <DoneIcon sx={{ color: 'green', fontSize: '15px', minWidth: '0px' }} />
+                      <DoneIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px',backgroundColor:'#7EBF7E',borderRadius:'20%'}} />
                     </Button>
                     <Button onClick={() => handleRequestAction(v._id, 'rejected', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
-                      <CloseIcon sx={{ color: 'red', fontSize: '15px', minWidth: '0px' }} />
+                      <CloseIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px' ,backgroundColor:'#FF7E7E',borderRadius:'20%'}} />
                     </Button>
                   </Box>
                 </TableCell>}
