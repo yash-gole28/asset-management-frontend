@@ -56,3 +56,12 @@ html{
 .css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
   background-color: #a5d6a7 !important;
 }
+
+.css-1il536s-MuiButtonBase-root-MuiButton-root, .css-1elcrhq-MuiButtonBase-root-MuiButton-root, .css-ch5c8q-MuiButtonBase-root-MuiButton-root{
+  min-width: unset !important;
+}
+
+.css-ch5c8q-MuiButtonBase-root-MuiButton-root{
+  display: flex;
+  justify-content: unset !important;
+}
