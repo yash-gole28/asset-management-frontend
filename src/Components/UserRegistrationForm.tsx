@@ -76,7 +76,9 @@ const UserRegistrationForm: React.FC = () => {
       >
         {({ values, handleChange, handleBlur, errors, touched }) => (
           <Form>
-            <Grid sx={{ maxHeight: "500px", overflow: 'scroll' }} container spacing={2}>
+              <div className='scrollbar register'>
+            <Grid sx={{ maxHeight: "500px" }} container spacing={2}>
+
               <Grid sx={{ margin: 'auto',mt:'1rem', backgroundColor: 'white' }} size={10}>
                 <Field
                   as={TextField}
@@ -197,6 +199,7 @@ const UserRegistrationForm: React.FC = () => {
                 </Button>
               </Grid>
             </Grid>
+              </div>
           </Form>
         )}
       </Formik>

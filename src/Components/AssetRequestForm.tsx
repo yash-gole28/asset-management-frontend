@@ -107,6 +107,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
                             <Box>
                                 <Typography>Employee Name</Typography>
                                 <Select
+                                size='small'
                                     name="employee"
                                     fullWidth
                                     value={values.employee}
@@ -132,6 +133,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
 
                             <Typography sx={{ marginTop: 2 }}>Asset Category</Typography>
                             <Select
+                            size='small'
                                 name="assetCategory"
                                 fullWidth
                                 value={values.assetCategory}
@@ -157,6 +159,7 @@ const AssetRequestForm: React.FC<ModalProps> = ({popValue ,pop})  => {
 
                             <Typography sx={{ marginTop: 2 }}>Asset</Typography>
                             <Select
+                            size='small'
                                 name="asset"
                                 fullWidth
                                 value={values.asset}

@@ -123,16 +123,16 @@ const AssetsRequest = () => {
           />
         )}
         <Box sx={{ flexGrow: 1 }}>
-          <Grid container sx={{display:'flex',alignItems:'end'}} spacing={{ xs: '0px', sm: '0px', md: '15px' }}>
-            <Grid size={{ xs: 12, sm: 3, md: 3 }}>
+          <Box sx={{display:'flex',flexDirection:{xs:'column',sm:'column',md:'row'},justifyContent:{xs:'start',sm:'start',md:'space-between'},alignItems:{xs:'start',sm:'start',md:'end'}}}>
+            <Box >
               <Typography sx={{fontWeight:'600'}}>Asset Requests</Typography>
-            </Grid>
-            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' } }} size={{ xs: 12, sm: 6, md: 7 }}>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'start', md: 'end' },flexDirection:{xs:'column',sm:'column',md:'row'} }}>
               <TextField
                 variant="standard"
                 placeholder="Search Employee"
                 onChange={(e) => setSearchQuery(e.target.value)}
-                sx={{ width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px' }}
+                sx={{mr:'1rem', width: '30%', minWidth: '240px', backgroundColor: '#ffff', border: '1px solid #fff', padding: '2px 10px', borderRadius: '4px' }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='start'>
@@ -146,11 +146,10 @@ const AssetsRequest = () => {
                   }
                 }}
               />
-            </Grid>
-            <Grid sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'end', md: 'end' }, alignItems: 'center' }} size={{ xs: 12, sm: 3, md: 2 }}>
-              <Button onClick={handleOpen} size='small' sx={{ height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize' }} variant="outlined">Create Request</Button>
-            </Grid>
-          </Grid>
+              <Button onClick={handleOpen} size='small' sx={{ height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize',width:'fit-content' }} variant="outlined">Add</Button>
+            </Box>
+           
+          </Box>
         </Box>
 
         <Modal
