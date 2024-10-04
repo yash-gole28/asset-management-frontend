@@ -48,3 +48,11 @@ html{
 .css-1gzegn9-MuiTableCell-root {
   padding:5px 0px !important;
 }
+
+/* .css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
+  background-color: none !important;
+} */
+
+.css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
+  background-color: #a5d6a7 !important;
+}

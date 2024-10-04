@@ -1,16 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
 // import React, { useEffect, useState } from 'react';
 // import Switch from '@mui/material/Switch';
 // import {
@@ -27,7 +15,6 @@
 //   CircularProgress,
 //   Button,
 //   Box,
- 
 // } from '@mui/material';
 // import { apiList } from '../../apiList';
 // import { API } from '../../network';
@@ -89,7 +76,7 @@
 //     setLoading(true);
 //     try {
 //       const url = apiList.changeActiveCategory;
-//       const response = await API.put(url, { id });
+//       const response = await API.put(url, { id});
 //       if (response?.data.success) {
 //         fetchCategories();
 //       }
@@ -101,17 +88,14 @@
 //   };
 
 //   return (
-//     <Box sx={{padding:'15px'}}>
+//     <Box sx={{ padding: '15px' }}>
 //       <TableContainer
 //         component={Paper}
 //         sx={{
 //           position: 'relative',
 //           borderRadius: "4px",
 //           backgroundColor: "white",
-//           boxShadow: ' 0 0 3px rgb(198, 200, 205)',
-         
-//           // margin: '15px',
-//           // Make it responsive
+//           boxShadow: '0 0 3px rgb(198, 200, 205)',
 //         }}
 //       >
 //         {loading && (
@@ -129,7 +113,7 @@
 
 //         <Grid container spacing={2} sx={{ padding: '15px' }}>
 //           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-//             <Typography    variant="h6">Category List</Typography>
+//             <Typography sx={{fontWeight:'600'}}>Category List</Typography>
 //             <AddCategory />
 //           </Grid>
 //         </Grid>
@@ -141,48 +125,43 @@
 //         )}
 
 //         <Box sx={{
-//         border: '1px solid #dfe0e2', borderRadius: '5px', boxShadow: '0 0 3px rgb(198, 200, 205)'
-//           , margin: '0px 15px ',padding:'15px',overflow:'auto'
+//           border: '1px solid #dfe0e2', borderRadius: '5px', boxShadow: '0 0 3px rgb(198, 200, 205)',
+//           margin: '0px 15px', padding: '0px 15px', overflow: 'auto'
 //         }}>
 //           <Table size='small' aria-label="simple table">
-//             <TableHead sx={{ borderRadius:'14px',fontWeight:'bold'}} >
+//             <TableHead>
 //               <TableRow>
-//                 <TableCell sx={{fontWeight:'bold'}} align="center">S.No</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">ID</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">Name</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">Created At</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">Active</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">Created By</TableCell>
-//                 <TableCell  sx={{fontWeight:'bold'}}  align="center">Action</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Sr. No</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Name</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created At</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Active</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created By</TableCell>
+//                 <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Action</TableCell>
 //               </TableRow>
 //             </TableHead>
 //             <TableBody>
 //               {categories.map((category, index) => (
 //                 <TableRow key={category._id}>
-//                   <TableCell align="center">{index + 1 + page * rowsPerPage}</TableCell>
-//                   <TableCell align="center">{category._id}</TableCell>
-//                   <TableCell align="center">{category.category}</TableCell>
-//                   <TableCell align="center">{new Date(category.createdAt).toLocaleDateString()}</TableCell>
-//                   <TableCell align="center">{category.active ?  <Typography sx={{fontSize:'13px',backgroundColor:'rgb(218, 244, 235)',color:'rgb(26, 204, 141)',width:'fit-content',margin:'auto',padding:'1px 10px',borderRadius:'5px'}}>Yes</Typography> :
-//                      <Typography sx={{fontSize:'13px',backgroundColor:'rgb(253, 228, 228)',color:'rgb(247, 106, 106)',width:'fit-content',margin:'auto',padding:'1px 10px',borderRadius:'5px'}}>No</Typography>
-//                   }</TableCell>
-//                   <TableCell align="center">
+//                   <TableCell align="left">{index + 1 + page * rowsPerPage}</TableCell>
+//                   <TableCell align="left">{category.category}</TableCell>
+//                   <TableCell align="left">{new Date(category.createdAt).toLocaleDateString()}</TableCell>
+//                   <TableCell align="left">
+//                     {category.active ? (
+//                       <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography>
+//                     ) : (
+//                       <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>No</Typography>
+//                     )}
+//                   </TableCell>
+//                   <TableCell align="left">
 //                     {category.createdBy.firstName} {category.createdBy.lastName}
 //                   </TableCell>
-//                   <TableCell align="center">
-//                     {/* <Button
-//                       size="small"
-//                       variant="outlined"
-//                       onClick={() => changeActive(category._id)}
-//                       disabled={loading}
-//                     >
-//                       gg
-//                     </Button> */}
+//                   <TableCell align="left">
 //                     <Switch
-             
-//              onChange={() => changeActive(category._id)}
-//                 inputProps={{ 'aria-label': 'controlled' }}
-//                         />
+//                     size='small'
+//                       checked={category.active}
+//                       onChange={() => changeActive(category._id)}
+//                       inputProps={{ 'aria-label': 'controlled' }}
+//                     />
 //                   </TableCell>
 //                 </TableRow>
 //               ))}
@@ -201,7 +180,6 @@
 //         />
 //       </TableContainer>
 //     </Box>
-
 //   );
 // };
 
@@ -221,7 +199,6 @@ import {
   Grid,
   TablePagination,
   CircularProgress,
-  Button,
   Box,
 } from '@mui/material';
 import { apiList } from '../../apiList';
@@ -284,7 +261,7 @@ const CategoryTable = () => {
     setLoading(true);
     try {
       const url = apiList.changeActiveCategory;
-      const response = await API.put(url, { id});
+      const response = await API.put(url, { id });
       if (response?.data.success) {
         fetchCategories();
       }
@@ -321,7 +298,7 @@ const CategoryTable = () => {
 
         <Grid container spacing={2} sx={{ padding: '15px' }}>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography sx={{fontWeight:'600'}}>Category List</Typography>
+            <Typography sx={{ fontWeight: '600' }}>Category List</Typography>
             <AddCategory />
           </Grid>
         </Grid>
@@ -339,12 +316,12 @@ const CategoryTable = () => {
           <Table size='small' aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Sr. No</TableCell>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Name</TableCell>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created At</TableCell>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Active</TableCell>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Created By</TableCell>
-                <TableCell sx={{ fontWeight: 'bold',color:'#495057' }} align="left">Action</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Sr. No</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Name</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Created At</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Active</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Created By</TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#495057' }} align="left">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -365,10 +342,31 @@ const CategoryTable = () => {
                   </TableCell>
                   <TableCell align="left">
                     <Switch
-                    size='small'
+                      size='small'
                       checked={category.active}
                       onChange={() => changeActive(category._id)}
-                      inputProps={{ 'aria-label': 'controlled' }}
+                      inputProps={{ 'aria-label': 'ant design' }}
+                      sx={{
+                        '&.MuiSwitch-root': {
+                          // Custom styles for iOS switch
+                          width:'35px',
+                          height:'20px',
+                          padding: 0,
+                          borderRadius: 26 / 2,
+                          
+                        },
+                        '& .MuiSwitch-thumb': {
+                          width: "11px",
+                          height: "11px",
+                          backgroundColor: category.active ? '#4caf50' : '#f44336',
+                        },
+                        '& .MuiSwitch-track': {
+                          backgroundColor: category.active ? '#a5d6a7' : '#ef9a9a', 
+                        },
+                        '&.Mui-checked': {
+                          transform: 'translateX(18px)', 
+                        },
+                      }}
                     />
                   </TableCell>
                 </TableRow>
