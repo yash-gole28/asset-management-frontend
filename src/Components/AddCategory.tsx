@@ -28,8 +28,7 @@ const AddCategory = () => {
 
   const validationSchema = Yup.object({
     category: Yup.string()
-      .required('Category name is required')
-      .min(2, 'Category name must be at least 2 characters long'),
+      .min(3, 'Category name must be at least 2 characters long'),
   });
 
   return (
@@ -40,6 +39,7 @@ const AddCategory = () => {
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>Add Category</DialogTitle>
         <Formik
+
           initialValues={{ category: '' }}
           validationSchema={validationSchema}
           onSubmit={async (values, { resetForm }) => {
