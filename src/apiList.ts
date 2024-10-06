@@ -17,7 +17,8 @@ const apiList = {
     changeActiveUser: '/auth/change-active-user',
     changeActiveCategory: '/asset/change-active-category',
     getProfileData: '/auth/get-profile-details',
-    userAssets: '/asset/get-user-assets'
+    userAssets: '/asset/get-user-assets',
+    assetTopRequests:'/asset/get-top-asset-requests'
 };
 
 export { apiList };

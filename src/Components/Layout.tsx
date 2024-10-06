@@ -233,7 +233,7 @@ export default function PersistentDrawer() {
                 <Divider/>
           </ListItem>
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
-            <StyledNavLink to="/assets-request">
+            <StyledNavLink to="/asset-requests">
               <ListItemButton
                 sx={[{
                   minHeight: 48,

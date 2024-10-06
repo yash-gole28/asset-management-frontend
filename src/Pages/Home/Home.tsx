@@ -1,104 +1,128 @@
 import React, { useContext, useEffect, useState } from 'react'
 import KPIs from '../../Components/KPIs'
-import data from './../../Data.json'
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { API } from '../../network';
 import { apiList } from '../../apiList';
 import { MyContext } from '../../Context/AuthContext';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-
+interface AssetRequest {
+  _id: string; // Add this line
+  employee_Id: { firstName: string; lastName: string; department: string };
+  asset_id: { name: string; model_number: string; service_tag: string; _id: string }; // Include _id for asset_id if needed
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const Home = () => {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  // const [user , setUser] = useState('')
   const router = useNavigate()
   const context = useContext(MyContext)
+  const [data, setData] = useState<AssetRequest[]>([]);
+  const [loading, setLoading] = useState(true);
 
   if (!context) {
     throw new Error('UserComponent must be used within a MyProvider');
-}
-  const {getCurrentUser , getAdmin} = context
-  const handleChangePage = (event: any, newPage: any) => {
-    setPage(newPage);
+  }
+  const { getCurrentUser, type } = context
+
+  const getlimitedRequestData = async () => {
+    try {
+      setLoading(true);
+      const url = apiList.assetTopRequests;
+      const response = await API.get(url);
+      if (response.data.success) {
+        setData(response.data.requests);
+      } else {
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleChangeRowsPerPage = (event: any) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  useEffect(()=>{
+  useEffect(() => {
     const token = localStorage.getItem('token')
-    if(token){
+    if (token) {
       getCurrentUser()
       // getAdmin()
-    }else{
+      getlimitedRequestData()
+    } else {
       toast('session expired')
       router('/login')
     }
-  },[])
+  }, [])
 
   return (
     <Box>
-     
-      <Box sx={{margin:{xs:'10px',sm:'15px',md:'15px'}}}>
-      <KPIs />
+
+      <Box sx={{ margin: { xs: '10px', sm: '15px', md: '15px' } }}>
+        <KPIs />
       </Box>
 
-        <Box sx={{ flexGrow: 1 ,margin:{xs:'10px',sm:'15px',md:'15px'}}}>
-          <Grid container spacing={{xs:'10px',sm:'15px',md:'15px'}}>
-            {/* <Grid size={12}>
-              <Typography sx={{ margin: "20px 0px", fontWeight: 'bold', fontSize: '1.2rem' }}>Categories wise assets Data</Typography>
-              <TableContainer sx={{
-                borderRadius: "5px",
-                backgroundColor: "white",
-                boxShadow:1,
-                marginBottom: "20px",
-              }}>
+      <Box sx={{ margin: { xs: '10px', sm: '15px', md: '15px' } }}>
 
+        <TableContainer sx={{
+          width: { xs: "100%", sm: "100%" },
+          borderRadius: "4px",
+          backgroundColor: "white",
+          boxShadow: ' 0 0 3px rgb(198, 200, 205)',
+          position: "relative",
+          padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' },
+          fontFamily: 'Poppins'
+        }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', m: '15px', mt: '0px' }}>
+            <Typography sx={{ fontWeight: '600' }}>Requests</Typography>
+            {/* <Button variant="contained" onClick={} sx={{textTransform:'capitalize'}}>All Requests -</Button> */}
+            <Button onClick={() => router('/asset-requests')} size='small' sx={{ mt: '15px', height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize', width: 'fit-content' }} variant="outlined">All Requests <ArrowForwardIcon sx={{fontSize:'14px'}}/></Button>
+          </Box>
+          <Table sx={{ boxShadow: ' 0 0 3px rgb(198, 200, 205)', mb: '15px' }} size='small' aria-label="simple table">
+            <TableHead sx={{ fontWeight: '500' }}>
+              <TableRow>
+                <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Employee Name</TableCell>
+                <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Assets Name</TableCell>
+                <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Department</TableCell>
+                <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Model Number</TableCell>
+                <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Status</TableCell>
+                {/* {type === 'admin' && <TableCell sx={{ fontWeight: '600' }} align="left">Action</TableCell>} */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((v: AssetRequest, index: number) => (
+                <TableRow key={index}>
+                  <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.employee_Id.firstName} {v.employee_Id.lastName}</TableCell>
+                  <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.asset_id.name}</TableCell>
+                  <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.employee_Id.department}</TableCell>
+                  <TableCell sx={{ textWrap: 'nowrap', color: '#495057' }} align="left">{v.asset_id.model_number}</TableCell>
+                  <TableCell sx={{ textWrap: 'nowrap' }} align="left">
+                    {v.status === 'approved' && <Typography sx={{ backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 8px', borderRadius: '5px', fontSize: '13px', textTransform: 'capitalize' }}>{v.status}</Typography>}
+                    {v.status === 'pending' && <Typography sx={{ backgroundColor: 'rgb(252, 241, 223)', color: 'rgb(247, 173, 54)', width: 'fit-content', padding: '1px 8px', borderRadius: '5px', fontSize: '13px', textTransform: 'capitalize' }}>{v.status}</Typography>}
+                    {v.status === 'rejected' && <Typography sx={{ backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 8px', borderRadius: '5px', fontSize: '13px', textTransform: 'capitalize' }}>{v.status}</Typography>}
+                    {/* <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography> */}
+                  </TableCell>
+                  {/* {type === 'admin' &&   <TableCell align="center">
+                  <Box sx={{ display: 'flex', justifyContent: 'start' }}>
+                    <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                      <DoneIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px',backgroundColor:'#7EBF7E',borderRadius:'20%',width:'fit-content'}} />
+                    </Button>
+                    <Button onClick={() => handleRequestAction(v._id, 'rejected', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
+                      <CloseIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px' ,backgroundColor:'#FF7E7E',borderRadius:'20%',width:'fit-content'}} />
+                    </Button>
+                  </Box>
+                </TableCell>} */}
 
-                <Table aria-label="simple table" size='small'>
-                  <TableHead sx={{ backgroundColor: 'rgb(177, 191, 238)' }}>
-                    <TableRow>
-                      <TableCell sx={{ fontWeight: '600' }} align="center">Category</TableCell>
-                      <TableCell sx={{ fontWeight: '600' }} align="center">Total Assets Count</TableCell>
-                      <TableCell sx={{ fontWeight: '600' }} align="center">Allocated Assets</TableCell>
-                      <TableCell sx={{ fontWeight: '600' }} align="center">Assets under Maintenance</TableCell>
-                      <TableCell sx={{ fontWeight: '600' }} align="center">Non Allocated Assets</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
 
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {data.CategoryData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((v, index) => (
-                      <TableRow key={index}>
-                        <TableCell align="center">{v.category}</TableCell>
-                        <TableCell align="center">{v.count}</TableCell>
-                        <TableCell align="center">{v.allocated}</TableCell>
-                        <TableCell align="center">{v.underMaintenance}</TableCell>
-                        <TableCell align="center">{Number(v.count) - (Number(v.allocated) + Number(v.underMaintenance))}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-                <TablePagination
-                  rowsPerPageOptions={[5, 10,15, 20]}
-                  component="div"
-                  count={data.requestData.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-              </TableContainer>
-            </Grid> */}
-          </Grid>
+        </TableContainer>
+      </Box>
 
-        </Box>
-            
     </Box>
   )
 }

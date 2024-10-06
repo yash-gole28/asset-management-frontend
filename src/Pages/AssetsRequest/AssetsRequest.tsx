@@ -95,7 +95,7 @@ const AssetsRequest = () => {
       console.error(error)
     }
   }
-
+ 
   useEffect(() => {
     if (type === 'employee') {
       toast.error('not allowed')
