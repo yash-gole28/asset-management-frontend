@@ -8,6 +8,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { apiList } from '../../apiList';
 import { API } from '../../network';
 import toast from 'react-hot-toast';
+import logo from '../../assets/logo2.png'
+import { Height } from '@mui/icons-material';
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -68,8 +70,8 @@ const Login = () => {
           boxShadow: 1, // Adds a shadow effect
         }}
       >
-        <Box sx={{ height: 30, width: 30, backgroundColor: 'gray', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
-          <img src='icon' alt='logo' style={{ width: '100%', height: '100%', objectFit: 'contain' }}/>
+        <Box sx={{ alignItems: 'center', justifyContent: 'center', marginBottom: 2 }}>
+          <img src={logo }alt='logo' style={{ width: '80%', objectFit: 'contain' }}/>
         </Box>
 
         <Typography
@@ -92,13 +94,16 @@ const Login = () => {
           onSubmit={handleSubmit}
         >
           {({ touched, errors }) => (
-            <Form>
+            <Form >
               <Field
                 as={TextField}
                 name="email"
                 placeholder="Email.."
                 fullWidth
+               
+                  size='small'
                 sx={{
+                  
                   marginBottom: 3,
                   backgroundColor: "white",
                   borderRadius: 1,
@@ -108,6 +113,7 @@ const Login = () => {
               />
               <Field
                 as={TextField}
+                 size='small'
                 name="password"
                 placeholder="Password.."
                 type={showPassword ? 'text' : 'password'}
@@ -146,18 +152,7 @@ const Login = () => {
               >
                 Login
               </Button>
-              <Typography
-                sx={{ color: "black", textAlign: 'center' }}
-              >
-                Don't have an account?{' '}
-                <Typography
-                  component="span"
-                  onClick={() => navigate('/register')}
-                  sx={{ color: "blue", cursor: "pointer", fontSize: '0.875rem' }}
-                >
-                  Register
-                </Typography>
-              </Typography>
+       
             </Form>
           )}
         </Formik>
