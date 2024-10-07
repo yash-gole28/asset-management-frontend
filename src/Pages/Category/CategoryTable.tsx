@@ -116,7 +116,7 @@ const CategoryTable = () => {
       <TableContainer
         component={Paper}
         sx={{
-          position: 'relative',
+          // position: 'relative',
           borderRadius: "4px",
           backgroundColor: "white",
           boxShadow: '0 0 3px rgb(198, 200, 205)',
@@ -149,7 +149,7 @@ const CategoryTable = () => {
         )}
 
         <Box sx={{
-          border: '1px solid #dfe0e2', borderRadius: '5px', boxShadow: '0 0 3px rgb(198, 200, 205)',
+         borderRadius: '5px', boxShadow: '0 0 3px rgb(198, 200, 205)',
           margin: '0px 15px', padding: '0px 15px', overflow: 'auto'
         }}>
           <Table size='small' aria-label="simple table">

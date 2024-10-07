@@ -41,7 +41,7 @@ const KPIs = () => {
             const url = apiList.getKpiData
             const response = await API.get(url)
             if(response.data.success){
-                console.log(response.data)
+                // console.log(response.data)
                 setData(response.data.data)
             }
         }catch(error){

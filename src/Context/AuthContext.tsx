@@ -47,7 +47,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const response = await API.get(url)
         if(response.data.success){
           if(response.data.user.role === 'admin'){
-            console.log(response.data.user.role)
+            // console.log(response.data.user.role)
             setValue(response.data.user._id)
             setType(response.data.user.role)
             setUserName(`${response.data.user.firstName} ${response.data.user.lastName}`)
@@ -73,7 +73,7 @@ const MyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const response = await API.get(url)
         if(response.data.success){
           if(response.data.user.role === 'admin'  || response.data.user.role === 'it'){
-            console.log(response.data.user.role)
+            // console.log(response.data.user.role)
             setValue(response.data.user._id)
             setType(response.data.user.role)
             setUserName(`${response.data.user.firstName} ${response.data.user.lastName}`)

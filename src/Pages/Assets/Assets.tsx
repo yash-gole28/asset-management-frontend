@@ -1,4 +1,4 @@
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, Tooltip } from '@mui/material'; // Import Tooltip here
+import { Box, Button, Table, TableBody,CircularProgress, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography, Tooltip } from '@mui/material'; // Import Tooltip here
 import React, { useContext, useEffect, useState } from 'react';
 import { Modal } from '@mui/material';
 import MyForm from '../AssetsRegistretion/AssetsRegistretion';
@@ -13,6 +13,7 @@ const Assets = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [assets, setAssets] = useState<any[]>([]);
   const context = useContext(MyContext);
+  const [loading, setLoading] = useState(true);
 
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
@@ -33,14 +34,16 @@ const Assets = () => {
 
   const getAssets = async () => {
     try {
+      setLoading(true); // Set loading to true before fetching data
       const url = apiList.getAssets;
       const response = await API.get(url);
       if (response.data.success) {
-        console.log(response.data);
         setAssets(response.data.assets);
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -80,7 +83,19 @@ const Assets = () => {
           </Box>
         </Modal>
       </Box>
-
+      {loading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: '-12px',
+              marginLeft: '-12px',
+              zIndex:'200'
+            }}
+          />
+        )}
       <TableContainer sx={{
         width: { xs: "100%", sm: "100%" },
         borderRadius: "4px",

@@ -344,7 +344,7 @@ export default function PersistentDrawer() {
             </StyledNavLink>
           <Divider/>
           </ListItem>}
-          <ListItem disablePadding sx={{ display: 'block' }}>
+          {/* <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/setting">
               <ListItemButton
                 sx={[{
@@ -370,7 +370,7 @@ export default function PersistentDrawer() {
               </ListItemButton>
             </StyledNavLink>
         <Divider/>
-          </ListItem>
+          </ListItem> */}
           <ListItem onClick={() => { localStorage.removeItem('token') }} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
               <ListItemButton

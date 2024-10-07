@@ -109,7 +109,7 @@ import {
           backgroundColor: "white",
           boxShadow: '0 0 3px rgb(198, 200, 205)',
           marginBottom: "10px",
-          position: "relative",
+          // position: "relative",
           padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' },
         }}
       >

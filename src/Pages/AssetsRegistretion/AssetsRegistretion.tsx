@@ -132,9 +132,6 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 helperText={<ErrorMessage name="name" />}
               />
 
-              {/* <Typography>
-                Category
-              </Typography> */}
               <Field
                 as={TextField}
                 name="type"
@@ -157,7 +154,6 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 ))}
               </Field>
 
-              {/* <Typography>Company name</Typography> */}
               <Field
                 as={TextField}
                 name="companyName"
@@ -170,9 +166,6 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 helperText={<ErrorMessage name="companyName" />}
               />
 
-              {/* <Typography>
-                Model number
-              </Typography> */}
               <Field
                 as={TextField}
                 name="modelNumber"
@@ -184,22 +177,8 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 error={touched.modelNumber && Boolean(errors.modelNumber)}
                 helperText={<ErrorMessage name="modelNumber" />}
               />
-              {/* <Field
-                  as={TextField}
-                  size='small'
-                  name="modelNumber"
-                  label="Model Number"
-                  variant="outlined"
-                  fullWidth
-                  error={touched.modelNumber && Boolean(errors.modelNumber)}
-                  helperText={touched.modelNumber && errors.modelNumber}
-                /> */}
+              
 
-
-
-              {/* <Typography>
-                Service tag
-              </Typography> */}
               <Field
                 as={TextField}
                 name="serviceTag"
@@ -211,9 +190,7 @@ const MyForm: React.FC<ModalProps> = ({ popValue, pop }) => {
                 error={touched.serviceTag && Boolean(errors.serviceTag)}
                 helperText={<ErrorMessage name="serviceTag" />}
               />
-              {/* <Typography>
-                Description
-              </Typography> */}
+            
               <Field
                 as={TextField}
                 name="description"

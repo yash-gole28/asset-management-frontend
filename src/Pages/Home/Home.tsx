@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import KPIs from '../../Components/KPIs'
-import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -71,14 +71,27 @@ const Home = () => {
           borderRadius: "4px",
           backgroundColor: "white",
           boxShadow: ' 0 0 3px rgb(198, 200, 205)',
-          position: "relative",
+          // position: "relative",
           padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' },
           fontFamily: 'Poppins'
         }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', m: '15px', mt: '0px' }}>
-            <Typography sx={{ fontWeight: '600' }}>Requests</Typography>
+          {loading && (
+            <CircularProgress
+              size={24}
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                marginTop: '-12px',
+                marginLeft: '-12px',
+                zIndex: '200'
+              }}
+            />
+          )}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', mb: '15px' }}>
+            <Typography sx={{ fontWeight: '600', color: '#495057' }}>Requests</Typography>
             {/* <Button variant="contained" onClick={} sx={{textTransform:'capitalize'}}>All Requests -</Button> */}
-            <Button onClick={() => router('/asset-requests')} size='small' sx={{ mt: '15px', height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize', width: 'fit-content' }} variant="outlined">All Requests <ArrowForwardIcon sx={{fontSize:'14px'}}/></Button>
+            <Button onClick={() => router('/asset-requests')} size='small' sx={{ mt: '15px', height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize', width: 'fit-content' }} variant="outlined">All Requests <ArrowForwardIcon sx={{ fontSize: '14px' }} /></Button>
           </Box>
           <Table sx={{ boxShadow: ' 0 0 3px rgb(198, 200, 205)', mb: '15px' }} size='small' aria-label="simple table">
             <TableHead sx={{ fontWeight: '500' }}>
@@ -104,16 +117,7 @@ const Home = () => {
                     {v.status === 'rejected' && <Typography sx={{ backgroundColor: 'rgb(253, 228, 228)', color: 'rgb(247, 106, 106)', width: 'fit-content', padding: '1px 8px', borderRadius: '5px', fontSize: '13px', textTransform: 'capitalize' }}>{v.status}</Typography>}
                     {/* <Typography sx={{ fontWeight: '500', textTransform: 'capitalize' }}>{v.status}</Typography> */}
                   </TableCell>
-                  {/* {type === 'admin' &&   <TableCell align="center">
-                  <Box sx={{ display: 'flex', justifyContent: 'start' }}>
-                    <Button onClick={() => handleRequestAction(v._id, 'approved', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
-                      <DoneIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px',backgroundColor:'#7EBF7E',borderRadius:'20%',width:'fit-content'}} />
-                    </Button>
-                    <Button onClick={() => handleRequestAction(v._id, 'rejected', v.asset_id._id)} disabled={v.status !== 'pending'} sx={{ opacity: v.status === 'pending' ? 1 : 0.5 }}>
-                      <CloseIcon sx={{ color: '#fff', fontSize: '16px', minWidth: '0px' ,backgroundColor:'#FF7E7E',borderRadius:'20%',width:'fit-content'}} />
-                    </Button>
-                  </Box>
-                </TableCell>} */}
+
 
                 </TableRow>
               ))}
