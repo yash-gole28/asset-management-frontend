@@ -1,4 +1,4 @@
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
@@ -72,18 +72,86 @@ const Profile = () => {
                                 <PersonIcon sx={{ fontSize: '100px', color: '#fff' }} />
                             </Box>
                             <Typography>{userProfile?.firstName} {userProfile?.lastName}</Typography>
-                            <Typography>department - {userProfile?.department}</Typography>
+                            {/* <Typography>department - {userProfile?.department}</Typography>
                             <Typography>role - {userProfile?.role}</Typography>
-                            <Typography>{userProfile?.email}</Typography>
+                            <Typography>{userProfile?.email}</Typography> */}
 
                         </Box>
                     </Grid>
                     <Grid sx={{ backgroundColor: '#fff' }} size={{ xs: 12, sm: 12, md: 8 }}>
-                        <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', backgroundColor: { xs: 'rgb(242, 244, 247)', sm: 'rgb(242, 244, 247)', md: '#fff' } }} variant='h6'>Edit Profile</Typography>
+                        <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', backgroundColor: { xs: 'rgb(242, 244, 247)', sm: 'rgb(242, 244, 247)', md: '#fff' } }} variant='h6'> Profile</Typography>
+                        {/* <Box sx={{ backgroundColor: '#fff', padding: '15px' }}> */}
+                              
+                        {/* <Typography> First Name{userProfile?.firstName} </Typography>
+                        <Typography>Middle Name{userProfile?.middleName}</Typography>
+                        <Typography>Last Name{userProfile?.lastName}</Typography>
+                            <Typography>department  {userProfile?.department}</Typography>
+                            <Typography>role  {userProfile?.role}</Typography>
+                            <Typography>Email{userProfile?.email}</Typography> */}
+          
+                                
+                        {/* </Box> */}
                         <Box sx={{ backgroundColor: '#fff', padding: '15px' }}>
-
-
-                        </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+        <TextField
+            disabled
+          label="First Name"
+          value={userProfile?.firstName || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
+        />
+        <TextField
+         disabled
+          label="Middle Name"
+          value={userProfile?.middleName || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, mx: 1 }}  // Add margin-left and margin-right for spacing
+        />
+        <TextField
+         disabled
+          label="Last Name"
+          value={userProfile?.lastName || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
+        />
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+        <TextField
+         disabled
+          label="Department"
+          value={userProfile?.department || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
+        />
+        <TextField
+         disabled
+          label="Role"
+          value={userProfile?.role || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, mx: 1 ,textTransform:'capitalize'}}  // Add margin-left and margin-right for spacing
+        />
+        <TextField
+         disabled
+          label="Email"
+          value={userProfile?.email || ''}
+          fullWidth
+          margin="normal"
+          size="small"
+          sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
+        />
+      </Box>
+    
+    </Box>
                     </Grid>
                     <Grid sx={{ backgroundColor: '#fff', padding: '15px' }} size={{ xs: 12, sm: 12, md: 12 }}>
                         <Box>
