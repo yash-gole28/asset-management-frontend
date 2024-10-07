@@ -70,8 +70,7 @@ const Home = () => {
           width: { xs: "100%", sm: "100%" },
           borderRadius: "4px",
           backgroundColor: "white",
-          boxShadow: ' 0 0 3px rgb(198, 200, 205)',
-          // position: "relative",
+          boxShadow: ' 0 0 3px rgb(198, 200, 205)', 
           padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' },
           fontFamily: 'Poppins'
         }}>
