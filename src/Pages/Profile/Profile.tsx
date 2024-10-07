@@ -63,99 +63,87 @@ const Profile = () => {
     return (
         <Box>
 
-            <Box sx={{ flexGrow: 1, padding:'15px' }}>
+            <Box sx={{ flexGrow: 1, padding: '15px' }}>
                 <Grid container spacing={{ xs: '10px', sm: '10px', md: '15px' }}>
                     <Grid sx={{ backgroundColor: '#fff' }} size={{ xs: 12, sm: 12, md: 4 }}>
-                        <Box sx={{ backgroundColor: '#fff', display: 'flex', color: 'grey', flexDirection: 'column', alignItems: 'center', padding: '15px', borderRadius: '4px' ,position:'relative'}}>
-                            <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600',position:'absolute',top:'0px',left:'0px' }} variant='h6'>Profile</Typography>
-                            <Box sx={{ backgroundColor: 'rgb(201, 210, 239)', width: 'fit-content', borderRadius: '50%', margin: 'auto',mt:'30px' }}>
+                        <Box sx={{ backgroundColor: '#fff', display: 'flex', color: 'grey', flexDirection: 'column', alignItems: 'center', padding: '15px', borderRadius: '4px', position: 'relative' }}>
+                            <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', position: 'absolute', top: '0px', left: '0px',color:'#495057'}}>Profile</Typography>
+                            <Box sx={{ backgroundColor: 'rgb(201, 210, 239)', width: 'fit-content', borderRadius: '50%', margin: 'auto', mt: '30px' }}>
                                 <PersonIcon sx={{ fontSize: '100px', color: '#fff' }} />
                             </Box>
                             <Typography>{userProfile?.firstName} {userProfile?.lastName}</Typography>
-                            {/* <Typography>department - {userProfile?.department}</Typography>
-                            <Typography>role - {userProfile?.role}</Typography>
-                            <Typography>{userProfile?.email}</Typography> */}
+                           
 
                         </Box>
                     </Grid>
                     <Grid sx={{ backgroundColor: '#fff' }} size={{ xs: 12, sm: 12, md: 8 }}>
-                        <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', backgroundColor: { xs: 'rgb(242, 244, 247)', sm: 'rgb(242, 244, 247)', md: '#fff' } }} variant='h6'> Profile</Typography>
-                        {/* <Box sx={{ backgroundColor: '#fff', padding: '15px' }}> */}
-                              
-                        {/* <Typography> First Name{userProfile?.firstName} </Typography>
-                        <Typography>Middle Name{userProfile?.middleName}</Typography>
-                        <Typography>Last Name{userProfile?.lastName}</Typography>
-                            <Typography>department  {userProfile?.department}</Typography>
-                            <Typography>role  {userProfile?.role}</Typography>
-                            <Typography>Email{userProfile?.email}</Typography> */}
-          
-                                
-                        {/* </Box> */}
+                        <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', backgroundColor: '#fff' ,color:'#495057' }}>Details</Typography>
+                        
                         <Box sx={{ backgroundColor: '#fff', padding: '15px' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        <TextField
-            disabled
-          label="First Name"
-          value={userProfile?.firstName || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
-        />
-        <TextField
-         disabled
-          label="Middle Name"
-          value={userProfile?.middleName || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, mx: 1 }}  // Add margin-left and margin-right for spacing
-        />
-        <TextField
-         disabled
-          label="Last Name"
-          value={userProfile?.lastName || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
-        />
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        <TextField
-         disabled
-          label="Department"
-          value={userProfile?.department || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
-        />
-        <TextField
-         disabled
-          label="Role"
-          value={userProfile?.role || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, mx: 1 ,textTransform:'capitalize'}}  // Add margin-left and margin-right for spacing
-        />
-        <TextField
-         disabled
-          label="Email"
-          value={userProfile?.email || ''}
-          fullWidth
-          margin="normal"
-          size="small"
-          sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
-        />
-      </Box>
-    
-    </Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+                                <TextField
+                                    disabled
+                                    label="First Name"
+                                    value={userProfile?.firstName || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
+                                />
+                                <TextField
+                                    disabled
+                                    label="Middle Name"
+                                    value={userProfile?.middleName || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, mx: 1 }}  // Add margin-left and margin-right for spacing
+                                />
+                                <TextField
+                                    disabled
+                                    label="Last Name"
+                                    value={userProfile?.lastName || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
+                                />
+                            </Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+                                <TextField
+                                    disabled
+                                    label="Department"
+                                    value={userProfile?.department || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, mr: 1 }}  // Add margin-right for spacing
+                                />
+                                <TextField
+                                    disabled
+                                    label="Role"
+                                    value={userProfile?.role || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, mx: 1, textTransform: 'capitalize' }}  // Add margin-left and margin-right for spacing
+                                />
+                                <TextField
+                                    disabled
+                                    label="Email"
+                                    value={userProfile?.email || ''}
+                                    fullWidth
+                                    margin="normal"
+                                    size="small"
+                                    sx={{ flex: 1, ml: 1 }}  // Add margin-left for spacing
+                                />
+                            </Box>
+
+                        </Box>
                     </Grid>
                     <Grid sx={{ backgroundColor: '#fff', padding: '15px' }} size={{ xs: 12, sm: 12, md: 12 }}>
                         <Box>
-                            <Typography sx={{fontWeight:'600'}}>My Assets</Typography>
+                            <Typography sx={{ fontWeight: '600' ,mb:'15px',color:'#495057'}}>My Assets</Typography>
 
                         </Box>
                         <TableContainer sx={{
@@ -164,16 +152,16 @@ const Profile = () => {
                             backgroundColor: "white",
                             boxShadow: ' 0 0 3px rgb(198, 200, 205)',
                             position: "relative",
-                            padding: {xs:'0px',sm:'0px 10px',md:'0px 15px'}
+                            padding: { xs: '0px', sm: '0px 10px', md: '0px 15px' }
                         }}>
                             <Table size='small' aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align='center'>Asset</TableCell>
-                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align='center'>Category</TableCell>
-                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Modal Number</TableCell>
-                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Service tag</TableCell>
-                                        <TableCell sx={{ fontWeight: '600',color:'#495057' }} align="center">Assigned Date</TableCell>
+                                        <TableCell sx={{ fontWeight: '600', color: '#495057' }} align='center'>Asset</TableCell>
+                                        <TableCell sx={{ fontWeight: '600', color: '#495057' }} align='center'>Category</TableCell>
+                                        <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="center">Modal Number</TableCell>
+                                        <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="center">Service tag</TableCell>
+                                        <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="center">Assigned Date</TableCell>
 
                                     </TableRow>
                                 </TableHead>

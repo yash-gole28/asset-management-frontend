@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch';
 import {
@@ -143,7 +137,7 @@ const CategoryTable = () => {
           
         <Grid container spacing={2} sx={{ padding: '15px' }}>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end'}}>
-            <Typography sx={{fontWeight:'600'}}>Category List</Typography>
+            <Typography sx={{fontWeight:'600',color:'#495057'}}>Categories</Typography>
             <AddCategory />
           </Grid>
         </Grid>

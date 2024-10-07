@@ -125,7 +125,7 @@ const AssetsRequest = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Box sx={{display:'flex',flexDirection:{xs:'column',sm:'column',md:'row'},justifyContent:{xs:'start',sm:'start',md:'space-between'},alignItems:{xs:'start',sm:'start',md:'end'}}}>
             <Box >
-              <Typography sx={{fontWeight:'600'}}>Asset Requests</Typography>
+              <Typography sx={{fontWeight:'600',color:'#495057'}}>Asset Requests</Typography>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: { xs: 'start', sm: 'start', md: 'end' },flexDirection:{xs:'column',sm:'column',md:'row'} }}>
               <TextField

@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import data from './../Data.json'
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import BuildIcon from '@mui/icons-material/Build';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
+import { apiList } from '../apiList';
+import { API } from '../network';
 
-
+interface kpiStructure{
+    allocatedCount: number | null;
+    notAllocatedCount: number | null;
+} 
 const KPIs = () => {
-
+    const [data, setData] = useState<kpiStructure | null>(null);
     const Item = styled(Paper)(({ theme }) => ({
         boxShadow: '0px 0px 0px #fff',
         backgroundColor: '#fff',
@@ -32,18 +36,22 @@ const KPIs = () => {
         backgroundColor: 'inherit',
 
     }));
-    let totalCounts = 0;
-    let allocatedCount = 0;
-    let underMaintenanceCount = 0;
-
-    data.CategoryData.forEach(item => {
-        totalCounts += parseInt(item.count);
-        allocatedCount += parseInt(item.allocated);
-        underMaintenanceCount += parseInt(item.underMaintenance);
-    });
-
-    const nonAllocatedAssets = totalCounts - (allocatedCount + underMaintenanceCount)
-
+    const getData = async() => {
+        try{
+            const url = apiList.getKpiData
+            const response = await API.get(url)
+            if(response.data.success){
+                console.log(response.data)
+                setData(response.data.data)
+            }
+        }catch(error){
+            console.error(error);
+        }
+    }
+    const totalAssets = data ? (data.allocatedCount || 0) + (data.notAllocatedCount || 0) : 0;
+    useEffect(()=>{
+        getData()
+    },[])
     return (
         <Box>
             <Grid container spacing={{ xs: '10px', sm: "15px", md: '15px' }}>
@@ -51,11 +59,12 @@ const KPIs = () => {
                     <Item sx={{ backgroundColor: '', position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
-                                <Typography variant='h6' sx={{ fontSize: "14px" }}>
+                                <Typography onClick={()=>console.log(data)} variant='h6' sx={{ fontSize: "14px" }}>
                                     Total assets
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
-                                    {totalCounts}
+                                    {/* {totalCounts} */}
+                                    {totalAssets}
                                 </Typography>
                                 <InventoryIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, color: 'rgb(250, 176, 68)', borderRadius: '50%', position: 'absolute', right: '15px', backgroundColor: 'rgb(255, 241, 218)', padding: '1rem' }} />
                             </Box>
@@ -71,7 +80,8 @@ const KPIs = () => {
                                     Allocated Assets
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
-                                    {allocatedCount}
+                                    {/* {allocatedCount} */}
+                                    {data?.allocatedCount}
                                 </Typography>
                                 <AssignmentIndIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, color: 'rgb(118, 122, 245)',
                                  borderRadius: '50%', backgroundColor: 'rgb(228, 228, 254)', padding: '1rem', position: 'absolute', right: '15px' }} />
@@ -87,7 +97,8 @@ const KPIs = () => {
                                      Under Maintenance
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
-                                    {underMaintenanceCount}
+                                    {/* {underMaintenanceCount} */}
+                                    0
                                 </Typography>
                                 <BuildIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, position: 'absolute',padding: '1rem', right: '15px',borderRadius: '50%',color:"rgb(240, 158, 127)",backgroundColor: 'rgb(253, 234, 228)' }}  />
                             </Box>
@@ -102,7 +113,8 @@ const KPIs = () => {
                                     Available Assets
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
-                                    {nonAllocatedAssets}
+                                    {/* {nonAllocatedAssets} */}
+                                    {data?.notAllocatedCount}
                                 </Typography>
                                 <KeyboardIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' },padding: '1rem',  right: '15px',borderRadius: '50%',color:"rgb(133, 136, 246)",backgroundColor: 'rgb(253, 234, 228)', position: 'absolute' }} />
                             </Box>

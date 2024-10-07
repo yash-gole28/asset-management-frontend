@@ -18,7 +18,8 @@ const apiList = {
     changeActiveCategory: '/asset/change-active-category',
     getProfileData: '/auth/get-profile-details',
     userAssets: '/asset/get-user-assets',
-    assetTopRequests:'/asset/get-top-asset-requests'
+    assetTopRequests:'/asset/get-top-asset-requests',
+    getKpiData:'/asset/get-kpi-data'
 };
 
 export { apiList };

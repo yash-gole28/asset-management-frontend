@@ -101,3 +101,7 @@ html{
 .css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop{
   background-color: rgba(142, 140, 140, 0.3) !important;
 }
+
+.no-underline:active{
+  color:black
+}
