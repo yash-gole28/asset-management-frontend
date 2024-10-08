@@ -28,6 +28,9 @@ const KPIs = () => {
             backgroundColor: '#1A2027',
         }),
     }));
+
+
+    
     const CustomGrid = styled(Paper)(({ theme }) => ({
         boxShadow: '0px 0px 0px #fff',
         height: '100px',
@@ -68,7 +71,8 @@ const KPIs = () => {
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
                                     {/* {totalCounts} */}
-                                    {totalAssets}
+                                    {data && totalAssets}
+ 
                                 </Typography>
                                 <InventoryIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, color: 'rgb(250, 176, 68)', borderRadius: '50%', position: 'absolute', right: '15px', backgroundColor: 'rgb(255, 241, 218)', padding: '1rem' }} />
                             </Box>
@@ -110,7 +114,7 @@ const KPIs = () => {
                                 </Typography>
                                 <Typography variant='h3' sx={{ fontSize: { xs: '18px', sm: '20px', md: '25px' } }}>
                                     {/* {underMaintenanceCount} */}
-                                    0
+                                    {data && 0}
                                 </Typography>
                                 <BuildIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, position: 'absolute', padding: '1rem', right: '15px', borderRadius: '50%', color: "rgb(240, 158, 127)", backgroundColor: 'rgb(253, 234, 228)' }} />
                             </Box>
@@ -131,7 +135,7 @@ const KPIs = () => {
                                     {/* {nonAllocatedAssets} */}
                                     {data?.notAllocatedCount}
                                 </Typography>
-                                <KeyboardIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, padding: '1rem', right: '15px', borderRadius: '50%', color: "rgb(133, 136, 246)", backgroundColor: 'rgb(253, 234, 228)', position: 'absolute' }} />
+                                <KeyboardIcon sx={{ fontSize: { xs: '50px', sm: '50px', md: '60px' }, padding: '1rem', right: '15px', borderRadius: '50%', color:" #599168", backgroundColor: '#c5fcd4', position: 'absolute' }} />
                             </Box>
                         </CustomGrid>
                     </Item>
