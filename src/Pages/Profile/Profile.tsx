@@ -71,7 +71,7 @@ const Profile = () => {
                     <Grid sx={{ backgroundColor: '#fff' }} size={{ xs: 12, sm: 12, md: 4 }}>
                         <Box sx={{ backgroundColor: '#fff', display: 'flex', color: 'grey', flexDirection: 'column', alignItems: 'center', padding: '15px', borderRadius: '4px', position: 'relative' }}>
                             <Typography sx={{ padding: { xs: '10px', sm: '10px', md: '15px' }, fontWeight: '600', position: 'absolute', top: '0px', left: '0px', color: '#495057' }}>Profile</Typography>
-                            <Box sx={{ backgroundColor: 'rgb(201, 210, 239)', width: 'fit-content', borderRadius: '50%', margin: 'auto', mt: '30px' }}>
+                            <Box sx={{ backgroundColor: 'rgb(201, 210, 239)', width: { xs: '70px', sm: '80px', md: '90px' }, borderRadius: '50%', margin: 'auto', mt: '30px' }}>
                                 <PersonIcon sx={{ fontSize: { xs: '70px', sm: '80px', md: '90px' }, color: '#fff' }} />
                             </Box>
                             <Typography>{userProfile?.firstName} {userProfile?.lastName}</Typography>

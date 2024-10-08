@@ -131,7 +131,7 @@ const AssetsRequest = () => {
               <TextField
                 variant="standard"
                 size='small'
-                placeholder="Search Employee"
+                placeholder="Search "
                 onChange={(e) => setSearchQuery(e.target.value)}
                 sx={{mr:'1rem', width: '30%', minWidth: '200px', backgroundColor: '#ffff', border: '1px solid #cfcece', padding: '2px 10px',pt:'5px', borderRadius: '4px'}}
                 InputProps={{

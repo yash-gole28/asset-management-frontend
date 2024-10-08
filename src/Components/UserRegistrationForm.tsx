@@ -1,11 +1,13 @@
-import React, { useEffect} from 'react';
-import { TextField, MenuItem, Button, Typography, Box, Select, InputLabel } from '@mui/material';
+import React, { useEffect, useState} from 'react';
+import { TextField, MenuItem, Button, Typography, Box,  InputAdornment, IconButton } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { apiList } from '../apiList';
 import { API } from '../network';
 import Grid from '@mui/material/Grid2';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 // Define the validation schema using Yup
 const validationSchema = Yup.object({
@@ -41,7 +43,16 @@ const departments = ['HR', 'IT', 'Finance', 'Marketing', 'Sales'];
 
 const UserRegistrationForm: React.FC = () => {
   const router = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
+  const handleClickShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
   const handleSubmit = async (values: typeof initialValues) => {
     try {
       const user = '66e817a74d92c09dd3213f7f';
@@ -65,7 +76,7 @@ const UserRegistrationForm: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ backgroundColor: '#fff', borderRadius: '4px' }}>
+    <Box sx={{ backgroundColor: '#fff', borderRadius: '4px',padding:'15px'}}>
       <Typography variant="h6" textAlign='center' gutterBottom>
         Register New User
       </Typography>
@@ -74,12 +85,12 @@ const UserRegistrationForm: React.FC = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, handleChange, handleBlur, errors, touched }) => (
+        {({errors, touched }) => (
           <Form>
-              <div className='scrollbar register'>
-            <Grid sx={{ maxHeight: "500px" }} container spacing={2}>
+          
+            <Grid container spacing={'15px'} sx={{boxShadow: ' 0 0 3px rgb(198, 200, 205)',padding:'15px'}}>
 
-              <Grid sx={{ margin: 'auto',mt:'1rem', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -91,33 +102,59 @@ const UserRegistrationForm: React.FC = () => {
                   helperText={touched.email && errors.email}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
                   name="password"
                   label="Password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   variant="outlined"
                   fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                   error={touched.password && Boolean(errors.password)}
                   helperText={touched.password && errors.password}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
                   name="confirmPassword"
                   label="Confirm Password"
-                  type="password"
+                  type={showConfirmPassword ? 'text' : 'password'}
                   variant="outlined"
                   fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowConfirmPassword}
+                          edge="end"
+                        >
+                          {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                   error={touched.confirmPassword && Boolean(errors.confirmPassword)}
                   helperText={touched.confirmPassword && errors.confirmPassword}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -129,7 +166,7 @@ const UserRegistrationForm: React.FC = () => {
                   helperText={touched.firstName && errors.firstName}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }}size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -141,7 +178,7 @@ const UserRegistrationForm: React.FC = () => {
                   helperText={touched.middleName && errors.middleName}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -153,7 +190,7 @@ const UserRegistrationForm: React.FC = () => {
                   helperText={touched.lastName && errors.lastName}
                 />
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -170,8 +207,7 @@ const UserRegistrationForm: React.FC = () => {
                   <MenuItem value="employee">Employee</MenuItem>
                 </Field>
               </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={10}>
-                {/* <InputLabel id="department-label">Department</InputLabel> */}
+              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{xs:12 , sm:6 ,md:6}}>
                 <Field
                   as={TextField}
                   size='small'
@@ -189,31 +225,15 @@ const UserRegistrationForm: React.FC = () => {
                     </MenuItem>
                   ))}
                 </Field>
-                {/* <Select
-                  labelId="department-label"
-                  size='small'
-                  name="department"
-                  value={values.department}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={touched.department && Boolean(errors.department)}
-                  fullWidth
-                  variant="outlined"
-                >
-                  {departments.map((dept) => (
-                    <MenuItem key={dept} value={dept}>
-                      {dept}
-                    </MenuItem>
-                  ))}
-                </Select> */}
-              </Grid>
-              <Grid sx={{ margin: 'auto', backgroundColor: 'white' }} size={{ xs: 6, sm: 6, md: 10 }}>
-                <Button type="submit" variant="contained" color="primary" sx={{ mb: '1rem' }} fullWidth>
-                  Register
-                </Button>
+             
               </Grid>
             </Grid>
-              </div>
+              <Box sx={{ margin: 'auto', backgroundColor: 'white' }}>
+                <Button type="submit" variant="contained" color="primary" sx={{ mb: '1rem' }} fullWidth>
+                  Add User
+                </Button>
+              </Box>
+              
           </Form>
         )}
       </Formik>

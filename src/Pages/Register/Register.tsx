@@ -41,7 +41,7 @@ const Register: React.FC = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: { xs: '90%', sm: '80%', md: 400 },
+          width: { xs: '90%', sm: '80%', md: 700 },
         }}>
           <UserRegistrationForm />
         </Box>

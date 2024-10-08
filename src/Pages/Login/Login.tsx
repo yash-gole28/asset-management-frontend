@@ -115,7 +115,7 @@ const Login = () => {
                 as={TextField}
                  size='small'
                 name="password"
-                placeholder="Password.."
+                placeholder="Password"
                 type={showPassword ? 'text' : 'password'}
                 fullWidth
                 sx={{

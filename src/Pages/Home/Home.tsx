@@ -92,7 +92,7 @@ const Home = () => {
             {/* <Button variant="contained" onClick={} sx={{textTransform:'capitalize'}}>All Requests -</Button> */}
             <Button onClick={() => router('/asset-requests')} size='small' sx={{ mt: '15px', height: '35px', fontSize: { xs: '12px', sm: '12px', md: '14px' }, color: 'white', background: "rgb(108,117,125)", textTransform: 'capitalize', width: 'fit-content' }} variant="outlined">All Requests <ArrowForwardIcon sx={{ fontSize: '14px' }} /></Button>
           </Box>
-          <Table sx={{ boxShadow: ' 0 0 3px rgb(198, 200, 205)', mb: '15px' }} size='small' aria-label="simple table">
+          <Table sx={{ boxShadow: ' 0 0 3px rgb(198, 200, 205)', mb: '15px' ,borderRadius:'4px'}} size='small' aria-label="simple table">
             <TableHead sx={{ fontWeight: '500' }}>
               <TableRow>
                 <TableCell sx={{ fontWeight: '600', color: '#495057' }} align="left">Employee Name</TableCell>
