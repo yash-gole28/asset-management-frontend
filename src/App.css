@@ -103,3 +103,7 @@ html{
 .no-underline:active{
   color:black
 }
+
+.css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root{
+  font-size: 14px !important;
+}

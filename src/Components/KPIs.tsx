@@ -63,7 +63,7 @@ const KPIs = () => {
                     <Item sx={{ backgroundColor: '', position: 'relative', overflow: 'hidden' }}>
                         <CustomGrid>
                             <Box sx={{ pl: { xs: '0px', sm: '1rem', md: '1rem' }, display: 'flex', flexDirection: 'column', alignItems: 'start', justifyContent: 'center', height: '100%' }}>
-                                <Typography onClick={() => console.log(data)} variant='h6' sx={{ fontSize: "14px" }}>
+                                <Typography onClick={() => console.log(data)} variant='h6' sx={{ fontSize: "14px", zIndex: "100" }}>
                                     Total assets
                                     <Tooltip title='total Asset count'>
                                         <InfoIcon sx={{fontSize:'14px',color:'grey',position:'relative',top:'2px',left:'4px'}}/>

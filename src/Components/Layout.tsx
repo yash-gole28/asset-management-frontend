@@ -178,7 +178,7 @@ export default function PersistentDrawer() {
               <MenuIcon sx={{ fontSize: '18px' }} />
             </IconButton>
             <Box>
-              <Typography sx={{ ...(open ? { display: 'none' } : { diaplay: 'block' }) }} noWrap component="div">
+              <Typography sx={{ ...(open ? { display: 'none' } : { display:{xs:'none',sm:'block',md:'block'} }) }} noWrap component="div">
                 <img className='logo' src={l} alt="" />
               </Typography>
             </Box>
@@ -190,7 +190,7 @@ export default function PersistentDrawer() {
               
            <Box sx={{display:"flex", flexDirection:"column",justifyContent:"center",height:"100%"}}>
             
-           <Typography sx={{ fontWeight: '600', color: '#495057' }}>
+           <Typography sx={{ fontWeight: '600', color: '#495057',textWrap:'nowrap' }}>
                 {username}
               </Typography>
                 <Typography sx={{fontSize:'10px',textTransform:'capitalize'}}>{type}</Typography>

@@ -6,6 +6,7 @@ import { MyContext } from '../../Context/AuthContext';
 import { API } from '../../network';
 import { apiList } from '../../apiList';
 import dayjs from 'dayjs';
+import { Label } from '@mui/icons-material';
 
 interface profileData {
     firstName: string;
@@ -21,8 +22,9 @@ const Profile = () => {
     const [assets, setAssets] = useState<any[] | null>(null)
     const context = useContext(MyContext)
     const [loading, setLoading] = useState(true);
-
-
+    const toUpperCaseRole = userProfile?.role[0].toUpperCase()
+    const remains = userProfile?.role?.split('').splice(1 , userProfile?.role?.length).join('') || null
+    const role = userProfile ? `${userProfile.role[0].toUpperCase()}${userProfile.role.slice(1)}` : '';
     if (!context) {
         throw new Error('Assets component must be used within a MyProvider');
     }
@@ -84,65 +86,34 @@ const Profile = () => {
                         <Box sx={{ flexGrow: 1, padding: '15px', paddingTop: '0px' }}>
                             <Grid container spacing='15px'>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="First Name"
-                                        value={userProfile?.firstName || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>First Name:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{userProfile?.firstName || ''}</Box>
+                                  
                                 </Grid>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="Middle Name"
-                                        value={userProfile?.middleName || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>Middle Name:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{userProfile?.middleName || ''}</Box>
+                                    
                                 </Grid>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="Last Name"
-                                        value={userProfile?.lastName || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>Last Name:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{userProfile?.lastName || ''}</Box>
+                                    
                                 </Grid>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="Department"
-                                        value={userProfile?.department || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>Department:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{userProfile?.department || ''}</Box>
+                                   
                                 </Grid>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="Role"
-                                        value={userProfile?.role || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>Role:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{ role || ''}</Box>
+                                   
                                 </Grid>
                                 <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <TextField
-                                        disabled
-                                        label="Email"
-                                        value={userProfile?.email || ''}
-                                        fullWidth
-                                        margin="normal"
-                                        size="small"
-
-                                    />
+                                    <Typography sx={{fontSize:'14px'}}>Email:</Typography>
+                                    <Box sx={{border:'1px solid rgba(0, 0, 0, 0.23)',padding:'6px',borderRadius:'4px',fontSize:'14px'}} >{userProfile?.email || ''}</Box>
+                                   
                                 </Grid>
 
 
