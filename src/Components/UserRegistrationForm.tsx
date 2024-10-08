@@ -78,7 +78,7 @@ const UserRegistrationForm: React.FC = () => {
   return (
     <Box sx={{ backgroundColor: '#fff', borderRadius: '4px',padding:'15px'}}>
       <Typography variant="h6" textAlign='center' gutterBottom>
-        Register New User
+        Add User
       </Typography>
       <Formik
         initialValues={initialValues}
@@ -228,8 +228,8 @@ const UserRegistrationForm: React.FC = () => {
              
               </Grid>
             </Grid>
-              <Box sx={{ margin: 'auto', backgroundColor: 'white' }}>
-                <Button type="submit" variant="contained" color="primary" sx={{ mb: '1rem' }} fullWidth>
+              <Box sx={{ margin: 'auto', backgroundColor: 'white' ,display:'flex',justifyContent:'end'}}>
+                <Button type="submit" variant="contained" color="primary" sx={{ mb: '1rem',textTransform:'capitalize' }}>
                   Add User
                 </Button>
               </Box>
