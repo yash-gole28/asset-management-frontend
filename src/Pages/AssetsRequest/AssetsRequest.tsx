@@ -133,7 +133,8 @@ const AssetsRequest = () => {
                 size='small'
                 placeholder="Search "
                 onChange={(e) => setSearchQuery(e.target.value)}
-                sx={{mr:'1rem', width: '30%', minWidth: '200px', backgroundColor: '#ffff', border: '1px solid #cfcece', padding: '2px 10px',pt:'5px', borderRadius: '4px'}}
+                sx={{mr:'1rem', width: '30%', minWidth: '200px', backgroundColor: '#ffff', border: '1px solid #cfcece', padding: '2px 10px',pt:'5px',
+                   borderRadius: '4px',margin:{xs:'15px 0px',md:'0px 15px'}}}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='start'>
