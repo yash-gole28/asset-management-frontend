@@ -143,7 +143,7 @@ import {
                 <TableCell sx={{ color: '#495057' }} align="left">{index + 1 + page * rowsPerPage}</TableCell>
                 <TableCell sx={{ color: '#495057' }} align="left">{v.firstName} {v.lastName}</TableCell>
                 <TableCell sx={{ color: '#495057' }} align="left">{v.email}</TableCell>
-                <TableCell sx={{ color: '#495057' }} align="left">{v.role}</TableCell>
+                <TableCell sx={{ color: '#495057',textTransform:'capitalize' }} align="left">{v.role}</TableCell>
                 <TableCell sx={{ color: '#495057' }} align="left">
                   {v.active ? (
                     <Typography sx={{ fontSize: '13px', backgroundColor: 'rgb(218, 244, 235)', color: 'rgb(26, 204, 141)', width: 'fit-content', padding: '1px 10px', borderRadius: '5px' }}>Yes</Typography>

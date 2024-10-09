@@ -26,6 +26,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { MyContext } from '../Context/AuthContext';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import CategoryIcon from '@mui/icons-material/Category';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 
 const drawerWidth = 240;
 
@@ -66,7 +67,18 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
-}
+};
+
+const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: 'rgb(108,117,125)',
+    color: '#fff',
+    maxWidth: 200,
+    border: '1px solid #dadde9',
+  },
+}));
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -138,7 +150,7 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
 export default function PersistentDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-
+  const isSmallScreen = theme.breakpoints.down('sm')
   const context = React.useContext(MyContext);
   if (!context) {
     throw new Error('Assets component must be used within a MyProvider');
@@ -178,26 +190,26 @@ export default function PersistentDrawer() {
               <MenuIcon sx={{ fontSize: '18px' }} />
             </IconButton>
             <Box>
-              <Typography sx={{ ...(open ? { display: 'none' } : { display:{xs:'none',sm:'block',md:'block'} }) }} noWrap component="div">
+              <Typography sx={{ ...(open ? { display: 'none' } : { display: { xs: 'none', sm: 'block', md: 'block' } }) }} noWrap component="div">
                 <img className='logo' src={l} alt="" />
               </Typography>
             </Box>
           </Box>
           <NavLink to="/profile" className='profile-link no-underline' >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+
               <PersonIcon sx={{ backgroundColor: 'rgb(242, 244, 247)', padding: '.4rem', mr: '.5rem', borderRadius: '50%', fontSize: '35px', color: 'rgb(160, 158, 158)' }} />
-              
-           <Box sx={{display:"flex", flexDirection:"column",justifyContent:"center",height:"100%"}}>
-            
-           <Typography sx={{ fontWeight: '600', color: '#495057',textWrap:'nowrap' }}>
-                {username}
-              </Typography>
-                <Typography sx={{fontSize:'10px',textTransform:'capitalize'}}>{type}</Typography>
-                
-           </Box>
-         
-          </Box>
+
+              <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
+
+                <Typography sx={{ fontWeight: '600', color: '#495057', textWrap: 'nowrap' }}>
+                  {username}
+                </Typography>
+                <Typography sx={{ fontSize: '10px', textTransform: 'capitalize' }}>{type}</Typography>
+
+              </Box>
+
+            </Box>
           </NavLink>
         </Toolbar>
       </AppBar>
@@ -211,114 +223,162 @@ export default function PersistentDrawer() {
           </IconButton>
         </DrawerHeader>
         {/* <Divider /> */}
-        <List sx={[open ? {padding:{xs:'0rem',sm:'0rem',md:'1rem'}} :{ padding:'0rem'} ]}>
+        <List sx={[open ? { padding: { xs: '0rem', sm: '0rem', md: '1rem' } } : { padding: '0rem' }]}>
           <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink className='active-tab' to="/">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-                ]} >
-                <ListItemIcon
+              <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Home</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
+                <ListItemButton
                   sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    px: { xs: 1.5, sm: 2.5, md: 2.5 },
                   },
-                  open ? { mr: 3, } : { mr: 'auto', },]} >
-                  <HomeIcon sx={{ fontSize: '18px' }} />
-                </ListItemIcon>
-               
-                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
-                  : { opacity: 0, display: 'none' },
-                ]}>Home</Typography>
-              </ListItemButton>
+                  open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+                  ]} >
+                  <ListItemIcon
+                    sx={[{
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open ? { mr: 3, } : { mr: 'auto', },]} >
+
+
+                    <HomeIcon sx={{ fontSize: '18px' }} />
+                    {/* </HtmlTooltip> */}
+
+                  </ListItemIcon>
+
+                  <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                    : { opacity: 0, display: 'none' },
+                  ]}>Home</Typography>
+                </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
-                <Divider/>
+            <Divider />
           </ListItem>
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/asset-requests">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-                ]} >
-                <ListItemIcon
+              <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Asset Requests</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
+                <ListItemButton
                   sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    px: { xs: 1.5, sm: 2.5, md: 2.5 },
                   },
-                  open ? { mr: 3, } : { mr: 'auto', },
-                  ]}>
-                  <NoteAddIcon sx={{ fontSize: '18px' }} />
-                </ListItemIcon>
-              
-                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
-                  : { opacity: 0, display: 'none' },
-                ]}>Asset Requests</Typography>
-              </ListItemButton>
+                  open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+                  ]} >
+                  <ListItemIcon
+                    sx={[{
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open ? { mr: 3, } : { mr: 'auto', },
+                    ]}>
+                    <NoteAddIcon sx={{ fontSize: '18px' }} />
+                  </ListItemIcon>
+
+                  <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                    : { opacity: 0, display: 'none' },
+                  ]}>Asset Requests</Typography>
+                </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
-          <Divider/>
+            <Divider />
           </ListItem>}
           {isNotEmployee && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/assets">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-
-                ]} >
-                <ListItemIcon
+              <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Assets</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
+                <ListItemButton
                   sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    px: { xs: 1.5, sm: 2.5, md: 2.5 },
                   },
-                  open ? { mr: 3, } : { mr: 'auto', },
-                  ]}  >
-                  <InventoryIcon sx={{ fontSize: '18px' }} />
-                </ListItemIcon>
-             
-                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
-                  : { opacity: 0, display: 'none' },
-                ]}>Assets</Typography>
-              </ListItemButton>
+                  open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                  ]} >
+                  <ListItemIcon
+                    sx={[{
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open ? { mr: 3, } : { mr: 'auto', },
+                    ]}  >
+                    <InventoryIcon sx={{ fontSize: '18px' }} />
+                  </ListItemIcon>
+
+                  <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                    : { opacity: 0, display: 'none' },
+                  ]}>Assets</Typography>
+                </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
-          <Divider/>
+            <Divider />
           </ListItem>}
           {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/register">
-              <ListItemButton
-                sx={[{
-                  minHeight: 48,
-                  px: { xs: 1.5, sm: 2.5, md: 2.5 },
-                },
-                open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
-
-                ]} >
-                <ListItemIcon
+              <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Users</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
+                <ListItemButton
                   sx={[{
-                    minWidth: 0,
-                    justifyContent: 'center',
+                    minHeight: 48,
+                    px: { xs: 1.5, sm: 2.5, md: 2.5 },
                   },
-                  open ? { mr: 3, } : { mr: 'auto', },
-                  ]}  >
-                  <PersonAddIcon sx={{ fontSize: '18px' }} />
-                </ListItemIcon>
-              
-                <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
-                  : { opacity: 0, display: 'none' },
-                ]}>Users</Typography>
-              </ListItemButton>
+                  open ? { justifyContent: 'initial', } : { justifyContent: 'center', },
+
+                  ]} >
+                  <ListItemIcon
+                    sx={[{
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open ? { mr: 3, } : { mr: 'auto', },
+                    ]}  >
+                    <PersonAddIcon sx={{ fontSize: '18px' }} />
+                  </ListItemIcon>
+
+                  <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
+                    : { opacity: 0, display: 'none' },
+                  ]}>Users</Typography>
+                </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
-          <Divider/>
+            <Divider />
           </ListItem>}
           {isAdmin && <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/category">
+            <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Categories</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
               <ListItemButton
                 sx={[{
                   minHeight: 48,
@@ -336,13 +396,14 @@ export default function PersistentDrawer() {
                   ]}  >
                   <CategoryIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
-              
+
                 <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
                   : { opacity: 0, display: 'none' },
                 ]}>Categories</Typography>
               </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
-          <Divider/>
+            <Divider />
           </ListItem>}
           {/* <ListItem disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/setting">
@@ -373,6 +434,14 @@ export default function PersistentDrawer() {
           </ListItem> */}
           <ListItem onClick={() => { localStorage.removeItem('token') }} disablePadding sx={{ display: 'block' }}>
             <StyledNavLink to="/login">
+            <HtmlTooltip
+                title={!open &&
+                  <React.Fragment>
+                    <Typography color="inherit" sx={{fontWeight:'600'}}>Logout</Typography>
+                  </React.Fragment>
+                }
+                placement='right'
+              >
               <ListItemButton
 
                 sx={[{
@@ -391,11 +460,12 @@ export default function PersistentDrawer() {
                   ]}  >
                   <LogoutIcon sx={{ fontSize: '18px' }} />
                 </ListItemIcon>
-             
+
                 <Typography sx={[open ? { opacity: 1, fontWeight: '600', fontSize: '14px' }
                   : { opacity: 0, display: 'none' },
                 ]}>Logout</Typography>
               </ListItemButton>
+              </HtmlTooltip>
             </StyledNavLink>
           </ListItem>
         </List>

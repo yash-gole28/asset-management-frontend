@@ -37,10 +37,6 @@ html{
   width: 500px !important;
 }
 
-.active .active-class{
-  font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 .css-1ahxkcz-MuiPaper-root-MuiTableContainer-root{
   max-width: 96% !important;
 }
@@ -106,4 +102,13 @@ html{
 
 .css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root{
   font-size: 14px !important;
+}
+
+.active{
+  color:rgb(74, 109, 247)
+}
+
+.inactive{
+  color:black;
+background-color:#888;
 }
